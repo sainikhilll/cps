@@ -13,25 +13,25 @@
             <a class="nav-link" routerLink='login'>Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='ride-owner-preferences'>Preferences</a>
+            <a *ngIf="loginAuthService.isOwnerLoggedIn" class="nav-link" routerLink='ride-owner-preferences'>Preferences</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='publish-trip'>Publish Trip</a>
+            <a *ngIf="loginAuthService.isOwnerLoggedIn" class="nav-link" routerLink='publish-trip'>Publish Trip</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='search-trip'>Search Trip</a>
+            <a *ngIf="loginAuthService.isPassengerLoggedIn" class="nav-link" routerLink='search-trip'>Search Trip</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='book-ride'>Book Ride</a>
+            <a *ngIf="loginAuthService.isPassengerLoggedIn" class="nav-link" routerLink='book-ride'>Book Ride</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='approve-ride-owner'>Approve</a>
+            <a *ngIf="loginAuthService.isAdminLoggedIn" class="nav-link" routerLink='approve-ride-owner'>Approve</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='view-ride-owners'>Ride Owners</a>
+            <a *ngIf="loginAuthService.isAdminLoggedIn" class="nav-link" routerLink='view-ride-owners'>Ride Owners</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='view-passengers'>Passengers</a>
+            <a *ngIf="loginAuthService.isAdminLoggedIn" class="nav-link" routerLink='view-passengers'>Passengers</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,16 +43,22 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a *ngIf="loginAuthService.isOwnerLoggedIn||loginAuthService.isPassengerLoggedIn"class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Max Verstappen
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item"  routerLink='passenger-change-password'>Update Password</a></li>
-              <li><a class="dropdown-item"  routerLink='ride-owner-update-profile'>Update Profile</a></li>
+              <li><a *ngIf="loginAuthService.isPassengerLoggedIn" class="dropdown-item"  routerLink='passenger-change-password'>Update Password</a></li>
+              <li><a *ngIf="loginAuthService.isOwnerLoggedIn" class="dropdown-item"  routerLink='ride-owner-update-profile'>Update Profile</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='login'>Logout</a>
+            <a *ngIf="loginAuthService.isAdminLoggedIn" (click)="adminlogout()" class="nav-link" routerLink='login'>Logout</a>
+          </li>
+          <li class="nav-item">
+            <a *ngIf="loginAuthService.isOwnerLoggedIn" (click)="ownerlogout()" class="nav-link" routerLink='login'>Logout</a>
+          </li>
+          <li class="nav-item">
+            <a *ngIf="loginAuthService.isPassengerLoggedIn" (click)="passengerlogout()" class="nav-link" routerLink='login'>Logout</a>
           </li>
         </ul>
 
