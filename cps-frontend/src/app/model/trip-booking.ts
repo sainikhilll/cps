@@ -1,3 +1,4 @@
+import { OnlyId } from "./onlyId";
 import { Passenger } from "./passenger";
 import { Trip } from "./trip";
 
