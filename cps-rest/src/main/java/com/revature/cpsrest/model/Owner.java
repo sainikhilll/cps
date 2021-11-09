@@ -22,7 +22,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-
 public class Owner {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
