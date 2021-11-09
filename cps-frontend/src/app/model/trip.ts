@@ -6,7 +6,7 @@ export interface Trip {​​​​​​​
     destination: string,
     departureTime: string,
     price: number,
-    date: Date,
+    date: string,
 	owner: Owner,
     numberOfPassengers: number,    
     numberOfSeatsAvailable: number,

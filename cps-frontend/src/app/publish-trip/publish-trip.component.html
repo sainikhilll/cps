@@ -1,1 +1,47 @@
-<p>publish-trip works!</p>
+<div class="container">
+    <h1 class="text-center">Trip Details</h1>
+    <form>
+        <div class="alert alert-success" *ngIf = "success">Trip is published successfully. Thank you.</div>
+        <div class="form-group">
+            <label for="origin"><b>Origin: </b></label>
+            <input type="text" name="origin" [(ngModel)] = "trip.origin" (keyup)="sendData()" id="origin" class="form-control">
+            <section class="search-origin">
+                <div (click) = "clickOrigin(item)" *ngFor = "let item of origin_temp">{{item}}</div>
+            </section>
+        </div>
+        <div class="form-group">
+            <label for="destination"><b>Destination: </b></label>
+            <input type="text" name="destination" [(ngModel)] = "trip.destination" (keyup)="getDestination()" id="destination" class="form-control">
+            <section class="search-destination">
+                <div (click) = "clickDestination(item)" *ngFor = "let item of destination_temp">{{item}}</div>
+            </section>
+        </div>
+        <div class="form-group">
+            <label for="departureTime"><b>Departure Time: </b></label>
+            <input type="text" name="departureTime" [(ngModel)] = "trip.departureTime" id="departureTime" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="price"><b>Amount: </b></label>
+            <input type="number" name="price" [(ngModel)] = "trip.price" id="price" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="date"><b>Date: </b></label>
+            <input type="date" name="date" [(ngModel)] = "trip.date" id="date" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="numberOfPassengers"><b>Number of Passengers: </b></label>
+            <input type="number" name="numberOfPassengers" [(ngModel)] = "trip.numberOfPassengers" id="numberOfPassengers" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="numberOfSeatsAvailable"><b>Number of Seats Available: </b></label>
+            <input type="text" name="numberOfSeatsAvailable" [(ngModel)] = "trip.numberOfSeatsAvailable" id="numberOfSeatsAvailable" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="carType"><b>Car Type: </b></label>
+            <input type="text" name="carType" [(ngModel)] = "trip.carType" id="carType" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="button" class="btn btn-primary" value="Publish" (click) = "publish()" id="publish">
+        </div>
+    </form>
+</div>
