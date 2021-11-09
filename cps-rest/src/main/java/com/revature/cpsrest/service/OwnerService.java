@@ -1,4 +1,8 @@
 package com.revature.cpsrest.service;
+ 
+import java.util.Optional;
+import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.slf4j.Logger;
@@ -12,6 +16,7 @@ import com.revature.cpsrest.repository.OwnerRepository;
 @Transactional
 
 public class OwnerService {
+ 
 	@Autowired
 	private OwnerRepository ownerRepository;
 
@@ -36,5 +41,6 @@ public class OwnerService {
 		own.setAadharUrl(owner.getAadharUrl());
 		return ownerRepository.save(own);
 	}
-
 }
+
+ 

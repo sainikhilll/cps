@@ -4,6 +4,7 @@ import { Owner } from '../model/owner';
 import { Observable } from 'rxjs';
 import { REST_URL } from './common';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,4 +28,13 @@ url= REST_URL+"approvals";
   public getOwnerDetails(): Observable<any>{
     return this._http.get<any>(REST_URL+"owners/" +3);
   }
+
+public signup(owner: Owner) : Observable<any> 
+ {
+  const url=REST_URL+"owners"; 
+  return this._http.post<any>(url, owner);
+
+  
+}
+
 }

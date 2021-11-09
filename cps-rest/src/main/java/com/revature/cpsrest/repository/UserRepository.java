@@ -1,6 +1,10 @@
-package com.revature.cpsrest.repository;
+package com.revature.cpsrest.repository;	
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import com.revature.cpsrest.model.User;
 
-public interface UserRepository {
-	
+@Repository 
+public interface UserRepository extends JpaRepository<User, Integer> {
+
 
 }

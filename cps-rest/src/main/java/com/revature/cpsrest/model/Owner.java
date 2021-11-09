@@ -59,5 +59,9 @@ public class Owner {
 	@ManyToOne
 	@JoinColumn(name = "owner_preference_id")
 	private OwnerPreference ownerPreference;
+	
+	
 
 }
+
+
