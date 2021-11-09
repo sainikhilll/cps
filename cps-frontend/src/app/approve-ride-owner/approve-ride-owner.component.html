@@ -1,1 +1,53 @@
-<p>approve-ride-owner works!</p>
+
+<div class="table-responsive">
+    <table class="table table-hover table-dark">
+        
+        <thead>
+            
+            <tr>
+                
+                <th scope="col">OwnerId</th>
+                <th scope="col">Owner Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Licence_Number</th>
+                <th scope="col">Licence_URL</th>
+                <th scope="col">Aadhar_Number</th>
+                <th scope="col">Aadhar_URL</th>
+                <th scope="col"> Status</th>
+                <th scope="col" style="text-align:center">*-----Action-----*</th>
+                
+            </tr>
+
+
+        </thead>
+        <tbody>
+            
+           
+            <tr *ngFor="let o of owners">
+
+                <th scope="row">{{o.id}}</th>
+                <td>{{o.name}}</td>
+                <td>{{o.address}}</td>
+                <td>{{o.mobile}}</td>
+                <td>{{o.licenceNumber}}</td>
+                <td>{{o.licenceUrl}}</td>
+                <td>{{o.aadharNumber}}</td>
+                <td>{{o.aadharUrl}}</td>
+                <td>{{o.status}}</td>
+                
+               
+
+                <td><button (click)="status(o.id)"  type="button" class="btn btn-success" style='margin-right:16px'>Approve</button>
+                <button  (click)="reject(o.id)" type="button" class="btn btn-danger" style='margin-right:16px'>Reject</button></td>
+                   
+            </tr>
+           
+        </tbody>
+
+    </table>
+
+
+
+
+</div>
