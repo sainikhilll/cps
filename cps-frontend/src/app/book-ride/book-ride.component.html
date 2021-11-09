@@ -1,1 +1,49 @@
-<p>book-ride works!</p>
+<div class="container mt-4">
+    <div class="card text-center">
+        <div class="card-header">
+            <h3><i class="fa fa-calendar" aria-hidden="true"></i> {{trip.date}}</h3>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><i class="fa fa-clock-o" aria-hidden="true"></i> {{trip.departureTime}}</h5>
+            <h5 class="card-title"><i class="fa fa-map-marker" aria-hidden="true"></i> {{trip.origin}}</h5>
+            <h6><i class="fa fa-circle" aria-hidden="true"></i></h6>
+            <h6><i class="fa fa-circle" aria-hidden="true"></i></h6>
+            <h6><i class="fa fa-circle" aria-hidden="true"></i></h6>
+            <h5 class="card-title"><i class="fa fa-flag" aria-hidden="true"></i> {{trip.destination}}</h5>
+            <div class="card-footer text">
+                <h5 class="card-title"><i class="fa fa-inr" aria-hidden="true"></i> {{trip.price}}/Seat</h5>
+                <h5 class="card-title"><i class="fa fa-users" aria-hidden="true"></i> {{trip.numberOfSeatsAvailable}}
+                </h5>
+                <h5><i class="fa fa-car" aria-hidden="true"></i> {{trip. carType}}</h5>
+                <h5><i class="fa fa-user-circle" aria-hidden="true"></i> {{trip.owner.name}}</h5>
+            </div>
+        </div>
+        <div class="card-footer text">
+            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Continue
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Booking Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card-footer text">
+                    <h5> <i class="fa fa-user" aria-hidden="true"></i>&nbsp;
+                        <input type="text" [(ngModel)]="bookingTrip.seatsBooked">&nbsp;
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="booktrip()">Booking</button>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
