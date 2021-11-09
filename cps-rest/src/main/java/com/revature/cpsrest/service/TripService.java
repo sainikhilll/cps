@@ -1,9 +1,7 @@
 package com.revature.cpsrest.service;
-
 import java.util.Optional;
-
 import javax.transaction.Transactional;
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +20,11 @@ public class TripService {
 		
 	public void save(Trip trip) {
 		 tripRepository.save(trip);
+	}
+	
+	public List<Trip> passTrip(Trip trip){
+		return  tripRepository.getTrips(trip.getOrigin(),trip.getDestination(),trip.getDate());
+
 		
 	}
 

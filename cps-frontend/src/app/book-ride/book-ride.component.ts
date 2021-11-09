@@ -25,7 +25,7 @@ export class BookRideComponent implements OnInit {
       destination: "",
       departureTime: "",
       price: 0,
-      date: new Date(2021,10,1),
+      date: "",
     owner: {
       id:0,
       name:"",

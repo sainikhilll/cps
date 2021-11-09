@@ -7,8 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CpsRestApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(CpsRestApplication.class, args);
-		System.out.println("welcome");
+		
 	}
 
 }
