@@ -17,12 +17,11 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "owner")
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@ToString
-
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Getter
+//@Setter
+//@ToString
 public class Owner {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,8 +56,126 @@ public class Owner {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@ManyToOne
-	@JoinColumn(name = "owner_preference_id")
-	private OwnerPreference ownerPreference;
+//	@ManyToOne
+//	@JoinColumn(name = "owner_preference_id")
+//	private OwnerPreference ownerPreference;
+	
+	public Owner() {}
+	
+	public int getId() {
+		return id;
+	}
+
+	public Owner(int id, String name, String address, String mobile, String licenceNumber, String licenceUrl,
+		String aadharNumber, String aadharUrl, String status, User user ) {
+	super();
+	this.id = id;
+	this.name = name;
+	this.address = address;
+	this.mobile = mobile;
+	this.licenceNumber = licenceNumber;
+	this.licenceUrl = licenceUrl;
+	this.aadharNumber = aadharNumber;
+	this.aadharUrl = aadharUrl;
+	this.status = status;
+	this.user = user;
+//	this.ownerPreference = ownerPreference;
+}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getLicenceNumber() {
+		return licenceNumber;
+	}
+
+	public void setLicenceNumber(String licenceNumber) {
+		this.licenceNumber = licenceNumber;
+	}
+
+	public String getLicenceUrl() {
+		return licenceUrl;
+	}
+
+	public void setLicenceUrl(String licenceUrl) {
+		this.licenceUrl = licenceUrl;
+	}
+
+	public String getAadharNumber() {
+		return aadharNumber;
+	}
+
+	public void setAadharNumber(String aadharNumber) {
+		this.aadharNumber = aadharNumber;
+	}
+
+	public String getAadharUrl() {
+		return aadharUrl;
+	}
+
+	public void setAadharUrl(String aadharUrl) {
+		this.aadharUrl = aadharUrl;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+//	public OwnerPreference getOwnerPreference() {
+//		return ownerPreference;
+//	}
+//
+//	public void setOwnerPreference(OwnerPreference ownerPreference) {
+//		this.ownerPreference = ownerPreference;
+//	}
+
+	@Override
+	public String toString() {
+		return "Owner [id=" + id + ", name=" + name + ", address=" + address + ", mobile=" + mobile + ", licenceNumber="
+				+ licenceNumber + ", licenceUrl=" + licenceUrl + ", aadharNumber=" + aadharNumber + ", aadharUrl="
+				+ aadharUrl + ", status=" + status + ", user=" + user +"]";
+	}
+
+    
+	
 
 }
+
+
