@@ -2,6 +2,7 @@ import { OwnerPreferences } from "./owner-preference";
 import { User } from "./user";
 
 export interface Owner{
+    id:number,
     name:string,
     address:string,
     mobile:number,
