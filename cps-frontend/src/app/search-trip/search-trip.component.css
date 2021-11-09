@@ -58,6 +58,9 @@
 .hover{
     cursor: pointer;
 }
+section{
+    cursor: pointer;
+}
 .icons{
     color: red;
 }
