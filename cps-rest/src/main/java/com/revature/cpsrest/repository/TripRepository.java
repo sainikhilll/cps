@@ -1,5 +1,6 @@
 package com.revature.cpsrest.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -16,8 +17,8 @@ public interface TripRepository extends JpaRepository<Trip,Integer> {
 	static final Logger LOGGER = LoggerFactory.getLogger(TripService.class);
      
 	
-	@Query("Select t from Trip t inner join fetch t.owner o where origin = :origin and destination = :destination and price = :price and o.status='p'" )
-	List<Trip> getTrips(@Param("origin") String origin,@Param("destination") String destination,@Param("price") double price);
-
+	@Query("Select t from Trip t inner join fetch t.owner o where origin = :origin and destination = :destination and date = :date and o.status='Approved'" )
+	List<Trip> getTrips(@Param("origin") String origin,@Param("destination") String destination,@Param("date") Date date);
+	
 	
 }

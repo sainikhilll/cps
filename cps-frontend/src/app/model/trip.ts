@@ -1,14 +1,22 @@
 import { Owner } from "./owner";
 
 export interface Trip {​​​​​​​
-    id: number,
+    id: number;
     origin: string,
     destination: string,
     departureTime: string,
     price: number,
-    date: Date,
+    date: string,
 	owner: Owner,
     numberOfPassengers: number,    
     numberOfSeatsAvailable: number,
-    carType: string
+    carType: string,
+
+   
+   
+
+   
+
+
+    
 }​​​​​​​

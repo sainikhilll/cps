@@ -15,7 +15,7 @@ public class TripService {
 	private TripRepository tripRepo;
 	
 	public List<Trip> passTrip(Trip trip){
-		return  tripRepo.getTrips(trip.getOrigin(),trip.getDestination(),trip.getPrice());
+		return  tripRepo.getTrips(trip.getOrigin(),trip.getDestination(),trip.getDate());
 		
 	}
 

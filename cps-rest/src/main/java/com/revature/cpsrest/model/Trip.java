@@ -2,6 +2,8 @@ package com.revature.cpsrest.model;
 
 
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,7 +48,7 @@ public class Trip {
    private double price;
    
    @Column(name = "date")
-   private String date;
+   private Date date;
    
    @Column(name = "number_of_passengers")
    private int numberOfPassengers;
