@@ -16,8 +16,7 @@ import { ViewRideOwnersComponent } from './view-ride-owners/view-ride-owners.com
 import { ViewPassengersComponent } from './view-passengers/view-passengers.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,13 +33,14 @@ import { FormsModule } from '@angular/forms';
     ApproveRideOwnerComponent,
     ViewRideOwnersComponent,
     ViewPassengersComponent,
-    NavigationComponent
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

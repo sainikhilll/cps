@@ -1,23 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Owner } from '../model/owner';
+import { Observable } from 'rxjs';
+import { REST_URL } from './common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OwnerService {
-url="http://localhost:8080/approvals";
-url1="http://localhost:8080/approvals/updates";
+url= REST_URL+"approvals";
   constructor(private _http:HttpClient) { }
   public restOwner():Observable<any>{
     return this._http.get<any>(this.url);
     
   }
   public updateOwner(id:number):Observable<any>{
-    return this._http.get<any>("http://localhost:8080/approvals/updates/"+id);
+    return this._http.get<any>(REST_URL+"approvals/updates/"+id);
   }
   public rejectOwner(id:number):Observable<any>{
-    return this._http.get<any>("http://localhost:8080/approvals/rejects/"+id);
+    return this._http.get<any>(REST_URL+"approvals/rejects/"+id);
+  }
+  public registerOwner(ownerData: Owner): Observable<any>{
+    return this._http.put<any>(REST_URL+"owners", ownerData);
+  }
+
+  public getOwnerDetails(): Observable<any>{
+    return this._http.get<any>(REST_URL+"owners/" +3);
   }
 }
