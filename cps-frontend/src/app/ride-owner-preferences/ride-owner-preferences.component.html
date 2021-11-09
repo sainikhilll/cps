@@ -1,1 +1,26 @@
-<p>ride-owner-preferences works!</p>
+<div class="csi">
+    <h3>Owner Preferences</h3><br>
+    <form id="formm" #preferenceform="ngForm">
+        
+        <div class="d">
+            <h1 >Music:</h1>
+            <!-- <input type="text" placeholder="music" name="m1" [(ngModel)]="preferences.music">
+            <input type="text" placeholder="smoking" name="m2" [(ngModel)]="preferences.smoking">
+            <input type="text" placeholder="music" name="m3" [(ngModel)]="preferences.petsAllowed"> -->
+            <label><input type="radio" name="music" [(ngModel)]="preferences.music" value="Y">Yes</label><br>
+            <label><input type="radio" name="music" [(ngModel)]="preferences.music" value="N">No</label><br>
+            
+            <h1 >Smoking:</h1>
+            <label><input type="radio" name="smoking" [(ngModel)]="preferences.smoking" value="Y">Yes</label><br>
+            <label><input type="radio" name="smoking" [(ngModel)]="preferences.smoking" value="N">No</label><br> 
+
+            <h1 >Pets are allowed: </h1>
+            <label><input type="radio" name="pets" [(ngModel)]="preferences.petsAllowed" value="Y">Yes</label><br> 
+            <label><input type="radio" name="pets" [(ngModel)]="preferences.petsAllowed"  value="N">No</label><br>
+
+            <button class="btn btn-info" type="button" (click)="setPreference()">Submit</button>
+
+        </div>
+
+    </form>
+</div>
