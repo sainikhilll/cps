@@ -32,7 +32,7 @@ public class OwnerPreference {
 	private String music;
 
 	@Column(name = "smoking")
-	private String amoking;
+	private String smoking;
 
 	@Column(name = "pets_allowed")
 	private String petsAllowed;

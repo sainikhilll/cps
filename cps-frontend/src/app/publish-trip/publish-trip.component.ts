@@ -48,6 +48,7 @@ export class PublishTripComponent implements OnInit {
   city: string[] = [];
   origin_temp: string[] = [];
   destination_temp: string[] = [];
+  cars: string[] = ["Wagon", "Innova", "Creta", "Xuv500", "I10", "I20", "Kwid", "GrandI10", "Nexon", "Ertiga", "Other"];
 
   ngOnInit(): void {
     this.tripService.getApi().subscribe(
@@ -80,6 +81,12 @@ export class PublishTripComponent implements OnInit {
       console.log(this.destination_temp);
     }
   }
+  getCar(): void{
+    for(let x of this.cars){
+      console.log(this.cars);
+    }
+  }
+
   clickOrigin(item: string){
     this.trip.origin = item;
     this.origin_temp = [];
@@ -89,6 +96,10 @@ export class PublishTripComponent implements OnInit {
     this.destination_temp = [];
   }
   
+  clickCity(item: string){
+    this.trip.carType = item;
+    this.cars = [];
+  }
   publish(): void{
     console.log(this.trip);
     let observable : Observable<any> = this.tripService.publish(this.trip);
