@@ -16,6 +16,7 @@ import { ApproveRideOwnerComponent } from './approve-ride-owner/approve-ride-own
 import { ViewRideOwnersComponent } from './view-ride-owners/view-ride-owners.component';
 import { ViewPassengersComponent } from './view-passengers/view-passengers.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { NavigationComponent } from './navigation/navigation.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

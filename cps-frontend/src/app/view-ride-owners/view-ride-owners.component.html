@@ -1,1 +1,23 @@
-<p>view-ride-owners works!</p>
+<h1 class="d-flex justify-content-center aline-item-center mt-2 shadow "><b>List Of Ride-Owners</b></h1>
+<div class=" justify-content-center aline-item-center row  ">
+
+  <div class="card  justify-content-center aline-item-center col-lg-4 col-md-4 col-12 mt-5 bg-secondary bg-opacity-50 shadow"
+    *ngFor="let owner of owners">
+
+    <div class="card-body ">
+      <h5 class="card-title">{{owner.name}}</h5>
+      <p class="card-text"></p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><b> City :</b>{{owner.address}}</li>
+      <li class="list-group-item"> <b>Mobile no. : </b>{{owner.mobile}}</li>
+      <li class="list-group-item"><b>LicenceNumber: </b>{{owner.licenceNumber}}</li>
+      <li class="list-group-item"><b>Adhar Number :</b> {{owner.aadharNumber}}</li>
+      <li class="list-group-item"><b>Email : </b>{{owner.user.email}}</li>
+      <li class="list-group-item"><b> Music : </b>{{owner.ownerPreference.music}}</li>
+      <li class="list-group-item"><b> Smoking : </b>{{owner.ownerPreference.smoking}}</li>
+      <li class="list-group-item"><b> Pets : </b>{{owner.ownerPreference.petsAllowed}}</li>
+      <li class="list-group-item"> <b>Status : </b>{{owner.status}}</li>
+    </ul>
+  </div>
+</div>
