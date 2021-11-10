@@ -3,14 +3,16 @@ import { Observable } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
 
 import { User } from '../model/user';
+import { REST_URL } from './common';
 
 @Injectable({
   providedIn: 'root'
 })
 
 
+
 export class UserService {
-  PasswordUrl : string = "http://localhost:8080/authenticate/";
+  PasswordUrl : string = REST_URL+"authenticate/";
   constructor(private httpClient:HttpClient) { }
 
 

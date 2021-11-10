@@ -34,8 +34,11 @@ export class PassengerChangePasswordComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   onSubmit():void{
     let observable : Observable<any> = this.userService.onSubmit(this.user,this.np);
+    alert("sucessfully updated password")
+
     observable.subscribe( 
       response => {
         console.log("in update response");
