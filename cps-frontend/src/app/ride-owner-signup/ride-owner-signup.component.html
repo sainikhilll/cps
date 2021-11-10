@@ -1,1 +1,94 @@
-<p>ride-owner-signup works!</p>
+<br>
+<h2 class="text-center">Register As a Ride Owner</h2>
+<br>
+<div class="container-sm"> 
+<form class="row g-3" [formGroup]="ownersignup">
+  <div class="alert alert-success" *ngIf="success"> Signup is Successful. Try Login.</div>
+    <div class="col-md-12">
+        <label for="validationCustom" class="form-label">* Name</label>
+        <input type="text" formControlName="name"
+        class="form-control" name="validationCustom" [(ngModel)]="owner.name">
+        <small *ngIf="name.touched && name.invalid" class="text-danger"></small>
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">* Address</label>
+      <input type="text" formControlName="address"
+      class="form-control" id="inputAddress" placeholder="Provide door number,city,district,state,and zipcode" name="address" [(ngModel)]="owner.address" >
+      <small *ngIf="address.touched && address.invalid" class="text-danger"></small>
+    </div>
+    <div class="col-md-12">
+        <label for="inputZip" class="form-label">* Mobile Number</label>
+        <input type="text" formControlName="mobile"
+        class="form-control" id="inputZip" name="mobilenumber" [(ngModel)]="owner.mobile" placeholder="0">
+        <small *ngIf="mobile.touched && mobile.invalid" class="text-danger"></small>
+      </div> 
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">* License Number</label>
+        <input type="text" formControlName="licenceNumber"
+        class="form-control" id="inputAddress" placeholder="Provide License id" name="licenseNumber" [(ngModel)]="owner.licenceNumber" >
+        <small *ngIf="licenceNumber.touched && licenceNumber.invalid" class="text-danger"></small>
+      </div>
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">* License Url</label>
+        <input type="text" formControlName="licenceUrl"
+        class="form-control" id="inputAddress" placeholder="Please Provide Url Link of your License saved in drive or any other repository" name="licenceUrl" [(ngModel)]="owner.licenceUrl" >
+        <small *ngIf="licenceUrl.touched && licenceUrl.invalid" class="text-danger"></small>
+      </div>
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">* Aadhar Number</label>
+        <input type="text" formControlName="aadharNumber"
+        class="form-control" id="inputAddress" placeholder="16 digit number" name="aadharNumber" [(ngModel)]="owner.aadharNumber">
+        <small *ngIf="aadharNumber.touched && aadharNumber.invalid" class="text-danger"></small>
+      </div>
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">* Aadhar Url</label>
+        <input type="text" formControlName="aadharUrl"
+        class="form-control" id="inputAddress" placeholder="Please Provide Url Link of your Aadhar saved in drive or any Other repository"name="aahdarUrl" [(ngModel)]="owner.aadharUrl" >
+        <small *ngIf="aadharUrl.touched && aadharUrl.invalid" class="text-danger"></small>
+      </div>
+      <small class="text-danger" >* This field is Mandatory </small>
+    <div class="col-12">
+      <br>
+      <button type="button" [disabled]="!ownersignup.valid"
+      (click)="postRegistration()"class="btn btn-primary">Sign up</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="col-md-6">
+  <label for="validationCustom01" class="form-label">Last Name</label>
+  <input type="text" class="form-control" id="validationCustom01">
+  <div class="valid-feedback">
+      Looks good!
+    </div>
+</div>
+<div class="col-md-6">
+  <label for="validationCustomUsername" class="form-label">Email</label>
+  <div class="input-group has-validation">
+    <span class="input-group-text" id="inputGroupPrepend">@</span>
+    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+    <div class="invalid-feedback">
+      Please choose a email.
+    </div>
+  </div>
+</div>
+<div class="col-md-6">
+<label for="inputPassword4" class="form-label">Password</label>
+<input type="password" class="form-control" id="inputPassword4">
+</div> -->

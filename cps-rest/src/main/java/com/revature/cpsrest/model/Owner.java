@@ -22,7 +22,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-
 public class Owner {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,5 +59,9 @@ public class Owner {
 	@ManyToOne
 	@JoinColumn(name = "owner_preference_id")
 	private OwnerPreference ownerPreference;
+	
+	
 
 }
+
+

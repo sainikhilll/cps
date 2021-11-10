@@ -1,1 +1,112 @@
-<p>ride-owner-update-profile works!</p>
+<div class="container mt-2">
+    <div class="col d-flex justify-content-center">
+        <div class="card text-center">
+            <div class="card-header">
+                <h3><i class="fa fa-user-circle" aria-hidden="true"></i> Profile</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <h4><label for="name"> {{register.name}}</label></h4>
+                    </div>
+                    <div class="form-group">
+                        <h5><label for="address"><i class="fa fa-address-card" aria-hidden="true"></i> {{register.address}}</label></h5>
+                    </div>
+                    <div class="form-group">
+                        <h5><label for="mobile"><i class="fa fa-mobile" aria-hidden="true"></i> {{register.mobile}}</label></h5>
+                    </div>
+                    <div class="form-group">
+                        <h5><label for="licenceNumber"><i class="fa fa-id-card-o" aria-hidden="true"></i> {{register.licenceNumber}}</label></h5>
+                    </div>
+                    <div class="form-group">
+                        <h5><label for="licenceUrl"><i class="fa fa-link" aria-hidden="true"></i> {{register.licenceUrl}}</label></h5>
+                    </div>
+                    <div class="form-group">
+                        <h5><label for="aadharNumber"><i class="fa fa-id-badge" aria-hidden="true"></i> {{register.aadharNumber}}</label></h5>
+                    </div>
+                    <div class="form-group">
+                        <h5><label for="aadharUrl"><i class="fa fa-link" aria-hidden="true"></i> {{register.aadharUrl}}</label></h5>
+                    </div>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Update Profile
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="updateProfile">
+                    <div class="form-group">
+                        <label for="name">Name*</label>
+                        <div class="input-group">
+                            <input type="text" name="name" id="name" formControlName="name" [(ngModel)]="register.name"
+                                class="form-control">
+                            <small *ngIf="name.invalid && name.touched" class="text-danger"></small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address*</label>
+                        <div class="input-group">
+                            <input type="text" name="address" id="address" formControlName="address"
+                                [(ngModel)]="register.address" class="form-control">
+                            <small *ngIf="name.invalid && name.touched" class="text-danger"></small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile No*</label>
+                        <div class="input-group">
+                            <input type="text" name="mobile" id="mobile" formControlName="mobile"
+                                [(ngModel)]="register.mobile" class="form-control">
+                            <small *ngIf="name.invalid && name.touched" class="text-danger"></small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="licenseNumber">Licence No*</label>
+                        <div class="input-group">
+                            <input type="text" name="licenceNumber" id="licenceNumber" formControlName="licenceNumber"
+                                [(ngModel)]="register.licenceNumber" class="form-control">
+                            <small *ngIf="name.invalid && name.touched" class="text-danger"></small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="licenseUrl">Licence URL*</label>
+                        <div class="input-group">
+                            <input type="text" name="licenceUrl" id="licenceUrl" formControlName="licenceUrl"
+                                [(ngModel)]="register.licenceUrl" class="form-control">
+                            <small *ngIf="name.invalid && name.touched" class="text-danger"></small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="aadharNumber">Aadhar No*</label>
+                        <div class="input-group">
+                            <input type="text" name="aadharNumber" id="aadharNumber" formControlName="aadharNumber"
+                                [(ngModel)]="register.aadharNumber" class="form-control">
+                            <small *ngIf="name.invalid && name.touched" class="text-danger"></small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="aadharUrl">Aadhar URL*</label>
+                        <div class="input-group">
+                            <input type="text" name="aadharUrl" id="aadharUrl" formControlName="aadharUrl"
+                                [(ngModel)]="register.aadharUrl" class="form-control">
+                            <small *ngIf="name.invalid && name.touched" class="text-danger"></small>
+                        </div>
+                        <small class="text-danger">* fields are mandatory</small>
+                    </div><br>
+                    <div class="form-group">
+                        <input type="submit" [disabled]="!updateProfile.valid" value="Update" data-bs-dismiss="modal"
+                            class="btn btn-success w-100" (click)="updateOwner()">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
