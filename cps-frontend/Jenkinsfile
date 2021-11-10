@@ -4,7 +4,7 @@ pipeline {
         stage('build-and-deploy') {
             steps {
 
-                sh 'docker build -t revature-cps ./cps-fronend'
+                sh 'docker build -t revature-cps ./cps-frontend'
                 sh 'docker run -d -p 5001:5001 cps'
 
             }
