@@ -82,6 +82,9 @@ export class SearchTripComponent implements OnInit {
       }
       console.log(this.temp_org);
     }
+    if(this.trip.origin.length == 0){
+      this.temp_org = [];
+    }
 
   }
 
@@ -97,11 +100,16 @@ export class SearchTripComponent implements OnInit {
       }
       console.log(this.temp_des);
     }
+    if(this.trip.destination.length == 0){
+      this.temp_des = [];
+    }
 
   }
+
   clickOrigin(tem:string){
     this.trip.origin=tem;
     this.temp_org=[];
+
 
   }
 
