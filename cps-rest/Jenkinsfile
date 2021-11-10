@@ -13,6 +13,7 @@ pipeline {
             steps {
 
                 sh 'docker build -t  revature-cps-rest ./cps-rest'
+
             }
         }
 
@@ -23,3 +24,4 @@ pipeline {
             }
         }
     }
+}
