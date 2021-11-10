@@ -3,14 +3,14 @@ pipeline {
          stages {
            stage('Compile and Clean') {
                 steps {
-                       sh "mvn clean compile"
+                       sh "mvn -B -f ./cps-rest/pom.xml clean compile"
                        }
                 }
 
 
             stage('deploy') {
                 steps {
-                 sh "mvn package"
+                 sh "mvn -B -f ./cps-rest/pom.xml package"
                  }
                   }
 
