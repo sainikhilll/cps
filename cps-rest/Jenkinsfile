@@ -12,7 +12,7 @@ pipeline {
         stage('Build Docker image'){
             steps {
 
-                sh 'docker build -t  revature-cps-backend ./cps-backend'
+                sh 'docker build -t  revature-cps-backend ./cps-rest'
             }
         }
 
