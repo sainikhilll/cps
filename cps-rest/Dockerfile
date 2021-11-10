@@ -1,7 +1,7 @@
 FROM openjdk:8
 
-ADD target/cps-backend.jar cps-backend.jar
+ADD target/cps-rest.jar cps-rest.jar
 
 EXPOSE 2021
 
-ENTRYPOINT ["java","-jar","cps-backend.jar"]
+ENTRYPOINT ["java","-jar","cps-rest.jar"]
