@@ -14,20 +14,11 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ownerlogout() : void {
-    this.loginAuthService.ownerlogout();
+  logout() : void {
+    this.loginAuthService.logout();
     this._router.navigate(['/login']);
   }
 
-  passengerlogout() : void {
-    this.loginAuthService.passengerlogout();
-    this._router.navigate(['/login']);
-  }
-
-  adminlogout() : void {
-    this.loginAuthService.adminlogout();
-    this._router.navigate(['/login']);
-
-  }
+  
 
 }

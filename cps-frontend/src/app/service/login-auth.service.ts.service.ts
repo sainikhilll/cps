@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from '../model/user';
 import { AuthService } from './auth.service';
 
 
@@ -9,42 +10,31 @@ export class LoginAuthService {
   ownerLoggedIn : boolean = false;
   passengerLoggedIn : boolean = false;
   adminLoggedIn : boolean = false;
+  user : User = {
+    id : 0,
+    email : "",
+    password : "",
+    role : ""
+  };
 
   constructor(private authService : AuthService) { }
 
-  ownerlogin() : void {
-    this.ownerLoggedIn = true;
+  setUser(user : User) : void {
+    this.user = user;
   }
 
-  ownerlogout() : void {
-    this.ownerLoggedIn = false;
+  get loggedInUser() : User {
+    return this.user;
   }
 
-  get isOwnerLoggedIn() : boolean {
-    return this.ownerLoggedIn;
+  logout() : void {
+    this.user =  {
+      id : 0,
+      email : "",
+      password : "",
+      role : ""
+    };
   }
 
-  passengerlogin() : void {
-    this.passengerLoggedIn = true;
-  }
-
-  passengerlogout() : void {
-    this.passengerLoggedIn = false;
-  }
-
-  get isPassengerLoggedIn() : boolean {
-    return this.passengerLoggedIn;
-  }
-
-  adminlogin() : void {
-    this.adminLoggedIn = true;
-  }
-
-  adminlogout() : void {
-    this.adminLoggedIn = false;
-  }
-
-  get isAdminLoggedIn() : boolean {
-    return this.adminLoggedIn;
-  }
+  
 }

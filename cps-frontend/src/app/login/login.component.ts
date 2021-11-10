@@ -47,20 +47,21 @@ export class LoginComponent implements OnInit {
         console.log("login successful");
         this.success = true;
         this.currentLoggedInUser = data;
+        this.loginAuthService.setUser(data);
         console.log(this.currentLoggedInUser);
-        sessionStorage.setItem(AUTH_USER_DATA, JSON.stringify(this.currentLoggedInUser));
+        // sessionStorage.setItem(AUTH_USER_DATA, JSON.stringify(this.currentLoggedInUser));
         if(this.currentLoggedInUser.role == "owner") {
           this.router.navigate(['/publish-trip']);
-          this.loginAuthService.ownerlogin();
+          // this.loginAuthService.ownerlogin();
         }
         else if(this.currentLoggedInUser.role == "passenger") {
           this.router.navigate(['/search-trip']);
-          this.loginAuthService.passengerlogin();
+          // this.loginAuthService.passengerlogin();
         }
 
         else if (this.currentLoggedInUser.role == "admin") {
           this.router.navigate(['/approve-ride-owner']);
-          this.loginAuthService.adminlogin();
+          // this.loginAuthService.adminlogin();
         }
 
 
