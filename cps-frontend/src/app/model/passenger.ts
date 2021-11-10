@@ -4,7 +4,7 @@ export interface Passenger{
     id: number,
     name: string,
     mobileNumber: string,
-    dateOfBirth: Date,
+    dateOfBirth: string,
     user:User
 }
     

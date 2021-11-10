@@ -1,1 +1,70 @@
-<p>passenger-signup works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center mb-4">
+                    <h1>Sign Up</h1>
+                    <h6>Register Yourself !!</h6>
+                </div>
+                <form [formGroup]="passengersignup">
+
+                    <div class="row">
+
+
+                        <div class="mb-3">
+                            <label for="exampleInputPassword" class="form-label">* Full Name</label>
+                            <input type="text" formControlName="name" name="name" [(ngModel)]="passenger.name"
+                                class="form-control" id="exampleInputPassword" placeholder="Full Name">
+
+                            <small *ngIf=" name.touched && name.invalid" class="text-danger">name is
+                                mandatory</small>
+
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword" class="form-label">* Mobile Number</label>
+                            <input type="text" formControlName="mobileNumber" name="mobileNumber"
+                                [(ngModel)]="passenger.mobileNumber" class="form-control" id="exampleInputPassword"
+                                placeholder="Mobile Number">
+                            <small *ngIf="mobileNumber.invalid && mobileNumber.touched" class="text-danger">mobile
+                                number is mandatory</small>
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword" class="form-label">* Date Of Birth</label>
+                            <input type="Date" formControlName="dateOfBirth" name="dateOfBirth"
+                                [(ngModel)]="passenger.dateOfBirth" class="form-control" id="exampleInputPassword">
+                            <small *ngIf="dateOfBirth.invalid && dateOfBirth.touched" class="text-danger">DOB is
+                                mandatory</small>
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail" class="form-label">* Email Address</label>
+                            <input type="email" formControlName="email" name="email" [(ngModel)]="passenger.user.email"
+                                class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
+                                placeholder="Email Address">
+                            <small *ngIf="email.invalid && email.touched" class="text-danger">email is
+                                mandatory</small>
+
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="exampleInputPassword" class="form-label">* Password</label>
+                            <input type="password" formControlName="password" name="password"
+                                [(ngModel)]="passenger.user.password" class="form-control" id="exampleInputPassword"
+                                placeholder="Password">
+                            <small *ngIf="password.invalid && password.touched" class="text-danger">password is
+                                mandatory</small>
+
+                        </div>
+                    </div>
+                    <button type="submit" [disabled]="!passengersignup.valid" class="btn btn-primary mb-2"
+                        (click)="signup()">Sign Up</button>
+
+                </form>
+                <a routerLink="../login">Already registered? Click to login !!</a>
+            </div>
+        </div>
+    </div>
+</div>
