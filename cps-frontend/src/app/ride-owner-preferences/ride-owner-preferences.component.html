@@ -10,7 +10,7 @@
                         (click)="musicChanged()"></i>
                     <i class="fa fa-check selected" *ngIf="preferences.music == 'Y'" aria-hidden="true"
                         (click)="musicChanged()"></i>
-
+                    <div *ngIf="musicPref" class="text-center alert alert-success">Preference Added</div>
                 </div>
             </div>
         </div>
@@ -23,6 +23,7 @@
                         (click)="smokingChanged()"></i>
                     <i class="fa fa-check selected" *ngIf="preferences.smoking == 'Y'" aria-hidden="true"
                         (click)="smokingChanged()"></i>
+                    <div *ngIf="smokingPref" class="text-center alert alert-success">Preference Added</div>
 
                 </div>
             </div>
@@ -37,7 +38,7 @@
                         (click)="petsAllowedChanged()"></i>
                     <i class="fa fa-check selected" *ngIf="preferences.petsAllowed == 'Y'" aria-hidden="true"
                         (click)="petsAllowedChanged()"></i>
-
+                        <div *ngIf="petsPref" class="text-center alert alert-success">Preference Added</div>
                 </div>
             </div>
         </div>

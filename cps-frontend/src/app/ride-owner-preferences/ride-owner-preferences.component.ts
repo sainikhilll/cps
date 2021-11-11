@@ -18,7 +18,9 @@ export class RideOwnerPreferencesComponent implements OnInit {
     smoking:"N",
     petsAllowed:"N"
   }
-  success:boolean=false;
+  musicPref:boolean=false;
+  smokingPref:boolean=false;
+  petsPref:boolean=false;
   constructor(private _service:OwnerPreferenceService) { }
 
   ngOnInit(): void {
@@ -42,9 +44,11 @@ export class RideOwnerPreferencesComponent implements OnInit {
     console.log(this.preferences);
     if(this.preferences.music=="Y") {
       this.preferences.music="N";
+      this.musicPref=false;
     }
     else{
       this.preferences.music="Y";
+      this.musicPref=true;
     }
     this.setPreference();
     
@@ -54,9 +58,11 @@ export class RideOwnerPreferencesComponent implements OnInit {
     console.log(this.preferences);
     if(this.preferences.smoking=="Y") {
       this.preferences.smoking="N";
+      this.smokingPref=false;
     }
     else{
       this.preferences.smoking="Y";
+      this.smokingPref=true;
     }
     this.setPreference();
   }
@@ -65,9 +71,11 @@ export class RideOwnerPreferencesComponent implements OnInit {
     console.log(this.preferences);
     if(this.preferences.petsAllowed=="Y") {
       this.preferences.petsAllowed="N";
+      this.petsPref=false;
     }
     else{
       this.preferences.petsAllowed="Y";
+      this.petsPref=true;
     }
     this.setPreference();
   }
