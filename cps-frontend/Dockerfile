@@ -7,4 +7,4 @@ RUN npm run build -- --base-href='/cps-frontend/'
 
 FROM nginx:latest
 COPY dist/cps-frontend /usr/share/nginx/html
-EXPOSE 5001npm
+EXPOSE 5001
