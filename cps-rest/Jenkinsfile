@@ -3,6 +3,8 @@ pipeline {
          stages {
            stage('Compile and Clean') {
                 steps {
+                        sh "docker image ls" 
+                        sh "df -h"
                        sh "mvn -B -f ./cps-rest/pom.xml clean compile"
                        }
                 }
