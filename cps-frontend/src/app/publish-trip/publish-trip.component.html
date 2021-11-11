@@ -1,50 +1,83 @@
 <div class="container">
-    <h1 class="text-center">Trip Details</h1>
-    <form>
-        <div class="alert alert-success" *ngIf = "success">Trip is published successfully. Thank you.</div>
-        <div class="form-group">
-            <label for="origin">Origin</label>
-            <input type="text" name="origin" [(ngModel)] = "trip.origin" (keyup)="sendData()" id="origin" class="form-control">
-            <section class="search-origin">
-                <div (click) = "clickOrigin(item)" *ngFor = "let item of origin_temp">{{item}}</div>
-            </section>
+    <div class="card card-body">   
+    <h2>Trip Details</h2>
+    <form #tripForm="ngForm" (ngSubmit)="publish()">
+        <div class="alert alert-success" *ngIf="success">Trip is published successfully. Thank you.</div>
+        <div class="row">
+            <div class="form-group col-lg-6 col-md-12 mb-2">
+                <label for="origin" class="form-label">Origin</label>
+                <input type="text" name="origin" #origin="ngModel" [(ngModel)]="trip.origin" (keyup)="sendData()" id="origin" 
+                class="form-control" required>
+                <div class="text-danger" *ngIf = "origin.invalid && (origin.dirty || origin.touched)">
+                    <small *ngIf="origin.errors.required">Origin is required.</small>
+                </div>
+                <section class="search-origin">
+                    <div (click)="clickOrigin(item)" *ngFor="let item of origin_temp">{{item}}</div>
+                </section>
+            </div>
+            <div class="form-group col-lg-6 col-md-12 mb-2">
+                <label for="destination" class="form-label">Destination</label>
+                <input type="text" name="destination" #destination="ngModel" [(ngModel)]="trip.destination" (keyup)="getDestination()"
+                    id="destination" class="form-control" required>
+                    <div class="text-danger" *ngIf = "destination.invalid && (destination.dirty || destination.touched)">
+                        <small *ngIf="destination.errors.required">Destination is required.</small>
+                    </div>
+                <section class="search-destination">
+                    <div (click)="clickDestination(item)" *ngFor="let item of destination_temp">{{item}}</div>
+                </section>
+            </div>
+
+            <div class="form-group col-lg-6 col-md-12 mb-2">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" name="date" #date="ngModel" [(ngModel)]="trip.date" id="date" class="form-control" required>
+                <div class="text-danger" *ngIf = "date.invalid && (date.dirty || date.touched)">
+                    <small *ngIf="date.errors.required">Date is required.</small>
+                </div>
+            </div>
+            <div class="form-group col-lg-6 col-md-12 mb-2">
+                <label for="departureTime" class="form-label">Departure Time</label>
+                <input type="text" name="departureTime" #departureTime="ngModel" [(ngModel)]="trip.departureTime" id="departureTime"
+                    class="form-control" required>
+                <div class="text-danger" *ngIf = "departureTime.invalid && (departureTime.dirty || departureTime.touched)">
+                    <small *ngIf="departureTime.errors.required">Departure time is required.</small>
+                </div>
+            </div>
+            <div class="form-group col-lg-3 col-md-6 mb-2">
+                <label for="price" class="form-label">Amount</label>
+                <input type="number" name="price" #price="ngModel" [(ngModel)]="trip.price" id="price" class="form-control" required>
+                <div class="text-danger" *ngIf = "price.invalid && (price.dirty || price.touched)">
+                    <small *ngIf="price.errors.required">Amount is required.</small>
+                </div>
+            </div>
+            <div class="form-group col-lg-3 col-md-6 mb-2">
+                <label for="numberOfPassengers" class="form-label">Number of Passengers</label>
+                <input type="number" name="numberOfPassengers" #numberOfPassengers="ngModel" [(ngModel)]="trip.numberOfPassengers"
+                    id="numberOfPassengers" class="form-control" required>
+                <div class="text-danger" *ngIf = "numberOfPassengers.invalid && (numberOfPassengers.dirty || numberOfPassengers.touched)">
+                    <small *ngIf="numberOfPassengers.errors.required">Number of passengers are required.</small>
+                </div>
+            </div>
+            <div class="form-group col-lg-3 col-md-6 mb-2">
+                <label for="numberOfSeatsAvailable" class="form-label">Number of Seats Available</label>
+                <input type="number" name="numberOfSeatsAvailable" #numberOfSeatsAvailable="ngModel" [(ngModel)]="trip.numberOfSeatsAvailable"
+                    id="numberOfSeatsAvailable" class="form-control" required>
+                    <div class="text-danger" *ngIf = "numberOfSeatsAvailable.invalid && (numberOfSeatsAvailable.dirty || numberOfSeatsAvailable.touched)">
+                        <small *ngIf="numberOfSeatsAvailable.errors.required">Number of seats are required.</small>
+                    </div>
+            </div>
+            <div class="form-group col-lg-3 col-md-6 mb-2">
+                <label for="carType" class="form-label">Car Type</label>
+                <select class="form-select">
+                    <option value="Hatchback">Hatchback</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="Compact SUV">Compact SUV</option>
+                    <option value="SUV">SUV</option>
+                    <option value="MUV">MUV</option>
+                </select>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="destination">Destination</label>
-            <input type="text" name="destination" [(ngModel)] = "trip.destination" (keyup)="getDestination()" id="destination" class="form-control">
-            <section class="search-destination">
-                <div (click) = "clickDestination(item)" *ngFor = "let item of destination_temp">{{item}}</div>
-            </section>
-        </div>
-        <div class="form-group">
-            <label for="date">Date</label>
-            <input type="date" name="date" [(ngModel)] = "trip.date" id="date" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="departureTime">Departure Time</label>
-            <input type="text" name="departureTime" [(ngModel)] = "trip.departureTime" id="departureTime" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="price">Amount</label>
-            <input type="number" name="price" [(ngModel)] = "trip.price" id="price" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="numberOfPassengers">Number of Passengers</label>
-            <input type="number" name="numberOfPassengers" [(ngModel)] = "trip.numberOfPassengers" id="numberOfPassengers" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="numberOfSeatsAvailable">Number of Seats Available</label>
-            <input type="text" name="numberOfSeatsAvailable" [(ngModel)] = "trip.numberOfSeatsAvailable" id="numberOfSeatsAvailable" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="carType">Car Type</label>
-            <input type="text" name="carType" [(ngModel)] = "trip.carType" (keyup)="getCar()" id="carType" class="form-control">
-            <section>
-                <div (click)="clickCity(item)" *ngFor = "let item of cars">{{item}}</div>
-            </section>
-        </div>
-        <div class="form-group">
-            <input type="button" class="btn btn-primary" value="Publish" (click) = "publish()" id="publish">
+        <div class="form-group col-12">
+            <input type="submit" [disabled]="!tripForm.valid" class="btn btn-primary" value="Publish"> 
         </div>
     </form>
 </div>

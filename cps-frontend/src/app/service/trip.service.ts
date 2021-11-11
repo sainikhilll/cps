@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { REST_URL } from './common';
 import { Observable } from 'rxjs';
 import { Trip } from '../model/trip';
-
+import { LoginAuthService } from './login-auth.service.ts.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,12 +18,16 @@ export class TripService {
 
   url: string = REST_URL + "trips";
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient : HttpClient, private loginAuthService: LoginAuthService) { }
   publish(trip: Trip): Observable<any> {
     const headers = { 'content-type': 'application/json'};
     console.log("publish trip Service");
     return this.httpClient.post<any>(
       this.url, trip, {'headers': headers}
     );
+  }
+
+  getOwner(): Observable<any> {
+    return this.httpClient.get<any>(REST_URL + 'trips/user/' + this.loginAuthService.user.id);
   }
 }
