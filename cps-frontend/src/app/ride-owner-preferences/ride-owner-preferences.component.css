@@ -1,16 +1,31 @@
-.csi{
-    text-align: center;
-       
-        height: 800px;
-        background-position: center;
-        background-size: cover;
-        font-size: xx-large;
+.unselected{
+    font-size: 2rem;
+    color: #ddd;
+    cursor: pointer;
+}
+.unselected:hover{
+    font-size: 2rem;
+    color: #00ff00;
+    cursor: pointer;
+}
+.selected{
+    font-size: 2rem;
+    color: #00ff00;
+    cursor: pointer;
+}
+.card{
+    max-width: 330px;
+    margin-bottom: 1rem;
+    
+
 }
 
-.d{
-    text-align: center;
-}
 
-h3{
-    font-size: larger;
-}
+
+
+
+
+
+
+
+

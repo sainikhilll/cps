@@ -1,26 +1,45 @@
-<div class="csi">
-    <h3>Owner Preferences</h3><br>
-    <form id="formm" #preferenceform="ngForm">
-        
-        <div class="d">
-            <h1 >Music:</h1>
-            <!-- <input type="text" placeholder="music" name="m1" [(ngModel)]="preferences.music">
-            <input type="text" placeholder="smoking" name="m2" [(ngModel)]="preferences.smoking">
-            <input type="text" placeholder="music" name="m3" [(ngModel)]="preferences.petsAllowed"> -->
-            <label><input type="radio" name="music" [(ngModel)]="preferences.music" value="Y">Yes</label><br>
-            <label><input type="radio" name="music" [(ngModel)]="preferences.music" value="N">No</label><br>
-            
-            <h1 >Smoking:</h1>
-            <label><input type="radio" name="smoking" [(ngModel)]="preferences.smoking" value="Y">Yes</label><br>
-            <label><input type="radio" name="smoking" [(ngModel)]="preferences.smoking" value="N">No</label><br> 
+<div class="container">
+    <div class="row">
+        <h3>Owner Preferences</h3>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://image.freepik.com/free-vector/girl-listening-music-with-headphone-laptop-cartoon-icon-illustration-people-music-icon-concept-isolated-flat-cartoon-style_138676-1722.jpg">
+                <div class="card-body">
+                    <h5 class="card-title d-inline-flex mx-4">MUSIC </h5>
+                    <i class="fa fa-check unselected" *ngIf="preferences.music == 'N'" aria-hidden="true"
+                        (click)="musicChanged()"></i>
+                    <i class="fa fa-check selected" *ngIf="preferences.music == 'Y'" aria-hidden="true"
+                        (click)="musicChanged()"></i>
 
-            <h1 >Pets are allowed: </h1>
-            <label><input type="radio" name="pets" [(ngModel)]="preferences.petsAllowed" value="Y">Yes</label><br> 
-            <label><input type="radio" name="pets" [(ngModel)]="preferences.petsAllowed"  value="N">No</label><br>
-
-            <button class="btn btn-info" type="button" (click)="setPreference()">Submit</button>
-
+                </div>
+            </div>
         </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3krHhIh_YV8fm5P2lHNcT1bu26F1FsTS-uA&usqp=CAU">
+                <div class="card-body">
+                    <h5 class="card-title d-inline-flex mx-4" >SMOKING </h5>
+                    <i class="fa fa-check unselected" *ngIf="preferences.smoking == 'N'" aria-hidden="true"
+                        (click)="smokingChanged()"></i>
+                    <i class="fa fa-check selected" *ngIf="preferences.smoking == 'Y'" aria-hidden="true"
+                        (click)="smokingChanged()"></i>
 
-    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://image.freepik.com/free-vector/cute-dog-cute-cat-cartoon-illustration_138676-3238.jpg">
+                <div class="card-body">
+                    <h5 class="card-title d-inline-flex mx-4">PETS</h5>
+
+                    <i class="fa fa-check unselected" *ngIf="preferences.petsAllowed == 'N'" aria-hidden="true"
+                        (click)="petsAllowedChanged()"></i>
+                    <i class="fa fa-check selected" *ngIf="preferences.petsAllowed == 'Y'" aria-hidden="true"
+                        (click)="petsAllowedChanged()"></i>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

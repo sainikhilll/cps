@@ -20,11 +20,11 @@ public class OwnerPreferenceService {
 		 return ownerPreferenceRepository.findAll();
 		 
 	 }
-	 public void pref(OwnerPreference preference){
+	 public OwnerPreference pref(OwnerPreference preference){
 		 LOGGER.info("Start");
-		 ownerPreferenceRepository.save(preference);
+		 return ownerPreferenceRepository.save(preference);
+		 
 		 
 	 }
-
 
 }
