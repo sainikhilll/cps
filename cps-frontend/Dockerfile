@@ -1,8 +1,7 @@
 FROM node:latest as build
 WORKDIR /usr/local/app
 COPY ./ /usr/local/app
-RUN npm install
-RUN npm install bootstrap
+RUN npm install -g npm@8.1.3
 
 RUN npm run build -- --base-href='/cps-frontend/'
 
