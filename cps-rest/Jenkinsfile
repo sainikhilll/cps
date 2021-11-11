@@ -26,7 +26,6 @@ pipeline {
 
         stage('Backend Deploy'){
             steps {
-                sh 'docker container rm -f revature-cps-rest'
                 sh 'docker run -d -p  2021:2021 revature-cps-rest'
             }
         }
