@@ -23,7 +23,7 @@ const routes: Routes = [
   {path:'passenger-signup', component:PassengerSignupComponent},
   {path:'passenger-change-password', component:PassengerChangePasswordComponent},
   {path:'search-trip', component:SearchTripComponent},
-  {path:'book-ride', component: BookRideComponent},
+  {path:'book-ride/:id', component: BookRideComponent},
   {path:'approve-ride-owner', component: ApproveRideOwnerComponent},
   {path:'view-ride-owners', component:ViewRideOwnersComponent},
   {path:'view-passengers', component: ViewPassengersComponent}

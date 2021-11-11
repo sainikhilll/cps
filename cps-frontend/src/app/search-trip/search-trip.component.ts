@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Trip } from '../model/trip';
 import { TripService } from '../service/trip.service';
 import { Owner } from '../model/owner';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-search-trip',
   templateUrl: './search-trip.component.html',
@@ -14,6 +15,8 @@ export class SearchTripComponent implements OnInit {
   flash = false;
 
   trips!: Trip[];
+
+  
 
   trip = {
     "id": 1,
@@ -55,10 +58,11 @@ export class SearchTripComponent implements OnInit {
   temp_org: string[] = [];
   temp_des:string[]=[];
 
+  display:boolean = false;
 
 
 
-  constructor(private _service: TripService) {
+  constructor(private _service: TripService, private _router:Router) {
 
   }
 
@@ -67,9 +71,21 @@ export class SearchTripComponent implements OnInit {
       data => {
         this.city = data.data;
         console.log(this.city);
+
+
+       
+
       });
 
+
   }
+
+  book(id:number){
+      this._router.navigate(['book-ride', id]);
+      console.log(id);
+  }
+
+  
 
   sendOrigin(): void {
     console.log("hello");
@@ -80,6 +96,7 @@ export class SearchTripComponent implements OnInit {
           this.temp_org.push(x);
         }
       }
+      
       console.log(this.temp_org);
     }
     if(this.trip.origin.length == 0){
@@ -96,6 +113,7 @@ export class SearchTripComponent implements OnInit {
       for (let x of this.city) {
         if (x.toLowerCase().indexOf(this.trip.destination.toLowerCase()) != -1) {
           this.temp_des.push(x);
+
         }
       }
       console.log(this.temp_des);
@@ -131,10 +149,16 @@ export class SearchTripComponent implements OnInit {
     this._service.trips(this.trip).subscribe(
       (data) => {
         this.trips = data;
+        if(this.trips.length==0){
+          this.display=true;
+        }
         this.flash = true;
         console.log(this.trips);
+        
 
       });
+
+      
   }
 
   seats() {
@@ -164,5 +188,8 @@ export class SearchTripComponent implements OnInit {
   }
 
 
+
 }
+
+ 
 

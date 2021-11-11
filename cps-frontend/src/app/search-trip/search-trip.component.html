@@ -1,102 +1,90 @@
-<div>
-    <section class="search-sec">
-        <div class="container">
-            <form action="#" method="post" novalidate="novalidate" #searchTrip="ngForm">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                <input type="text" name="origin" [(ngModel)]="trip.origin"
-                                    class="form-control search-slt rounded-start" placeholder="Leaving From..."
-                                    (keyup)="sendOrigin()">
-                                <section class="search-results">
-                                   
-                                    <div (click)= "clickOrigin(tem)" *ngFor= "let tem of temp_org">{{tem}}</div>
-                                   
-                                    
-                                </section>
-                               
-
-                            </div>
-
-
-
-                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                <input type="text" name="destination" [(ngModel)]="trip.destination"
-                                    class="form-control search-slt rounded-start" placeholder="Going to..."
-                                    (keyup)="sendDestination()">
-                                    <section class="search-results">
-                                   
-                                        <div (click)= "clickdestination(tem)" *ngFor= "let tem of temp_des">{{tem}}</div>
-                                       
-                                        
-                                    </section>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                <input type="date" name="date" [(ngModel)]="trip.date" class="form-control search-slt rounded-start">
-                            </div>
-
-
-
-                            <div class="col-lg-2 col-md-3 col-sm-12 p-0">
-                                <!-- <button (click)="searchTrips()" type="button"
-                                    class="btn btn-primary wrn-btn">Search</button> -->
-                                <button (click)="searchTrips()" class="btn btn-outline-primary my-2 my-sm-0 wrn-btn rounded-bottom"
-                                    type="button">Search</button>
-                            </div>
-                        </div>
-                    </div>
+<div class="container mt-3 mb-4 ">
+    <form action="#" method="post" novalidate="novalidate" #searchTrip="ngForm">
+        <div class="row ">
+            <div class="col-lg-3 col-md-3 p-0">
+                <input type="text" name="origin" [(ngModel)]="trip.origin" class="form-control"
+                    placeholder="Leaving From..." (keyup)="sendOrigin()">
+                <div>
+                    <table *ngFor="let tem of temp_org" class="table">
+                        <tr>
+                            <td class="hover" (click)="clickOrigin(tem)">{{tem}}</td>
+                        </tr>
+                    </table>
                 </div>
-            </form>
+
+            </div>
+            <div class="col-lg-3 col-md-3 p-0">
+                <input type="text" name="destination" [(ngModel)]="trip.destination" class="form-control "
+                    placeholder="Going to..." (keyup)="sendDestination()">
+                <div *ngFor="let tem of temp_des">
+                    <table class="table">
+                        <tr>
+                            <td class="hover" (click)="clickdestination(tem)">{{tem}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3  p-0">
+                <input type="date" name="date" [(ngModel)]="trip.date" class="form-control">
+            </div>
+            <div class="col-lg-2 col-md-3 p-0">
+                <button (click)="searchTrips()" class="btn btn-outline-primary " type="button">Search</button>
+            </div>
 
         </div>
+    </form>
 
-    </section>
 </div>
 
-<section class="display-sec">
-    <div class="container ">
-        <div class="row">
-            <div class="hover mb-3" *ngIf='flash'>
-                <b>Sort By :</b>&nbsp;&nbsp;
-                <span class="sort" (click)="seats()"> No Of Seats</span>&nbsp;&nbsp;
-                <span class="sort" (click)="pricelow()"> Price-Low to High </span>&nbsp;&nbsp;
-                <span class="sort" (click)="priceHigh()"> Price High to Low </span>&nbsp;&nbsp;
-                <span class="sort" (click)="depature()"> Depature Time </span>&nbsp;&nbsp;
+
+<div class="container ">
+    <div class="row ">
+        <div class="hover mb-3 " *ngIf='flash'>
+            <span class="mx-2">Sort By :</span>
+            <span class="sort mx-2" (click)="seats()"> No Of Seats</span>
+            <span class="sort mx-2" (click)="pricelow()"> Price-Low to High </span>
+            <span class="sort mx-2" (click)="priceHigh()"> Price High to Low </span>
+            <span class="sort mx-2" (click)="depature()"> Depature Time </span>
+
+        </div>
+        <div *ngIf="display" class="alert alert-danger text-center" role="alert">
+            There are no rides yet for today between these cities.
+
+        </div>
+        <div class="text-center  ">
+            <div *ngIf="display ">
+                <span>{{trip.origin}} <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span> <span>
+                    {{trip.destination}} </span>
             </div>
-            <div *ngFor="let trip of trips" class="col-md-6">
-                <div class="card  mb-3 ">
-                    <div class="card-body">
-                        <!-- <img class="propimg"
-                        src="https://cdn.pixabay.com/photo/2016/11/21/22/14/white-male-1847763_1280.jpg" alt=""> -->
-                        <i class="fas fa-band-aid"></i>
-                        <div class="btn btn-success price"> Rs.{{trip.price}}</div>
-                        <span class="time"></span>
-                        <div class="card-text">
-                            <h5 class="card-text">{{trip.origin}} ({{trip.departureTime}})</h5>
-                            <!-- <i class="bi bi-arrow-down-up"></i> <i class="bi bi-three-dots-vertical icons"></i> -->
-                            <img class="arrow" src="https://cdn-icons-png.flaticon.com/512/35/35686.png"
-                                style="width:60px">
+        </div>
+        <div *ngFor="let trip of trips" class="col-md-6 ">
+            <div class="card  mb-2 ">
+                <div class="card-body">
+                    <h5 class="d-inline-flex ">{{trip.origin}} <span
+                            class="mx-1">({{trip.departureTime.substring(0,5)}})</span></h5>
+                    <span class="ns"> <i class="fa fa-car mx-1" aria-hidden="true"></i>{{trip.carType}}</span>
 
+                    <div class="mx-4">
+                        <i class="bi bi-three-dots-vertical"></i>
 
-                            <h5 class="card-text"> {{trip.destination}} </h5>
-                            <i class="fa-solid fa-cars"></i>
-                            <span class="ns">
-                                <b><span>{{trip.numberOfSeatsAvailable}}</span></b>
-                                <img class="seat"
-                                    src="https://cdn-icons.flaticon.com/png/512/5557/premium/5557123.png?token=exp=1636386803~hmac=a4459d28cc6bdf046adf84a23d51f30c"
-                                    style="width:25px">
-                            </span><br>
-                        </div><br>
-                        <img class="circular-square"
-                            src="https://cdn.pixabay.com/photo/2016/08/16/14/35/taxi-1598104_1280.png"
-                            style="width:100px"> <span class="name">{{trip.owner.name}}</span>
+                        <div>
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <span class="ns">{{trip.numberOfSeatsAvailable}} <img
+                                    src="https://cdn-icons-png.flaticon.com/512/2052/2052398.png"
+                                    alt="https://cdn-icons-png.flaticon.com/512/2052/2052372.png"
+                                    style="width: 25px;"></span>
 
-                        <span class="btn btn-primary button">Book</span>
-
+                        </div>
                     </div>
+                    <h5 class="">{{trip.destination}} </h5>
+                    <i class="fa fa-user mx-2" aria-hidden="true"></i>
+                    <div class="d-inline-flex mt-2">{{trip.owner.name}}</div>
+
+                    <button (click)="book(trip.id)" class="btn btn-primary ns"><i class="fa fa-inr"
+                            aria-hidden="true"></i> {{trip.price}}/Person</button>
+
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
