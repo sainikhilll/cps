@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
 
-import { User } from '../model/user';
 import { REST_URL } from './common';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,7 @@ import { REST_URL } from './common';
 
 
 export class UserService {
+  
   PasswordUrl : string = REST_URL+"authenticate/";
   constructor(private httpClient:HttpClient) { }
 
@@ -24,12 +25,6 @@ export class UserService {
     
 
   }
-  user: User = {  
-    id: 0,
-    email: '',
-    password: '',
-    role: ''
-  }
-
+  
 
 }

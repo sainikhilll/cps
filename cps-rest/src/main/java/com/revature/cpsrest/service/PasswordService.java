@@ -19,8 +19,8 @@ private static final Logger LOGGER = LoggerFactory.getLogger(PasswordService.cla
 	@Autowired
 	private PasswordRepository passwordRepository;
 	
-	public User getByEmailAndPassword(String email,String password){
-		return passwordRepository.findByEmailAndPassword(email,password);
+	public User getByPassword(String password){
+		return passwordRepository.findByPassword(password);
 	}
 	public void save(User user)
 	{

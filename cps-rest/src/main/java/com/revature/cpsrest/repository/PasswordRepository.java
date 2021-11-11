@@ -12,7 +12,7 @@ import com.revature.cpsrest.model.User;
 
 @Repository
 public interface PasswordRepository extends JpaRepository<User, Integer> {
-	 User findByEmailAndPassword(String email,String password);
+	 User findByPassword(String password);
 
 
 }

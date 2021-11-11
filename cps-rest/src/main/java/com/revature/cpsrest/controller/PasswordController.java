@@ -31,10 +31,10 @@ public class PasswordController {
 	public User getEmail(@RequestBody User user,@PathVariable String np) {
 		
 		LOGGER.debug("User {}", user);
-		User returnedField = passwordService.getByEmailAndPassword(user.getEmail(),user.getPassword());
+		User returnedField = passwordService.getByPassword(user.getPassword());
 		LOGGER.debug("passwordReturned:", returnedField);
 		if (returnedField == null) {
-			throw new InvalidCredentialsException(" Enter Valid Credntials");
+			throw new InvalidCredentialsException(" Enter Valid password");
 		} else  {
 			returnedField.setPassword(np);
 			returnedField.setId(returnedField.getId());
