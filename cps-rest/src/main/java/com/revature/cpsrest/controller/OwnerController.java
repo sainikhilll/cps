@@ -22,21 +22,18 @@ public class OwnerController {
 	@Autowired
 	private OwnerService service;
 	
-	@Autowired
-	private UserService userService;
-	
 	 @PostMapping
 		public void create(@RequestBody Owner owner) {
 	
 		 LOGGER.debug("{}",owner);
-		 User user1 = new User();
-		 user1.setEmail(owner.getUser().getEmail());
-		 user1.setPassword(owner.getUser().getPassword());
-		 user1.setRole("owner");
-		 LOGGER.debug("{}",user1);
-		 User user2 = userService.save(user1);
-		 LOGGER.debug("id:{}",user2.getId());
-		 owner.setUser(user2);
+//		 User user1 = new User();
+//		 user1.setEmail(owner.getUser().getEmail());
+//		 user1.setPassword(owner.getUser().getPassword());
+//		 user1.setRole("owner");
+//		 LOGGER.debug("{}",user1);
+//		 User user2 = userService.save(user1);
+//		 LOGGER.debug("id:{}",user2.getId());
+//		 owner.setUser(user2);
 		 service.save(owner);
 		 
 		 

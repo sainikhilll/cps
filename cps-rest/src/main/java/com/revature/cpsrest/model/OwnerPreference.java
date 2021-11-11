@@ -17,11 +17,11 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "owner_preference")
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Getter
-//@Setter
-//@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
 public class OwnerPreference {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,66 +37,8 @@ public class OwnerPreference {
 	@Column(name = "pets_allowed")
 	private String petsAllowed;
 	
-	@Column(name = "owner_id")
-	private String ownerId;
 	
-	public OwnerPreference() {}
-
-	public OwnerPreference(int id, String music, String smoking, String petsAllowed,String ownerId) {
-		super();
-		this.id = id;
-		this.music = music;
-		this.smoking = smoking;
-		this.petsAllowed = petsAllowed;
-		this.ownerId = ownerId;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getMusic() {
-		return music;
-	}
-
-	public void setMusic(String music) {
-		this.music = music;
-	}
-
-	public String getSmoking() {
-		return smoking;
-	}
-
-	public void setSmoking(String smoking) {
-		this.smoking = smoking;
-	}
-
-	public String getPetsAllowed() {
-		return petsAllowed;
-	}
-
-	public void setPetsAllowed(String petsAllowed) {
-		this.petsAllowed = petsAllowed;
-	}
-
-	public String getOwnerId() {
-		return ownerId;
-	}
-
-	public void setOwnerId(String ownerId) {
-		this.ownerId = ownerId;
-	}
 	
-	@Override
-	public String toString() {
-		return "OwnerPreference [id=" + id + ", music=" + music + ", smoking=" + smoking + ", petsAllowed="
-				+ petsAllowed + ", ownerId=" + ownerId + "]";
-	}
-
 	
 }
 

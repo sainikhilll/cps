@@ -11,6 +11,6 @@ export interface Owner{
     aadharNumber:string,
     aadharUrl:string,
     user:User,
-    // ownerPreference:OwnerPreferences,
+    ownerPreference:OwnerPreferences,
     status:string
 }

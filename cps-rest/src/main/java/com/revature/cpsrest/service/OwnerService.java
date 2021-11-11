@@ -10,15 +10,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.revature.cpsrest.model.Owner;
+import com.revature.cpsrest.repository.OwnerPreferenceRepository;
 import com.revature.cpsrest.repository.OwnerRepository;
+import com.revature.cpsrest.repository.UserRepository;
 
 @Service
-@Transactional
-
 public class OwnerService {
-@Autowired
-	
+	@Autowired
 	private OwnerRepository ownerRepository;
+	@Autowired
+    private UserRepository userRepository;
+	@Autowired
+	private OwnerPreferenceRepository ownerPreferenceRepository;
 	
 //	public List<Owner> list()
 //	{
@@ -33,6 +36,8 @@ public class OwnerService {
 //	
 	public void save(Owner owner)
 	{
+		userRepository.save(owner.getUser());
+		ownerPreferenceRepository.save(owner.getOwnerPreference());
 		ownerRepository.save(owner);
 	}
 	
