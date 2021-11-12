@@ -1,9 +1,12 @@
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Owner } from '../model/owner';
-import { Observable } from 'rxjs';
 import { REST_URL } from './common';
 import { LoginAuthService } from './login-auth.service.ts.service';
+import { getLocaleWeekEndRange } from '@angular/common';
+import { Observable, observable } from 'rxjs';
+import { Owner } from '../model/owner';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +14,7 @@ import { LoginAuthService } from './login-auth.service.ts.service';
 export class OwnerService {
   url = REST_URL + "approvals";
   constructor(private _http: HttpClient, private loginAuthService: LoginAuthService) { }
-  
+
   public restOwner(): Observable<any> {
     return this._http.get<any>(this.url);
   }
@@ -37,4 +40,8 @@ export class OwnerService {
     return this._http.post<any>(url, owner);
   }
 
+  getOwners(): Observable<any> {
+    return this._http.get("http://localhost:8080/owners");
+
+  }
 }

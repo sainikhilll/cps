@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Owner } from '../model/owner';
+import { OwnerService } from '../service/owner.service';
 
 @Component({
   selector: 'app-view-ride-owners',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewRideOwnersComponent implements OnInit {
 
-  constructor() { }
+  owners : Owner[] = [];
+  constructor(private ownerService: OwnerService) { }
 
   ngOnInit(): void {
+    this.ownerService.getOwners().subscribe(
+      data =>{
+        this.owners= data;
+      }
+    )
   }
 
 }
