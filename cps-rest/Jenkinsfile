@@ -29,7 +29,6 @@ pipeline {
         stage('Backend Deploy'){
             steps {
                 sh 'docker run -d -p  2025:2025 revature-cps-rest'
-                sh "curl http://localhost:2025/register"
 
             }
         }
