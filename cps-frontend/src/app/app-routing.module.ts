@@ -24,11 +24,11 @@ const routes: Routes = [
   {path:'passenger-signup', component:PassengerSignupComponent},
   {path:'passenger-change-password', component:PassengerChangePasswordComponent, canActivate: [AuthGuardGuard]},
   {path:'search-trip', component:SearchTripComponent, canActivate: [AuthGuardGuard]},
-  {path:'book-ride', component: BookRideComponent, canActivate: [AuthGuardGuard]},
+  {path:'book-ride/:id', component: BookRideComponent, canActivate: [AuthGuardGuard]},
   {path:'approve-ride-owner', component: ApproveRideOwnerComponent, canActivate: [AuthGuardGuard]},
   {path:'view-ride-owners', component:ViewRideOwnersComponent, canActivate: [AuthGuardGuard]},
-  {path:'view-passengers', component: ViewPassengersComponent, canActivate: [AuthGuardGuard]}
-  //{path:'', redirectTo: "/login", pathMatch: 'full'}
+  {path:'view-passengers', component: ViewPassengersComponent, canActivate: [AuthGuardGuard]},
+  {path:'', redirectTo: "/login", pathMatch: 'full'}
 
 ];
 

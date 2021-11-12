@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
         this.fail = true;
         console.log(error);
 
-      }
+      } 
     )
 
   }

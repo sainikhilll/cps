@@ -1,0 +1,38 @@
+.card-body .price{
+    float: right;
+}
+.button{
+    float:right;
+}
+
+.circular-square{
+    border-radius: 50%;
+   border-top-color: #55595c;
+}
+.name{
+    position: relative;
+    right: -5px;
+}
+.hover{
+    cursor: pointer;
+}
+section{
+    cursor: pointer;
+}
+.icons{
+    color: red;
+}
+.ns{
+    float: right;
+}
+.sort{
+    color: rgb(88, 70, 70);
+}
+.sort:hover{
+
+    color: rgb(0, 0, 0);
+}
+
+td{
+    border-spacing: 0px;
+}
