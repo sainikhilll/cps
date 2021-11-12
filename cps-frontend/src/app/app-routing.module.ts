@@ -11,22 +11,23 @@ import { RideOwnerPreferencesComponent } from './ride-owner-preferences/ride-own
 import { RideOwnerSignupComponent } from './ride-owner-signup/ride-owner-signup.component';
 import { RideOwnerUpdateProfileComponent } from './ride-owner-update-profile/ride-owner-update-profile.component';
 import { SearchTripComponent } from './search-trip/search-trip.component';
+import { AuthGuardGuard } from './service/auth-guard.guard';
 import { ViewPassengersComponent } from './view-passengers/view-passengers.component';
 import { ViewRideOwnersComponent } from './view-ride-owners/view-ride-owners.component';
 
 const routes: Routes = [
   {path:'ride-owner-signup', component:RideOwnerSignupComponent},
   {path:'login', component:LoginComponent},
-  {path:'ride-owner-preferences', component: RideOwnerPreferencesComponent},
-  {path:'ride-owner-update-profile', component: RideOwnerUpdateProfileComponent},
-  {path:'publish-trip', component: PublishTripComponent},
+  {path:'ride-owner-preferences', component: RideOwnerPreferencesComponent, canActivate: [AuthGuardGuard]},
+  {path:'ride-owner-update-profile', component: RideOwnerUpdateProfileComponent, canActivate: [AuthGuardGuard]},
+  {path:'publish-trip', component: PublishTripComponent, canActivate: [AuthGuardGuard]},
   {path:'passenger-signup', component:PassengerSignupComponent},
-  {path:'passenger-change-password', component:PassengerChangePasswordComponent},
-  {path:'search-trip', component:SearchTripComponent},
-  {path:'book-ride', component: BookRideComponent},
-  {path:'approve-ride-owner', component: ApproveRideOwnerComponent},
-  {path:'view-ride-owners', component:ViewRideOwnersComponent},
-  {path:'view-passengers', component: ViewPassengersComponent}
+  {path:'passenger-change-password', component:PassengerChangePasswordComponent, canActivate: [AuthGuardGuard]},
+  {path:'search-trip', component:SearchTripComponent, canActivate: [AuthGuardGuard]},
+  {path:'book-ride', component: BookRideComponent, canActivate: [AuthGuardGuard]},
+  {path:'approve-ride-owner', component: ApproveRideOwnerComponent, canActivate: [AuthGuardGuard]},
+  {path:'view-ride-owners', component:ViewRideOwnersComponent, canActivate: [AuthGuardGuard]},
+  {path:'view-passengers', component: ViewPassengersComponent, canActivate: [AuthGuardGuard]}
   //{path:'', redirectTo: "/login", pathMatch: 'full'}
 
 ];
