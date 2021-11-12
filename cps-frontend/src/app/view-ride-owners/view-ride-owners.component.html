@@ -1,23 +1,42 @@
-<h1 class="d-flex justify-content-center aline-item-center mt-2 shadow "><b>List Of Ride-Owners</b></h1>
-<div class=" justify-content-center aline-item-center row  ">
-
-  <div class="card  justify-content-center aline-item-center col-lg-4 col-md-4 col-12 mt-5 bg-secondary bg-opacity-50 shadow"
-    *ngFor="let owner of owners">
-
-    <div class="card-body ">
-      <h5 class="card-title">{{owner.name}}</h5>
-      <p class="card-text"></p>
+<h2 class="mt-2 text-center">Ride Owners</h2>
+<div class="row ">
+  <div class="col-md-4 mb-3" *ngFor="let owner of owners">
+    <div class="card">
+      <div class="card-body ">
+        <h5 class="card-title">{{owner.name}} </h5>
+        <div>
+          <small class="text-muted">{{owner.address}}</small>
+        </div>
+        <div>
+          <small class="text-muted"> <i class="fa fa-phone" aria-hidden="true"></i> {{owner.mobile}}</small>
+          <small class="text-muted mx-4"> <i class="fa fa-envelope" aria-hidden="true"></i> {{owner.user.email}}</small>
+        </div>
+        <div *ngIf="owner.status=='Approved'" class="badge bg-success">{{owner.status}}</div>
+        <div *ngIf="owner.status=='Rejected'" class="badge bg-danger">{{owner.status}}</div>
+        <div *ngIf="owner.status=='Pending'" class="badge bg-info">{{owner.status}}</div>
+        <div class="row mt-3">
+          <div class="col-6"><i class="fa fa-id-card-o" aria-hidden="true"></i> License <small class="text-muted">{{owner.licenceNumber}}</small></div>
+          <div class="col-6"><i class="fa fa-id-card" aria-hidden="true"></i> Aadhar <small class="text-muted">{{owner.aadharNumber}}</small></div>
+        </div>
+        <table class="table">
+          <tr>
+            <th class="text-muted" >Preferences </th>
+            <th><i class="fa fa-music" aria-hidden="true"></i></th>
+            <th><img src="https://img.icons8.com/external-flatart-icons-solid-flatarticons/25/000000/external-smoke-pipe-fathers-day-flatart-icons-solid-flatarticons.png"/></th>
+            <th><i class="fa fa-paw" aria-hidden="true"></i></th>
+          </tr>
+          <tr>
+            <td></td>
+            <td *ngIf="owner.ownerPreference.music=='N'"><i class="fa fa-times" style="color: red;" aria-hidden="true"></i></td>
+            <td *ngIf="owner.ownerPreference.music=='Y'"><i class="fa fa-check" style="color:green;" aria-hidden="true"></i></td>
+            <td *ngIf="owner.ownerPreference.smoking=='N'"><i class="fa fa-times" style="color: red;" aria-hidden="true"></i></td>
+            <td *ngIf="owner.ownerPreference.smoking=='Y'"><i class="fa fa-check" style="color:green;" aria-hidden="true"></i></td>
+            <td *ngIf="owner.ownerPreference.petsAllowed=='N'"><i class="fa fa-times" style="color: red;" aria-hidden="true"></i></td>
+            <td *ngIf="owner.ownerPreference.petsAllowed=='Y'"><i class="fa fa-check" style="color:green;" aria-hidden="true"></i></td>
+            
+          </tr>
+        </table>
+      </div>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item"><b> City :</b>{{owner.address}}</li>
-      <li class="list-group-item"> <b>Mobile no. : </b>{{owner.mobile}}</li>
-      <li class="list-group-item"><b>LicenceNumber: </b>{{owner.licenceNumber}}</li>
-      <li class="list-group-item"><b>Adhar Number :</b> {{owner.aadharNumber}}</li>
-      <li class="list-group-item"><b>Email : </b>{{owner.user.email}}</li>
-      <li class="list-group-item"><b> Music : </b>{{owner.ownerPreference.music}}</li>
-      <li class="list-group-item"><b> Smoking : </b>{{owner.ownerPreference.smoking}}</li>
-      <li class="list-group-item"><b> Pets : </b>{{owner.ownerPreference.petsAllowed}}</li>
-      <li class="list-group-item"> <b>Status : </b>{{owner.status}}</li>
-    </ul>
   </div>
 </div>
