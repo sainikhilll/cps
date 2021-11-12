@@ -12,6 +12,10 @@ export class TripBookingService {
   public getTrip(){
     return this.http.get(REST_URL+"trips/1");
   }
+  // public addTripBooking(tripBooked:any){
+  //   return this.http.post("http://localhost:8080/trip-bookings",tripBooked);
+  //   return this.http.get(REST_URL+"trips/1");
+  // }
   public addTripBooking(tripBooked:any){
     return this.http.post(REST_URL+"trip-bookings",tripBooked);
   }

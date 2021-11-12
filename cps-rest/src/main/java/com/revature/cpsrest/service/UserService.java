@@ -12,6 +12,7 @@ import com.revature.cpsrest.repository.UserRepository;
 
 @Service
 @Transactional
+
 public class UserService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 	@Autowired
@@ -29,4 +30,5 @@ public class UserService {
 		return userRepository.save(user);
 
 	}
+
 }
