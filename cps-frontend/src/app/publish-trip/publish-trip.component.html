@@ -1,42 +1,42 @@
 <div class="container">
     <div class="card card-body">   
     <h2>Trip Details</h2>
-    <form #tripForm="ngForm" (ngSubmit)="publish()">
-        <div class="alert alert-success" *ngIf="success">Trip is published successfully. Thank you.</div>
+    <div class="alert alert-success" *ngIf="success">Trip is published successfully. Thank you.</div>
+    <form #tripForm="ngForm" (ngSubmit)="publish()" *ngIf="!success">
         <div class="row">
             <div class="form-group col-lg-6 col-md-12 mb-2">
                 <label for="origin" class="form-label">Origin</label>
                 <input type="text" name="origin" #origin="ngModel" [(ngModel)]="trip.origin" (keyup)="sendData()" id="origin" 
-                class="form-control" required>
+                class="form-control" autocomplete="off" required>
                 <div class="text-danger" *ngIf = "origin.invalid && (origin.dirty || origin.touched)">
                     <small *ngIf="origin.errors.required">Origin is required.</small>
                 </div>
-                <section class="search-origin">
-                    <div (click)="clickOrigin(item)" *ngFor="let item of origin_temp">{{item}}</div>
+                <section class="place-list" *ngIf="trip.origin != ''">
+                    <div class="place" (click)="clickOrigin(item)" *ngFor="let item of origin_temp">{{item}}</div>
                 </section>
             </div>
             <div class="form-group col-lg-6 col-md-12 mb-2">
                 <label for="destination" class="form-label">Destination</label>
                 <input type="text" name="destination" #destination="ngModel" [(ngModel)]="trip.destination" (keyup)="getDestination()"
-                    id="destination" class="form-control" required>
+                    id="destination" class="form-control" autocomplete="off" required>
                     <div class="text-danger" *ngIf = "destination.invalid && (destination.dirty || destination.touched)">
                         <small *ngIf="destination.errors.required">Destination is required.</small>
                     </div>
-                <section class="search-destination">
-                    <div (click)="clickDestination(item)" *ngFor="let item of destination_temp">{{item}}</div>
+                <section class="place-list">
+                    <div class="place" (click)="clickDestination(item)" *ngFor="let item of destination_temp">{{item}}</div>
                 </section>
             </div>
 
             <div class="form-group col-lg-6 col-md-12 mb-2">
                 <label for="date" class="form-label">Date</label>
-                <input type="date" name="date" #date="ngModel" [(ngModel)]="trip.date" id="date" class="form-control" required>
+                <input type="date" name="datemin" min="2021-12-01" #date="ngModel" [(ngModel)]="trip.date" id="date" class="form-control" required>
                 <div class="text-danger" *ngIf = "date.invalid && (date.dirty || date.touched)">
                     <small *ngIf="date.errors.required">Date is required.</small>
                 </div>
             </div>
             <div class="form-group col-lg-6 col-md-12 mb-2">
                 <label for="departureTime" class="form-label">Departure Time</label>
-                <input type="text" name="departureTime" #departureTime="ngModel" [(ngModel)]="trip.departureTime" id="departureTime"
+                <input type="time" name="departureTime" #departureTime="ngModel" [(ngModel)]="trip.departureTime" id="departureTime"
                     class="form-control" required>
                 <div class="text-danger" *ngIf = "departureTime.invalid && (departureTime.dirty || departureTime.touched)">
                     <small *ngIf="departureTime.errors.required">Departure time is required.</small>
@@ -50,19 +50,21 @@
                 </div>
             </div>
             <div class="form-group col-lg-3 col-md-6 mb-2">
-                <label for="numberOfPassengers" class="form-label">Number of Passengers</label>
+                <label for="numberOfPassengers" class="form-label">My Passengers count</label>
                 <input type="number" name="numberOfPassengers" #numberOfPassengers="ngModel" [(ngModel)]="trip.numberOfPassengers"
-                    id="numberOfPassengers" class="form-control" required>
+                    id="numberOfPassengers" pattern="[1-9]{1}" class="form-control" required>
                 <div class="text-danger" *ngIf = "numberOfPassengers.invalid && (numberOfPassengers.dirty || numberOfPassengers.touched)">
                     <small *ngIf="numberOfPassengers.errors.required">Number of passengers are required.</small>
+                    <small *ngIf="numberOfPassengers.errors.pattern">Enter valid number of passengers</small>
                 </div>
             </div>
             <div class="form-group col-lg-3 col-md-6 mb-2">
-                <label for="numberOfSeatsAvailable" class="form-label">Number of Seats Available</label>
+                <label for="numberOfSeatsAvailable" class="form-label">Maximum Seats Available</label>
                 <input type="number" name="numberOfSeatsAvailable" #numberOfSeatsAvailable="ngModel" [(ngModel)]="trip.numberOfSeatsAvailable"
-                    id="numberOfSeatsAvailable" class="form-control" required>
+                    id="numberOfSeatsAvailable" pattern="[1-9]{1}" class="form-control" required>
                     <div class="text-danger" *ngIf = "numberOfSeatsAvailable.invalid && (numberOfSeatsAvailable.dirty || numberOfSeatsAvailable.touched)">
                         <small *ngIf="numberOfSeatsAvailable.errors.required">Number of seats are required.</small>
+                        <small *ngIf="numberOfSeatsAvailable.errors.pattern">Enter valid number of seats</small>
                     </div>
             </div>
             <div class="form-group col-lg-3 col-md-6 mb-2">

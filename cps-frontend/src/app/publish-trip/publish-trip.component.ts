@@ -141,7 +141,7 @@ export class PublishTripComponent implements OnInit {
       response => {
         this.success = true;
         this.ngOnInit();
-        this.router.navigate (['ride-owner-preferences']);
+        // this.router.navigate (['ride-owner-preferences']);
       },
     )
   };
