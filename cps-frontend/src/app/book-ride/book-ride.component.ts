@@ -54,7 +54,7 @@ export class BookRideComponent implements OnInit {
     passenger:{  id: 1,
     name: "",
     mobileNumber: "",
-    dateOfBirth:new Date(2021,10,1) ,
+    dateOfBirth:"",
     user:{ id: 0,
       email: "",
       password:"",

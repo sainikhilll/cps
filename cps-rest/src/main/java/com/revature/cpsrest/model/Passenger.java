@@ -35,14 +35,14 @@ public class Passenger {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "mobile_number")
+	@Column(name = "mobile")
 	private String mobileNumber;
 
 	@Column(name = "date_of_birth")
 	private Date dateOfBirth;
-	
+
 	@ManyToOne
-	@JoinColumn(name= "user_id")
+	@JoinColumn(name = "user_id")
 	private User user;
 
 }
