@@ -194,6 +194,6 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `cps`;
 INSERT INTO `cps`.`cps_user` (`id`, `email`, `password`, `role`) VALUES (DEFAULT, 'admin@rev.com', '12345', 'admin');
-
+user
 COMMIT;
 
