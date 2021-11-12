@@ -1,7 +1,5 @@
 package com.revature.cpsrest.model;
 
-
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -18,8 +16,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
-
 
 @Entity
 @Table(name = "trip")

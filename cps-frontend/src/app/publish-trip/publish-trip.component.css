@@ -1,0 +1,15 @@
+.place-list{
+    border: 1px solid #999;
+    position: absolute;
+    background-color: white;
+    opacity: 1;
+    z-index: 5;
+}
+.place{
+    cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+}
+.place:hover{
+    background-color: #ccc;
+}
