@@ -17,13 +17,13 @@ export class PassengerChangePasswordComponent implements OnInit {
 
     'np1': [
       { type: 'required', message: 'New password is required.' },
-      { type: 'minlength', message: 'password length.' },
-      { type: 'maxlength', message: 'password length.' }
+      { type: 'minlength', message: 'Password must contain atleast 6 characters.' },
+      { type: 'maxlength', message: 'Password should be less than 30 characters.' }
     ],
     'np2': [
       { type: 'required', message: 'Confirm Password is required.' },
-      { type: 'minlength', message: 'password length.' },
-      { type: 'maxlength', message: 'password length.' }
+      { type: 'minlength', message: 'Password must contain atleast 6 characters.' },
+      { type: 'maxlength', message: 'Password should be less than 30 characters' }
     ],
   }
 

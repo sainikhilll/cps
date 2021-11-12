@@ -36,7 +36,7 @@ import { FormsModule } from '@angular/forms';
     ApproveRideOwnerComponent,
     ViewRideOwnersComponent,
     ViewPassengersComponent,
-    NavigationComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
