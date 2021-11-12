@@ -2,7 +2,8 @@
     <div class="card card-body">
         <h2>Trip Details</h2>
         <div class="alert alert-success" *ngIf="success">Trip is published successfully. Thank you.</div>
-        <form #tripForm="ngForm" (ngSubmit)="publish()" *ngIf="!success">
+        <div class="text-danger" *ngIf="trip.owner.status == 'Pending'">Owner was not approved by admin</div>
+        <form #tripForm="ngForm" (ngSubmit)="publish()" *ngIf="!(success||trip.owner.status == 'Pending')">
             <div class="row">
                 <div class="form-group col-lg-6 col-md-12 mb-2">
                     <label for="origin" class="form-label">Origin</label>
