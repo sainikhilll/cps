@@ -12,7 +12,8 @@ import { PassengerService } from '../service/passenger.service';
   styleUrls: ['./passenger-signup.component.css']
 })
 export class PassengerSignupComponent implements OnInit {
- 
+  alert: boolean = false
+
  
 
  passenger :Passenger={
@@ -27,35 +28,24 @@ export class PassengerSignupComponent implements OnInit {
 
   }
 }
-passengersignup = new FormGroup(
-  {
-    name: new FormControl('',[ Validators.required,Validators.pattern("[A-Za-z ]{1,32}")]),
-    email: new FormControl('', [Validators.required, Validators.pattern("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$")]),
-    password: new FormControl('', [Validators.required]),
-    mobileNumber: new FormControl('', [Validators.required, Validators.pattern("[1-9]{1}[0-9]{9}"), Validators.maxLength(10)]),
-    dateOfBirth : new FormControl('',[Validators.required])
- 
-  }
-)
 
   
-  get name(){return this.passengersignup.get('name')}
-  get email(){return this.passengersignup.get('email')}
-  get password(){return this.passengersignup.get('password')}
-  get mobileNumber(){return this.passengersignup.get('mobileNumber')}
-  get dateOfBirth(){return this.passengersignup.get('dateOfBirth')}
 
+  addRestto: any;
 
   constructor(private passengerService: PassengerService, private _router:Router) {}
 
   ngOnInit(): void {
 
   }
-  signup():void {
+    signup():void {
    
     let observable : Observable<any> = this.passengerService.signup(this.passenger);
     observable.subscribe(data => {console.log(data);
-      this._router.navigate(['login']);
+     /*  this._router.navigate(['login']); */
+      this.alert = true
+      
+
     })
     
 }

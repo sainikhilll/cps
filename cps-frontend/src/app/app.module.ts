@@ -17,6 +17,8 @@ import { ViewPassengersComponent } from './view-passengers/view-passengers.compo
 import { NavigationComponent } from './navigation/navigation.component';
 import {  ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule  
+    HttpClientModule,  
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

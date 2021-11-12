@@ -1,70 +1,68 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="text-center mb-4">
-                    <h1>Sign Up</h1>
-                    <h6>Register Yourself !!</h6>
-                </div>
-                <form [formGroup]="passengersignup">
+    <div class="card card-body">
 
-                    <div class="row">
-
-
-                        <div class="mb-3">
-                            <label for="exampleInputPassword" class="form-label">* Full Name</label>
-                            <input type="text" formControlName="name" name="name" [(ngModel)]="passenger.name"
-                                class="form-control" id="exampleInputPassword" placeholder="Full Name">
-
-                            <small *ngIf=" name.touched && name.invalid" class="text-danger">name is
-                                mandatory</small>
-
-
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword" class="form-label">* Mobile Number</label>
-                            <input type="text" formControlName="mobileNumber" name="mobileNumber"
-                                [(ngModel)]="passenger.mobileNumber" class="form-control" id="exampleInputPassword"
-                                placeholder="Mobile Number">
-                            <small *ngIf="mobileNumber.invalid && mobileNumber.touched" class="text-danger">mobile
-                                number is mandatory</small>
-
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword" class="form-label">* Date Of Birth</label>
-                            <input type="Date" formControlName="dateOfBirth" name="dateOfBirth"
-                                [(ngModel)]="passenger.dateOfBirth" class="form-control" id="exampleInputPassword">
-                            <small *ngIf="dateOfBirth.invalid && dateOfBirth.touched" class="text-danger">DOB is
-                                mandatory</small>
-
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail" class="form-label">* Email Address</label>
-                            <input type="email" formControlName="email" name="email" [(ngModel)]="passenger.user.email"
-                                class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
-                                placeholder="Email Address">
-                            <small *ngIf="email.invalid && email.touched" class="text-danger">email is
-                                mandatory</small>
-
-                        </div>
-
-
-                        <div class="mb-3">
-                            <label for="exampleInputPassword" class="form-label">* Password</label>
-                            <input type="password" formControlName="password" name="password"
-                                [(ngModel)]="passenger.user.password" class="form-control" id="exampleInputPassword"
-                                placeholder="Password">
-                            <small *ngIf="password.invalid && password.touched" class="text-danger">password is
-                                mandatory</small>
-
-                        </div>
-                    </div>
-                    <button type="submit" [disabled]="!passengersignup.valid" class="btn btn-primary mb-2"
-                        (click)="signup()">Sign Up</button>
-
-                </form>
-                <a routerLink="../login">Already registered? Click to login !!</a>
-            </div>
+        <h2>Sign Up</h2>
+        <div *ngIf="alert" class="alert alert-success" role="alert">
+            signup successfull !!
+            <a routerLink="../login">Login</a>
         </div>
+        <form *ngIf="!alert" #signupForm="ngForm" (ngSubmit)="signup()">
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-12 mb-2">
+                    <label for="exampleInputPassword" class="form-label">Name *</label>
+                    <input type="text" name="name" #name="ngModel" [(ngModel)]="passenger.name" class="form-control"
+                        id="exampleInputPassword" placeholder="Name" required>
+                    <div class="text-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+                        <small *ngIf="name.errors.required">Name is required.</small>
+                    </div>
+
+                </div>
+                <div class="form-group col-lg-6 col-md-12 mb-2">
+                    <label for="exampleInputEmail" class="form-label">Email Address *</label>
+                    <input type="email" name="email" #email="ngModel" [(ngModel)]="passenger.user.email"
+                        class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
+                        placeholder="Email Address" required>
+                    <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <small *ngIf="email.errors.required">Email is required.</small>
+                    </div>
+                </div>
+
+                <div class="form-group col-lg-4 col-md-8 mb-2">
+                    <label for="exampleInputPassword" class="form-label">Mobile Number *</label>
+                    <input type="text" name="mobileNumber" #mobileNumber="ngModel" [(ngModel)]="passenger.mobileNumber"
+                        class="form-control" minlength="10" maxlength="10" id="exampleInputPassword"
+                        placeholder="Mobile Number" required>
+                    <div class="text-danger"
+                        *ngIf="mobileNumber.invalid && (mobileNumber.dirty || mobileNumber.touched)">
+                        <small *ngIf="mobileNumber.errors.required">Mobile Number is required.</small>
+                        <small *ngIf="mobileNumber.errors.minlength">Mobile Number should be 10 digits</small>
+                        <small *ngIf="mobileNumber.errors.maxlength">Mobile Number should not exceed 10 digits</small>
+                    </div>
+
+                </div>
+                <div class="form-group col-lg-4 col-md-8 mb-2">
+                    <label for="exampleInputPassword" class="form-label">Date Of Birth *</label>
+                    <input type="Date" name="dateOfBirth" #dateOfBirth="ngModel" [(ngModel)]="passenger.dateOfBirth"
+                        class="form-control" id="exampleInputPassword" required>
+                    <div class="text-danger" *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)">
+                        <small *ngIf="dateOfBirth.errors.required">Date Of Birth is required.</small>
+                    </div>
+                </div>
+
+                <div class="form-group col-lg-4 col-md-8 mb-2">
+                    <label for="exampleInputPassword" class="form-label">Password *</label>
+                    <input type="password" name="password" #password="ngModel" [(ngModel)]="passenger.user.password"
+                        class="form-control" minlength="4" id="exampleInputPassword" placeholder="Password" required>
+                    <div class="text-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+                        <small *ngIf="password.errors.required">Password is required.</small>
+                        <small *ngIf="password.errors.minlength">Password should be 4 digits</small>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" [disabled]="!signupForm.valid" class="btn btn-primary">
+                </div>
+            </div>
+        </form>
+        <!--  <a routerLink="../login">Already registered? Click to login !!</a> -->
     </div>
-</div>
