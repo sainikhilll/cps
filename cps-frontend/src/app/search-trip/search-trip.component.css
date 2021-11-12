@@ -1,72 +1,8 @@
-.search-sec{
-    padding: 2rem;
-}
-.search-slt{
-    display: block;
-    width: 100%;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    color: #55595c;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    height: calc(3rem + 2px) !important;
-    border-radius:0;
-}
-.wrn-btn{
-    width: 100%;
-    font-size: 16px;
-    font-weight: 400;
-    text-transform: capitalize;
-    height: calc(3rem + 2px) !important;
-    border-radius:0;
-}
-@media (min-width: 992px){
-    .search-sec{
-        position: relative;
-        top: 0px;
-        
-        left:0px;
 
-       
-    }
-    .display-sec{
-        position: relative;
-        top: 50px;
-       
-
-    }
-}
-
-.card-body .price{
-    float: right;
-}
-.button{
-    float:right;
-}
-.propimg{
-    height: 100px;
-}
-.circular-square{
-    border-radius: 50%;
-   border-top-color: #55595c;
-}
-.name{
-    position: relative;
-    right: -5px;
-}
-.hover{
-    cursor: pointer;
-}
-section{
-    cursor: pointer;
-}
-.icons{
-    color: red;
-}
 .ns{
     float: right;
 }
+
 .sort{
     color: rgb(88, 70, 70);
 }
@@ -74,4 +10,22 @@ section{
 
     color: rgb(0, 0, 0);
 }
+
+.place-list{
+    border: 1px solid #999;
+    position: absolute;
+    background-color: white;
+    opacity: 1;
+    z-index: 5;
+}
+.place{
+    cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+}
+.place:hover{
+    background-color: #ccc;
+}
+
+
 
