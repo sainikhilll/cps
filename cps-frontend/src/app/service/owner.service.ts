@@ -2,12 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Owner } from '../model/owner';
+import { REST_URL } from './common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OwnerService {
 
+  
   constructor(private httpClient: HttpClient) { }
   // signup(owner: Owner) : Observable<any>  {
   //   console.log("signup called");
@@ -21,7 +23,7 @@ export class OwnerService {
 
 public signup(owner: Owner) : Observable<any> 
  {
-  const url="http://localhost:8080/owners"; 
+  const url=REST_URL+"owners"; 
   return this.httpClient.post<any>(url, owner);
 
   

@@ -1,10 +1,10 @@
 <h2>Owner Signup</h2>
 <div *ngIf="alert"class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Success!</strong> Your data has been entered successfully.
+  <strong>Success!</strong>Congratulations Signup Successfully done. try to login.
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 
-<div class="card">
+<div class="card" *ngIf="!alert">
   <div class="card-body">
 
     <form class="row g-3" [formGroup]="ownersignup">
@@ -13,7 +13,7 @@
         <div class="input-group">
           <span class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-user" aria-hidden="true"></i></span>
           <input type="text" class="form-control" id="inputAddress2" placeholder="Name" [(ngModel)]="owner.name"
-            name="name" formControlName="name">
+            name="name" formControlName="name" autocomplete="off">
         </div>
         <small *ngIf="f.name.touched && f.name.invalid" class="text-danger error">
         <small *ngIf="f.name.errors.required" class="text-danger">Name is required.
@@ -29,7 +29,7 @@
           <span class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-envelope"
               aria-hidden="true"></i></span>
           <input type="email" class="form-control" id="inputEmail4" placeholder="Email Id"
-            [(ngModel)]="owner.user.email" name="email" formControlName="email">
+            [(ngModel)]="owner.user.email" name="email" formControlName="email" autocomplete="off">
         </div>
         <small *ngIf="(f.name.touched || f.name.dirty) && f.email.invalid"class="text-danger error">
         <small *ngIf="f.email.errors.required" class="text-danger">Email is required.
@@ -43,13 +43,14 @@
         <div class="input-group">
           <span class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-key" aria-hidden="true"></i></span>
           <input type="password" class="form-control" id="inputPassword4" placeholder="Password"
-            [(ngModel)]="owner.user.password" name="password" formControlName="password">
+            [(ngModel)]="owner.user.password" name="password" formControlName="password" autocomplete="off">
         </div>
         <small *ngIf="(f.password.touched || f.password.dirty) && f.password.invalid" class="text-danger error">
           <small *ngIf="f.password.errors.required"  class="text-danger">Password is required.
           </small>
           
-        <small *ngIf="f.password.errors.pattern"  class="text-danger">give in proper format one upper case,one lower,one special and min size 8.  
+        <small *ngIf="f.password.errors.pattern"  class="text-danger">Password must contain one lower case character, one upper case character, one special symbol and minimum length is 8 characters.
+  
         </small>
       </small>
       </div>
@@ -59,7 +60,7 @@
           <span class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-map-marker"
               aria-hidden="true"></i></span>
           <input type="text" class="form-control" id="inputAddress" placeholder="Full Address"
-            [(ngModel)]="owner.address" name="address" formControlName="address">
+            [(ngModel)]="owner.address" name="address" formControlName="address" autocomplete="off">
         </div>
         <small *ngIf="(f.address.touched || f.address.dirty) && f.address.invalid" class="text-danger error">
           <small *ngIf="f.address.errors.required" class="text-danger">Address is required.
@@ -71,11 +72,11 @@
         <div class="input-group">
           <span class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-mobile" aria-hidden="true"></i></span>
           <input type="text" class="form-control" id="mobile" placeholder="Mobile Number" [(ngModel)]="owner.mobile"
-            name="mobile" formControlName="mobile">
+            name="mobile" formControlName="mobile" autocomplete="off" autofill="off">
         </div>
         <small *ngIf="(f.mobile.touched || f.mobile.dirty) && f.mobile.invalid" class="text-danger error">
           <small *ngIf="f.mobile.errors.required" class="text-danger">Mobile number is required.</small>
-        <small *ngIf="f.mobile.errors.pattern" class="text-danger">Only Numbers are allowed and size must be 10.
+        <small *ngIf="f.mobile.errors.maxLength" class="text-danger">Only Numbers are allowed and size must be 10.
         </small>
       </small>
       </div>
@@ -86,11 +87,11 @@
           <span class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-id-card-o"
               aria-hidden="true"></i></span>
           <input type="text" class="form-control" id="aadhar" placeholder="Aadhar Number"
-            [(ngModel)]="owner.aadharNumber" name="aadharNumber" formControlName="aadharNumber">
+            [(ngModel)]="owner.aadharNumber" name="aadharNumber" formControlName="aadharNumber" autocomplete="off">
         </div>
         <small *ngIf="(f.aadharNumber.touched || f.aadharNumber.dirty) && f.aadharNumber.invalid" class="text-danger error">
           <small *ngIf="f.aadharNumber.errors.required" class="text-danger">Aadhar number is required.</small>
-        <small *ngIf="f.aadharNumber.errors.pattern" class="text-danger">Aadhar number can be entered like this formats: 1234-5678-9012.
+        <small *ngIf="f.aadharNumber.errors.pattern" class="text-danger">Aadhar number can be entered like this formats: 123456789012.
         </small>
       </small>
       </div>
@@ -99,12 +100,12 @@
         <div class="input-group">
           <span class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-id-card" aria-hidden="true"></i></span>
           <input type="text" class="form-control" id="icense" placeholder="License Number"
-            [(ngModel)]="owner.licenceNumber" name="licenceNumber" formControlName="licenceNumber">
+            [(ngModel)]="owner.licenceNumber" name="licenceNumber" formControlName="licenceNumber" autocomplete="off">
         </div>
         <small *ngIf="(f.licenceNumber.touched || f.licenceNumber.dirty) && f.licenceNumber.invalid" class="text-danger error">
-          <small *ngIf=f.licenceNumber.errors.required class="text-danger">Licence Number is required.
+          <small *ngIf="f.licenceNumber.errors.required" class="text-danger">Licence Number is required.
           </small>
-        <small *ngIf=f.licenceNumber.errors.pattern class="text-danger">Driving licence number can be entered like this formats: DL-1420110012345
+        <small *ngIf="f.licenceNumber.errors.maxlength" class="text-danger">
         </small>
       </small>
       </div>

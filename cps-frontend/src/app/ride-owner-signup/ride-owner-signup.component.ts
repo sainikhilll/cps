@@ -44,9 +44,9 @@ export class RideOwnerSignupComponent implements OnInit {
       name: new FormControl('', [Validators.required,Validators.pattern("^[a-zA-Z\\s]*$")]),
       address: new FormControl('', [Validators.required]),
       mobile: new FormControl('', [Validators.required, Validators.pattern("[123456789][0-9]{9}")]),
-      licenceNumber: new FormControl('', [Validators.required,Validators.pattern("^(([A-Z]{2}[0-9]{2})( )|([A-Z]{2}-[0-9]{2}))((19|20)[0-9][0-9])[0-9]{7}$")]),
+      licenceNumber: new FormControl('', [Validators.required,Validators.maxLength(30)]),
       licenceUrl: new FormControl('', [Validators.required]),
-      aadharNumber: new FormControl('', [Validators.required,Validators.pattern("^[2-9]{1}[0-9]{3}\\-[0-9]{4}\\-[0-9]{4}$")]),
+      aadharNumber: new FormControl('', [Validators.required,Validators.pattern("[0123456789][0-9]{11}")]),
       aadharUrl: new FormControl('', [Validators.required]),
       email: new FormControl('',[Validators.required,Validators.email]),
       password: new FormControl('',[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")])
@@ -78,19 +78,19 @@ alert:boolean=false
     console.log(observable);
     observable.subscribe(
       response => {
-        // this.alert=true
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Your data has been entered successfully Go to Login Page.',
-          showConfirmButton: false,
-          timer: 3500
-        })
+        this.alert=true
+        // Swal.fire({
+        //   position: 'top-end',
+        //   icon: 'success',
+        //   title: 'Your data has been entered successfully Go to Login Page.',
+        //   showConfirmButton: false,
+        //   timer: 3500
+        //Password must contain one lower case character, one upper case character, one special symbol and minimum length is 8 characters.
+
         this.ownersignup.reset({})
       })
   }
 }
-
 
 
 
