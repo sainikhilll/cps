@@ -1,0 +1,47 @@
+
+<div class="container">
+    <div class="row">
+        <h3>Owner Preferences</h3>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://image.freepik.com/free-vector/girl-listening-music-with-headphone-laptop-cartoon-icon-illustration-people-music-icon-concept-isolated-flat-cartoon-style_138676-1722.jpg">
+                <div class="card-body">
+                    <h5 class="card-title d-inline-flex mx-4">MUSIC </h5>
+                    <i class="fa fa-check unselected" *ngIf="preferences.music == 'N'" aria-hidden="true"
+                        (click)="musicChanged()"></i>
+                    <i class="fa fa-check selected" *ngIf="preferences.music == 'Y'" aria-hidden="true"
+                        (click)="musicChanged()"></i>
+                    <div *ngIf="musicPref" class="text-center alert alert-success">Preference Added</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3krHhIh_YV8fm5P2lHNcT1bu26F1FsTS-uA&usqp=CAU">
+                <div class="card-body">
+                    <h5 class="card-title d-inline-flex mx-4" >SMOKING </h5>
+                    <i class="fa fa-check unselected" *ngIf="preferences.smoking == 'N'" aria-hidden="true"
+                        (click)="smokingChanged()"></i>
+                    <i class="fa fa-check selected" *ngIf="preferences.smoking == 'Y'" aria-hidden="true"
+                        (click)="smokingChanged()"></i>
+                    <div *ngIf="smokingPref" class="text-center alert alert-success">Preference Added</div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://image.freepik.com/free-vector/cute-dog-cute-cat-cartoon-illustration_138676-3238.jpg">
+                <div class="card-body">
+                    <h5 class="card-title d-inline-flex mx-4">PETS</h5>
+
+                    <i class="fa fa-check unselected" *ngIf="preferences.petsAllowed == 'N'" aria-hidden="true"
+                        (click)="petsAllowedChanged()"></i>
+                    <i class="fa fa-check selected" *ngIf="preferences.petsAllowed == 'Y'" aria-hidden="true"
+                        (click)="petsAllowedChanged()"></i>
+                        <div *ngIf="petsPref" class="text-center alert alert-success">Preference Added</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

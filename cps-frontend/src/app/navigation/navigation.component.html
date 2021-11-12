@@ -10,31 +10,32 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='login'>Login</a>
+            <a *ngIf="loginAuthService.loggedInUser.role == ''" class="nav-link" routerLink='login'>Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='ride-owner-preferences'>Preferences</a>
+            <a *ngIf="loginAuthService.loggedInUser.role == 'owner'" class="nav-link" routerLink='ride-owner-preferences'>Preferences</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='publish-trip'>Publish Trip</a>
+            <a *ngIf="loginAuthService.loggedInUser.role == 'owner'" class="nav-link" routerLink='publish-trip'>Publish Trip</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='search-trip'>Search Trip</a>
+            <a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" class="nav-link" routerLink='search-trip'>Search Trip</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='/book-ride'>Book Ride</a>
+            <a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" class="nav-link" routerLink='book-ride'>Book Ride</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='approve-ride-owner'>Approve</a>
+            <a *ngIf="loginAuthService.loggedInUser.role == 'admin'" class="nav-link" routerLink='approve-ride-owner'>Approve</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='view-ride-owners'>Ride Owners</a>
+            <a *ngIf="loginAuthService.loggedInUser.role == 'admin'" class="nav-link" routerLink='view-ride-owners'>Ride Owners</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='view-passengers'>Passengers</a>
+            <a *ngIf="loginAuthService.loggedInUser.role == 'admin'" class="nav-link" routerLink='view-passengers'>Passengers</a>
           </li>
+          
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a *ngIf="loginAuthService.loggedInUser.role == ''" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Signup
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -43,17 +44,24 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Max Verstappen
+            <a *ngIf="loginAuthService.loggedInUser.role == 'owner' ||loginAuthService.loggedInUser.role == 'passenger'"class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{loginAuthService.loggedInUser.email}}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item"  routerLink='passenger-change-password'>Update Password</a></li>
-              <li><a class="dropdown-item" routerLink='ride-owner-update-profile'>Update Profile</a></li>
+              <li><a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" class="dropdown-item"  routerLink='passenger-change-password'>Update Password</a></li>
+
+              <li><a *ngIf="loginAuthService.loggedInUser.role == 'owner'" class="dropdown-item"  routerLink='ride-owner-update-profile'>Update Profile</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='login'>Logout</a>
+            <a *ngIf="loginAuthService.loggedInUser.role != ''" (click)="logout()" class="nav-link" routerLink='login'>Logout</a>
           </li>
+          <!-- <li class="nav-item">
+            <a *ngIf="loginAuthService.loggedInUser.role == 'owner'" (click)="ownerlogout()" class="nav-link" routerLink='login'>Logout</a>
+          </li>
+          <li class="nav-item">
+            <a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" (click)="passengerlogout()" class="nav-link" routerLink='login'>Logout</a>
+          </li> -->
         </ul>
 
       </div>
