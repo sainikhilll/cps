@@ -1,47 +1,65 @@
-<div class="container mt-4">
-    <div class="card text-center">
-        <div class="card-header">
-            <h3><i class="fa fa-calendar" aria-hidden="true"></i> {{trip.date}}</h3>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title"><i class="fa fa-clock-o" aria-hidden="true"></i> {{trip.departureTime}}</h5>
-            <h5 class="card-title"><i class="fa fa-map-marker" aria-hidden="true"></i> {{trip.origin}}</h5>
-            <h6><i class="fa fa-circle" aria-hidden="true"></i></h6>
-            <h6><i class="fa fa-circle" aria-hidden="true"></i></h6>
-            <h6><i class="fa fa-circle" aria-hidden="true"></i></h6>
-            <h5 class="card-title"><i class="fa fa-flag" aria-hidden="true"></i> {{trip.destination}}</h5>
-            <div class="card-footer text">
-                <h5 class="card-title"><i class="fa fa-inr" aria-hidden="true"></i> {{trip.price}}/Seat</h5>
-                <h5 class="card-title"><i class="fa fa-users" aria-hidden="true"></i> {{trip.numberOfSeatsAvailable}}
-                </h5>
-                <h5><i class="fa fa-car" aria-hidden="true"></i> {{trip. carType}}</h5>
-                <h5><i class="fa fa-user-circle" aria-hidden="true"></i> {{trip.owner.name}}</h5>
-            </div>
-        </div>
-        <div class="card-footer text">
-            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Continue
-            </button>
-        </div>
-    </div>
+<h2>Book Ride</h2>
+<div *ngIf="bookingSucess" class="text-center alert alert-success">
+    Congratulations!Booking is  Successful.
 </div>
-<!-- Button trigger modal -->
+<div *ngIf="!bookingSucess" class="row">
+    <div class="col-lg-6">
+        <div class="card  mb-3">
+            <div class="card-body">
+                <div class="mb-5">
+                    <div class="row">
+                        <div class="col-4 ">
+                            <h3 class="card-title text-center">{{trip.origin}}</h3>
+                        </div>
+                        <div class="col-4">
+                            <h3 class="card-title text-center"><i class="fa fa-long-arrow-right fa-lg fa-pull-center"
+                                    aria-hidden="true"></i></h3>
+                        </div>
+                        <div class="col-4">
+                            <h3 class="card-title text-center">{{trip.destination}}</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="text-muted text-center">{{trip.date |date: 'mediumDate'}}
+                                {{trip.departureTime.substring(0,5)}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-5">
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i> {{trip.owner.name}}
+                        </div>
+                        <div class="col-4 text-center">
+                            <i class="fa fa-users fa-lg" aria-hidden="true"></i> {{trip.numberOfSeatsAvailable}}
+                        </div>
+                        <div class="col-4 text-center">
+                            <i class="fa fa-car fa-lg" aria-hidden="true"></i> {{trip. carType}}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer mb-5">
+                    <div class="row">
+                        <div class="col-6">
+                            <h5 class="card-text text-left text-muted">Price for 1 Passenger</h5>
+                        </div>
+                        <div class="col-6">
+                            <h5 class="card-text text-end text-muted"><i class="fa fa-inr" aria-hidden="true"></i>
+                                {{trip.price}}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label class="form-label"># of Passengers</label>
+                        <input type="text" class="form-control" placeholder="# of Pasengers" (keyup)="validate()" [(ngModel)]="bookingTrip.seatsBooked">
+                        <small class="text-danger " *ngIf="!valid">Seat should be above 0 not exceeding {{trip.numberOfSeatsAvailable}}.</small>
+                    </div>
 
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Booking Confirmation</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="card-footer text">
-                    <h5> <i class="fa fa-user" aria-hidden="true"></i>&nbsp;
-                        <input type="text" [(ngModel)]="bookingTrip.seatsBooked">&nbsp;
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="booktrip()">Booking</button>
-                    </h5>
+                    <div class="col-12 mt-2">
+                        <button type="button" class="btn btn-primary" (click)="booktrip()">Book</button>
+                    </div>
                 </div>
             </div>
         </div>

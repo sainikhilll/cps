@@ -35,7 +35,7 @@ public class Passenger {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "mobile_number")
+	@Column(name = "mobile")
 	private String mobileNumber;
 
 	@Column(name = "date_of_birth")

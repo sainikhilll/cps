@@ -9,13 +9,9 @@ import { REST_URL } from './common';
 export class TripBookingService {
 
   constructor(private http:HttpClient) { }
-  public getTrip(){
-    return this.http.get(REST_URL+"trips/1");
+  public getTrip(id:number){
+    return this.http.get(REST_URL+"trips/"+id);
   }
-  // public addTripBooking(tripBooked:any){
-  //   return this.http.post("http://localhost:8080/trip-bookings",tripBooked);
-  //   return this.http.get(REST_URL+"trips/1");
-  // }
   public addTripBooking(tripBooked:any){
     return this.http.post(REST_URL+"trip-bookings",tripBooked);
   }
