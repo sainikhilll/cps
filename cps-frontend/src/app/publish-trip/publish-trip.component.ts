@@ -98,6 +98,7 @@ export class PublishTripComponent implements OnInit {
         //console.log(this.owner);
         this.trip.owner = data;
         console.log(this.trip);
+        console.log(this.trip.owner.ownerPreference.music);
       }
     )
   }
