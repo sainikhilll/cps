@@ -2,22 +2,23 @@
     <form action="#" method="post" novalidate="novalidate" #searchTrip="ngForm">
         <div class="row ">
             <div class="col-lg-3 col-md-3 p-0">
-                <input type="text" name="origin" [(ngModel)]="trip.origin" class="form-control"
+                <input type="text" name="origin" [(ngModel)]="trip.origin" autocomplete="off" class="form-control "
                     placeholder="Leaving From..." (keyup)="sendOrigin()">
-                <div>
+                <div *ngIf="trip.origin !=''"class="drop-origin">
+
                     <table *ngFor="let tem of temp_org" class="table">
                         <tr>
                             <td class="hover" (click)="clickOrigin(tem)">{{tem}}</td>
                         </tr>
                     </table>
                 </div>
-
+            
             </div>
             <div class="col-lg-3 col-md-3 p-0">
-                <input type="text" name="destination" [(ngModel)]="trip.destination" class="form-control "
+                <input type="text" name="destination" autocomplete="off" [(ngModel)]="trip.destination" class="form-control "
                     placeholder="Going to..." (keyup)="sendDestination()">
-                <div *ngFor="let tem of temp_des">
-                    <table class="table">
+                <div *ngIf="trip.destination !=''"class="drop-destination">
+                    <table *ngFor="let tem of temp_des" class="table">
                         <tr>
                             <td class="hover" (click)="clickdestination(tem)">{{tem}}</td>
                         </tr>

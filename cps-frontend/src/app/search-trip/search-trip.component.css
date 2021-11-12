@@ -4,6 +4,7 @@
 }
 .hover{
     cursor: pointer;
+   
 }
 .sort{
     color: rgb(88, 70, 70);
@@ -12,10 +13,13 @@
 
     color: rgb(0, 0, 0);
 }
+/* 
+.drop-origin,.drop-destination{
 
-
-
-
-
+    position: absolute;
+    background-color: white;
+    opacity: 1;
+    z-index: 5;
+} */
 
 
