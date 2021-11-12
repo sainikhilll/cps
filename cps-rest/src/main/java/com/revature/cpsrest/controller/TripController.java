@@ -31,14 +31,7 @@ public class TripController {
 	@PostMapping
 	public List<Trip> searchTrip(@RequestBody Trip trip) {
 		LOGGER.debug("{}",trip);
-		
-//    	Instant startDate = trip.getDate().toInstant();
-//		SimpleDateFormat s = new SimpleDateFormat(trip.getDate());
-//		trip.setDate(startDate);
 		return tripService.passTrip(trip);
-		
-	   
-		
 	}
 	
 	

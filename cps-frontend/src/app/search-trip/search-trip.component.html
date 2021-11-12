@@ -4,29 +4,21 @@
             <div class="col-lg-3 col-md-3 p-0">
                 <input type="text" name="origin" [(ngModel)]="trip.origin" autocomplete="off" class="form-control "
                     placeholder="Leaving From..." (keyup)="sendOrigin()">
-                <div *ngIf="trip.origin !=''"class="drop-origin">
+                <section class="place-list" *ngIf="trip.origin != ''">
+                    <div class="place" (click)="clickOrigin(tem)" *ngFor="let tem of temp_org">{{tem}}</div>
+                </section>
 
-                    <table *ngFor="let tem of temp_org" class="table">
-                        <tr>
-                            <td class="hover" (click)="clickOrigin(tem)">{{tem}}</td>
-                        </tr>
-                    </table>
-                </div>
-            
             </div>
             <div class="col-lg-3 col-md-3 p-0">
-                <input type="text" name="destination" autocomplete="off" [(ngModel)]="trip.destination" class="form-control "
-                    placeholder="Going to..." (keyup)="sendDestination()">
-                <div *ngIf="trip.destination !=''"class="drop-destination">
-                    <table *ngFor="let tem of temp_des" class="table">
-                        <tr>
-                            <td class="hover" (click)="clickdestination(tem)">{{tem}}</td>
-                        </tr>
-                    </table>
-                </div>
+                <input type="text" name="destination" autocomplete="off" [(ngModel)]="trip.destination"
+                    class="form-control " placeholder="Going to..." (keyup)="sendDestination()">
+                <section class="place-list">
+                    <div class="place" (click)="clickdestination(tem)" *ngFor="let tem of temp_des">{{tem}}</div>
+                </section>
+
             </div>
             <div class="col-lg-3 col-md-3  p-0">
-                <input min="2021-11-12" type="date" name="date" [(ngModel)]="trip.date" class="form-control">
+                <input min="2021-12-01" type="date" name="date" [(ngModel)]="trip.date" class="form-control">
             </div>
             <div class="col-lg-2 col-md-3 p-0">
                 <button (click)="searchTrips()" class="btn btn-outline-primary " type="button">Search</button>
