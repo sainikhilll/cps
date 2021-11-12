@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.revature.cpsrest.model.Owner;
@@ -28,11 +29,9 @@ public class OwnerService {
 	}
 
 	public Owner update(Owner owner) {
-
 		return ownerRepository.save(owner);
 	}
-
-	public Owner getOwnerByUserId(int userId) {
+	public Owner getOwnerByUserId (int userId) {
 		return ownerRepository.getOwnerByUserId(userId);
 	}
 

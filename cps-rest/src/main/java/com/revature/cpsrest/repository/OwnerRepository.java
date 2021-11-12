@@ -10,6 +10,6 @@ import com.revature.cpsrest.model.Owner;
 @Repository
 public interface OwnerRepository extends JpaRepository<Owner, Integer> {
 	@Query("Select o from Owner o Where o.user.id = :userId")
-	Owner getOwnerByUserId(@Param("userId") int userId);
+	Owner getOwnerByUserId (@Param("userId") int userId);
 
 }
