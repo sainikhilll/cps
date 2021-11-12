@@ -1,94 +1,117 @@
-<br>
-<h2 class="text-center">Register As a Ride Owner</h2>
-<br>
-<div class="container-sm"> 
-<form class="row g-3" [formGroup]="ownersignup">
-  <div class="alert alert-success" *ngIf="success"> Signup is Successful. Try Login.</div>
-    <div class="col-md-12">
-        <label for="validationCustom" class="form-label">* Name</label>
-        <input type="text" formControlName="name"
-        class="form-control" name="validationCustom" [(ngModel)]="owner.name">
-        <small *ngIf="name.touched && name.invalid" class="text-danger"></small>
-    </div>
-    <div class="col-12">
-      <label for="inputAddress" class="form-label">* Address</label>
-      <input type="text" formControlName="address"
-      class="form-control" id="inputAddress" placeholder="Provide door number,city,district,state,and zipcode" name="address" [(ngModel)]="owner.address" >
-      <small *ngIf="address.touched && address.invalid" class="text-danger"></small>
-    </div>
-    <div class="col-md-12">
-        <label for="inputZip" class="form-label">* Mobile Number</label>
-        <input type="text" formControlName="mobile"
-        class="form-control" id="inputZip" name="mobilenumber" [(ngModel)]="owner.mobile" placeholder="0">
-        <small *ngIf="mobile.touched && mobile.invalid" class="text-danger"></small>
-      </div> 
-      <div class="col-12">
-        <label for="inputAddress" class="form-label">* License Number</label>
-        <input type="text" formControlName="licenceNumber"
-        class="form-control" id="inputAddress" placeholder="Provide License id" name="licenseNumber" [(ngModel)]="owner.licenceNumber" >
-        <small *ngIf="licenceNumber.touched && licenceNumber.invalid" class="text-danger"></small>
-      </div>
-      <div class="col-12">
-        <label for="inputAddress" class="form-label">* License Url</label>
-        <input type="text" formControlName="licenceUrl"
-        class="form-control" id="inputAddress" placeholder="Please Provide Url Link of your License saved in drive or any other repository" name="licenceUrl" [(ngModel)]="owner.licenceUrl" >
-        <small *ngIf="licenceUrl.touched && licenceUrl.invalid" class="text-danger"></small>
-      </div>
-      <div class="col-12">
-        <label for="inputAddress" class="form-label">* Aadhar Number</label>
-        <input type="text" formControlName="aadharNumber"
-        class="form-control" id="inputAddress" placeholder="16 digit number" name="aadharNumber" [(ngModel)]="owner.aadharNumber">
-        <small *ngIf="aadharNumber.touched && aadharNumber.invalid" class="text-danger"></small>
-      </div>
-      <div class="col-12">
-        <label for="inputAddress" class="form-label">* Aadhar Url</label>
-        <input type="text" formControlName="aadharUrl"
-        class="form-control" id="inputAddress" placeholder="Please Provide Url Link of your Aadhar saved in drive or any Other repository"name="aahdarUrl" [(ngModel)]="owner.aadharUrl" >
-        <small *ngIf="aadharUrl.touched && aadharUrl.invalid" class="text-danger"></small>
-      </div>
-      <small class="text-danger" >* This field is Mandatory </small>
-    <div class="col-12">
-      <br>
-      <button type="button" [disabled]="!ownersignup.valid"
-      (click)="postRegistration()"class="btn btn-primary">Sign up</button>
-    </div>
-  </form>
+<h2>Owner Signup</h2>
+<div *ngIf="alert"class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong>Congratulations Signup Successfully done. try to login.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 
+<div class="card" *ngIf="!alert">
+  <div class="card-body">
 
+    <form class="row g-3" [formGroup]="ownersignup">
+      <div class="col-12">
+        <label for="inputAddress2" class="form-label">Name</label>
+        <div class="input-group">
+          <span class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-user" aria-hidden="true"></i></span>
+          <input type="text" class="form-control" id="inputAddress2" placeholder="Name" [(ngModel)]="owner.name"
+            name="name" formControlName="name" autocomplete="off">
+        </div>
+        <small *ngIf="f.name.touched && f.name.invalid" class="text-danger error">
+        <small *ngIf="f.name.errors.required" class="text-danger">Name is required.
+        </small>
+        <small *ngIf="f.name.errors.pattern" class="text-danger">Only characters are allowed.
+        </small>
+      </small>
 
+      </div>
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <div class="input-group">
+          <span class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-envelope"
+              aria-hidden="true"></i></span>
+          <input type="email" class="form-control" id="inputEmail4" placeholder="Email Id"
+            [(ngModel)]="owner.user.email" name="email" formControlName="email" autocomplete="off">
+        </div>
+        <small *ngIf="(f.name.touched || f.name.dirty) && f.email.invalid"class="text-danger error">
+        <small *ngIf="f.email.errors.required" class="text-danger">Email is required.
+        </small>
+        <small *ngIf="f.email.errors.email" class="text-danger">Give in proper format like abc@gmail.com.
+        </small>
+      </small>
+      </div>
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Password</label>
+        <div class="input-group">
+          <span class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-key" aria-hidden="true"></i></span>
+          <input type="password" class="form-control" id="inputPassword4" placeholder="Password"
+            [(ngModel)]="owner.user.password" name="password" formControlName="password" autocomplete="off">
+        </div>
+        <small *ngIf="(f.password.touched || f.password.dirty) && f.password.invalid" class="text-danger error">
+          <small *ngIf="f.password.errors.required"  class="text-danger">Password is required.
+          </small>
+          
+        <small *ngIf="f.password.errors.pattern"  class="text-danger">Password must contain one lower case character, one upper case character, one special symbol and minimum length is 8 characters.
+  
+        </small>
+      </small>
+      </div>
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">Address</label>
+        <div class="input-group">
+          <span class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-map-marker"
+              aria-hidden="true"></i></span>
+          <input type="text" class="form-control" id="inputAddress" placeholder="Full Address"
+            [(ngModel)]="owner.address" name="address" formControlName="address" autocomplete="off">
+        </div>
+        <small *ngIf="(f.address.touched || f.address.dirty) && f.address.invalid" class="text-danger error">
+          <small *ngIf="f.address.errors.required" class="text-danger">Address is required.
+          </small>
+        </small>
+      </div>
+      <div class="col-12">
+        <label for="mobile" class="form-label">Mobile</label>
+        <div class="input-group">
+          <span class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-mobile" aria-hidden="true"></i></span>
+          <input type="text" class="form-control" id="mobile" placeholder="Mobile Number" [(ngModel)]="owner.mobile"
+            name="mobile" formControlName="mobile" autocomplete="off" autofill="off">
+        </div>
+        <small *ngIf="(f.mobile.touched || f.mobile.dirty) && f.mobile.invalid" class="text-danger error">
+          <small *ngIf="f.mobile.errors.required" class="text-danger">Mobile number is required.</small>
+        <small *ngIf="f.mobile.errors.maxLength" class="text-danger">Only Numbers are allowed and size must be 10.
+        </small>
+      </small>
+      </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="col-md-6">
-  <label for="validationCustom01" class="form-label">Last Name</label>
-  <input type="text" class="form-control" id="validationCustom01">
-  <div class="valid-feedback">
-      Looks good!
-    </div>
-</div>
-<div class="col-md-6">
-  <label for="validationCustomUsername" class="form-label">Email</label>
-  <div class="input-group has-validation">
-    <span class="input-group-text" id="inputGroupPrepend">@</span>
-    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-    <div class="invalid-feedback">
-      Please choose a email.
-    </div>
+      <div class="col-md-6">
+        <label for="aadhar" class="form-label">Aadhar</label>
+        <div class="input-group">
+          <span class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-id-card-o"
+              aria-hidden="true"></i></span>
+          <input type="text" class="form-control" id="aadhar" placeholder="Aadhar Number"
+            [(ngModel)]="owner.aadharNumber" name="aadharNumber" formControlName="aadharNumber" autocomplete="off">
+        </div>
+        <small *ngIf="(f.aadharNumber.touched || f.aadharNumber.dirty) && f.aadharNumber.invalid" class="text-danger error">
+          <small *ngIf="f.aadharNumber.errors.required" class="text-danger">Aadhar number is required.</small>
+        <small *ngIf="f.aadharNumber.errors.pattern" class="text-danger">Aadhar number can be entered like this formats: 123456789012.
+        </small>
+      </small>
+      </div>
+      <div class="col-md-6">
+        <label for="license" class="form-label">License</label>
+        <div class="input-group">
+          <span class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-id-card" aria-hidden="true"></i></span>
+          <input type="text" class="form-control" id="icense" placeholder="License Number"
+            [(ngModel)]="owner.licenceNumber" name="licenceNumber" formControlName="licenceNumber" autocomplete="off">
+        </div>
+        <small *ngIf="(f.licenceNumber.touched || f.licenceNumber.dirty) && f.licenceNumber.invalid" class="text-danger error">
+          <small *ngIf="f.licenceNumber.errors.required" class="text-danger">Licence Number is required.
+          </small>
+        <small *ngIf="f.licenceNumber.errors.maxlength" class="text-danger">
+        </small>
+      </small>
+      </div>
+      <div class="col-12">
+        <button type="submit" [disabled]="f.password.invalid" class="btn btn-primary" (click)="signup()" >Signup</button>
+      </div>
+    </form>
   </div>
 </div>
-<div class="col-md-6">
-<label for="inputPassword4" class="form-label">Password</label>
-<input type="password" class="form-control" id="inputPassword4">
-</div> -->

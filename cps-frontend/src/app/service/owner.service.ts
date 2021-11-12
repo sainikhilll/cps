@@ -8,6 +8,7 @@ import { Observable, observable } from 'rxjs';
 import { Owner } from '../model/owner';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -41,7 +42,7 @@ export class OwnerService {
   }
 
   getOwners(): Observable<any> {
-    return this._http.get("http://localhost:8080/owners");
+    return this._http.get(REST_URL + "owners");
 
   }
 }

@@ -1,6 +1,7 @@
 package com.revature.cpsrest.controller;
 
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
@@ -18,7 +19,7 @@ import com.revature.cpsrest.service.OwnerService;
 @RequestMapping("/owners")
 public class OwnerController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(OwnerController.class);
-	
+
 	@Autowired
 	private OwnerService ownerService;
 
@@ -42,6 +43,14 @@ public class OwnerController {
 	public List<Owner> getDepartmentList() {
 		LOGGER.debug("{}", ownerService.list());
 		return ownerService.list();
+	}
+
+	@PostMapping
+	public void create(@RequestBody Owner owner) {
+
+		LOGGER.debug("{}", owner);
+
+		ownerService.save(owner);
 
 	}
 

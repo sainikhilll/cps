@@ -5,5 +5,5 @@ export interface OwnerPreferences{
     music:string,
     smoking:string,
     petsAllowed:string,
-
+    owner?:Owner
 }

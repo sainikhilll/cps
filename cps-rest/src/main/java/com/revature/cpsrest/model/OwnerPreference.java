@@ -36,7 +36,7 @@ public class OwnerPreference {
 
 	@Column(name = "pets_allowed")
 	private String petsAllowed;
-		 
+
 }
 
 

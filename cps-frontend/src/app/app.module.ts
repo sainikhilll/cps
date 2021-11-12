@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RideOwnerSignupComponent } from './ride-owner-signup/ride-owner-signup.component';
@@ -15,9 +16,10 @@ import { ApproveRideOwnerComponent } from './approve-ride-owner/approve-ride-own
 import { ViewRideOwnersComponent } from './view-ride-owners/view-ride-owners.component';
 import { ViewPassengersComponent } from './view-passengers/view-passengers.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import {  ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule} from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -35,14 +37,15 @@ import { FormsModule } from '@angular/forms';
     ApproveRideOwnerComponent,
     ViewRideOwnersComponent,
     ViewPassengersComponent,
-    NavigationComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    FormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
