@@ -77,6 +77,7 @@ export class SearchTripComponent implements OnInit {
       data => {
         this.city = data.data;
         console.log(this.city);
+        
 
 
        
@@ -159,6 +160,9 @@ export class SearchTripComponent implements OnInit {
         this.trips = data;
         if(this.trips.length==0){
           this.display=true;
+        }
+        else{
+          this.display=false;
         }
         this.flash = true;
         console.log(this.trips);
