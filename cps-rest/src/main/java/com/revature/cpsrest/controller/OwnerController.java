@@ -27,9 +27,9 @@ public class OwnerController {
 		return service.update(owner);
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/user/{id}")
 	public Owner getOwner(@PathVariable int id) {
-		return service.getById(id);
+		return service.getOwnerByUserId(id);
 	}
 
 }

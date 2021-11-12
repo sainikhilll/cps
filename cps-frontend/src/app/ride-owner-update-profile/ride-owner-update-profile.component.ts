@@ -10,8 +10,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./ride-owner-update-profile.component.css']
 })
 export class RideOwnerUpdateProfileComponent implements OnInit {
+  alert: boolean = false
   register: Owner = {
-    id: 1,
+    id: 0,
     name: "",
     address: "",
     mobile: "",
@@ -35,22 +36,22 @@ export class RideOwnerUpdateProfileComponent implements OnInit {
   }
   updateProfile = new FormGroup(
     {
-      name: new FormControl('', [Validators.required, Validators.pattern("[A-Za-z ]{1,32}")]),
-      address: new FormControl('', [Validators.required, Validators.pattern("")]),
-      mobile: new FormControl('', [Validators.required, Validators.pattern(""), Validators.maxLength(10)]),
-      licenceNumber: new FormControl('', [Validators.required, Validators.pattern("")]),
-      licenceUrl: new FormControl('', [Validators.required, Validators.pattern("")]),
-      aadharNumber: new FormControl('', [Validators.required, Validators.pattern("")]),
-      aadharUrl: new FormControl('', [Validators.required, Validators.pattern("")])
+      name: new FormControl('', [Validators.required, Validators.pattern("[A-Za-z ]{1,32}"),Validators.maxLength(45)]),
+      address: new FormControl('', [Validators.required, Validators.pattern(""),Validators.maxLength(1000)]),
+      mobile: new FormControl('', [Validators.required, Validators.minLength(10),Validators.maxLength(10)]),
+      email: new FormControl('', [Validators.required, Validators.pattern("")]),
+      licenceNumber: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      aadharNumber: new FormControl('', [Validators.required, Validators.minLength(12),Validators.maxLength(12)])
+      // aadharUrl: new FormControl('', [Validators.required, Validators.pattern("")])
     }
   )
   get name() { return this.updateProfile.get('name') }
   get address() { return this.updateProfile.get('address') }
   get mobile() { return this.updateProfile.get('mobile') }
+  get email() { return this.updateProfile.get('email') }
   get licenceNumber() { return this.updateProfile.get('licenceNumber') }
-  get licenceUrl() { return this.updateProfile.get('licenceUrl') }
   get aadharNumber() { return this.updateProfile.get('aadharNumber') }
-  get aadharUrl() { return this.updateProfile.get('aadharUrl') }
+  // get aadharUrl() { return this.updateProfile.get('aadharUrl') }
   constructor(private ownerService: OwnerService) { }
 
   ngOnInit(): void {
@@ -65,6 +66,7 @@ export class RideOwnerUpdateProfileComponent implements OnInit {
     this.ownerService.registerOwner(this.register).subscribe(
       (resp) => {
         console.log(resp);
+        this.alert = true
       },
       (err) => {
         console.log(err);
