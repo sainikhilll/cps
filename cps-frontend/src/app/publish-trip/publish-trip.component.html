@@ -26,7 +26,6 @@
                     <div class="place" (click)="clickDestination(item)" *ngFor="let item of destination_temp">{{item}}</div>
                 </section>
             </div>
-
             <div class="form-group col-lg-6 col-md-12 mb-2">
                 <label for="date" class="form-label">Date</label>
                 <input type="date" name="datemin" min="2021-12-01" #date="ngModel" [(ngModel)]="trip.date" id="date" class="form-control" required>
@@ -69,7 +68,7 @@
             </div>
             <div class="form-group col-lg-3 col-md-6 mb-2">
                 <label for="carType" class="form-label">Car Type</label>
-                <select class="form-select">
+                <select class="form-select" [(ngModel)]="trip.carType" name="carType">
                     <option value="Hatchback">Hatchback</option>
                     <option value="Sedan">Sedan</option>
                     <option value="Compact SUV">Compact SUV</option>
