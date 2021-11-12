@@ -9,6 +9,7 @@ import { TripBookingService } from '../service/trip-booking.service';
 })
 export class BookRideComponent implements OnInit {
 
+
   trip: any;
   // bookingTrip: TripBooking = {
   //   id: 0,
@@ -16,50 +17,59 @@ export class BookRideComponent implements OnInit {
   //   trip: { id: 3 },
   //   passenger: { id: 1 }
   // };
-  bookingTrip:TripBooking={
+  bookingTrip: TripBooking = {
     id: 0,
     seatsBooked: 0,
     trip: {
-      id: 1,
+      id: 10,
       origin: "",
       destination: "",
       departureTime: "",
       price: 0,
-      date: new Date(2021,10,1),
-    owner: {
-      name:"",
-      address:"",
-      mobile:"",
-      licenceNumber:"",
-      licenceUrl:"",
-      aadharNumber:"",
-      aadharUrl:"",
-      user:{ id: 0,
-        email: "",
-        password:"",
-        role:""	},
-      ownerPreference:{
-        id:1,
-        music:"",
-        smoking:"",
-        petsAllowed:""
+      date: new Date(2021, 10, 1),
+      owner: {
+        name: "",
+        address: "",
+        mobile: "",
+        licenceNumber: "",
+        licenceUrl: "",
+        aadharNumber: "",
+        aadharUrl: "",
+        user: {
+          id: 0,
+          email: "",
+          password: "",
+          role: ""
+        },
+        ownerPreference: {
+          id: 1,
+          music: "",
+          smoking: "",
+          petsAllowed: ""
+        },
+        status: ""
       },
-      status:""
-    },
-      numberOfPassengers: 0,    
+      numberOfPassengers: 0,
       numberOfSeatsAvailable: 0,
       carType: ""
     },
-    passenger:{  id: 1,
-    name: "",
-    mobileNumber: "",
-    dateOfBirth:new Date(2021,10,1) ,
-    user:{ id: 0,
-      email: "",
-      password:"",
-      role:""	}
-    }}
-
+    passenger: {
+      id: 1,
+      name: "",
+      mobileNumber: "",
+      dateOfBirth: new Date(2021, 10, 1),
+      user: {
+        id: 0,
+        email: "",
+        password: "",
+        role: ""
+      }
+    }
+  }
+  bookingSucess: boolean = false;
+  valid: boolean = true;
+  // let id : any = this.route.snapshot.paramMap.get('id');
+  //   this.addRequest.trip.id = id;
 
   constructor(private service: TripBookingService) { }
 
@@ -69,8 +79,24 @@ export class BookRideComponent implements OnInit {
   }
   booktrip(): void {
     console.log("Clicked");
-    this.service.addTripBooking(this.bookingTrip).subscribe();
-   
+    if(this.valid){
+    this.service.addTripBooking(this.bookingTrip).subscribe(
+      (data) => {
+        this.ngOnInit();
+        this.bookingSucess = true;
+      }
+    );
+    }
+  }
+
+  validate(): void {
+    if (this.bookingTrip.seatsBooked >0 && this.bookingTrip.seatsBooked <= this.trip.numberOfSeatsAvailable) {
+      this.valid = true;
+
+    } else {
+      this.valid = false;
+    }
+
   }
 
 }
