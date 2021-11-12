@@ -19,7 +19,7 @@ public class AdminController {
 @Autowired
 private AdminService adminservice;
 @GetMapping
-//@CrossOrigin(origins = "http://localhost:4200")
+
 public List<Owner> ownerdetails(){
 
 	return adminservice.list();

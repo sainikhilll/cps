@@ -1,53 +1,64 @@
-
-<div class="table-responsive">
-    <table class="table table-hover table-dark">
-        
-        <thead>
-            
-            <tr>
+<!-- <div class="row ">
+    <div class="col-md-4 mb-3" *ngFor="let owner of owners">
+        <div class="card">
+            <div class="card-body ">
                 
-                <th scope="col">OwnerId</th>
-                <th scope="col">Owner Name</th>
-                <th scope="col">Address</th>
-                <th scope="col">Mobile</th>
-                <th scope="col">Licence_Number</th>
-                <th scope="col">Licence_URL</th>
-                <th scope="col">Aadhar_Number</th>
-                <th scope="col">Aadhar_URL</th>
-                <th scope="col"> Status</th>
-                <th scope="col" style="text-align:center">*-----Action-----*</th>
-                
-            </tr>
+                <div class="d-flex justify-content-center">
+                     <h4 class="card-title"><i class="fa fa-user" aria-hidden="true"></i> {{owner.name}} </h4>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <h6><i class="fa fa-mobile" aria-hidden="true"></i> {{owner.mobile}}</h6>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <h6><i class="fa fa-envelope-o" aria-hidden="true"></i> {{owner.user.email}}</h6>
+                </div>
 
+                <div class="d-flex justify-content-start">
+                    <h6>{{owner.address}}</h6>
+                </div>
 
-        </thead>
-        <tbody>
-            
-           
-            <tr *ngFor="let o of owners">
+                <div class="d-flex justify-content-between my-2">
+                    <div><i class="fa fa-id-card-o" aria-hidden="true"></i> License {{owner.licenceNumber}}</div>
+                    <div><i class="fa fa-id-card" aria-hidden="true"></i> Aadhar {{owner.aadharNumber}}</div>
+                </div>
+                <div class="d-flex justify-content-around">
+                    <button (click)="status(owner.id)" type="button"
+                        class="btn btn-success  flex-row-reverse ">Approve</button>
+                    <button (click)="reject(owner.id)" type="button" class="btn btn-danger">Reject</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
 
-                <th scope="row">{{o.id}}</th>
-                <td>{{o.name}}</td>
-                <td>{{o.address}}</td>
-                <td>{{o.mobile}}</td>
-                <td>{{o.licenceNumber}}</td>
-                <td>{{o.licenceUrl}}</td>
-                <td>{{o.aadharNumber}}</td>
-                <td>{{o.aadharUrl}}</td>
-                <td>{{o.status}}</td>
-                
-               
-
-                <td><button (click)="status(o.id)"  type="button" class="btn btn-success" style='margin-right:16px'>Approve</button>
-                <button  (click)="reject(o.id)" type="button" class="btn btn-danger" style='margin-right:16px'>Reject</button></td>
-                   
-            </tr>
-           
-        </tbody>
-
-    </table>
-
-
-
-
-</div>
+<div class="container">
+    <div class="row" >
+        <div class="col-md-6 col-lg-6 col-xl-4 mb-2 card-box" *ngFor="let owner of owners">
+            <div class="card">
+                <div class="p-2">
+                    <div class="d-flex flex-row">
+                        <div class=""><img src="https://www.clipartmax.com/png/middle/434-4349876_profile-icon-vector-png.png" alt="user"
+                                class="rounded-circle" width="100" /></div>
+                        <div class=" ms-3 pl-4">
+                            <h5>{{owner.name}}</h5>
+                            <h6>{{owner.user.email}}</h6>
+                            <h6>{{owner.mobile}}</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="address">{{owner.address}}</div>
+                    <div class="d-flex documents my-2">
+                        <div><i class="fa fa-id-card-o" aria-hidden="true"></i> License: {{owner.licenceNumber}}</div>
+                        <div><i class="fa fa-id-card" aria-hidden="true"></i> Aadhar: {{owner.aadharNumber}}</div>
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <button (click)="status(owner.id)" type="button"
+                            class="btn btn-success  flex-row-reverse ">Approve</button>
+                        <button (click)="reject(owner.id)" type="button" class="btn btn-danger">Reject</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
