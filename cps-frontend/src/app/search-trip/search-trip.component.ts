@@ -1,4 +1,4 @@
-import { DatePipe } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Trip } from '../model/trip';
@@ -60,9 +60,15 @@ export class SearchTripComponent implements OnInit {
 
   display:boolean = false;
 
+  
 
-
+  // minDate = new Date();
+  // this.minDate = this.datePipe.transform(this.minDate, 'yyyy-MM-dd');
+ 
   constructor(private _service: TripService, private _router:Router) {
+
+    
+
 
   }
 
@@ -79,6 +85,8 @@ export class SearchTripComponent implements OnInit {
 
 
   }
+
+ 
 
   book(id:number){
       this._router.navigate(['book-ride', id]);
