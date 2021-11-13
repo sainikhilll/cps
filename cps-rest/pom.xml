@@ -55,6 +55,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<finalName>cps-rest</finalName>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
