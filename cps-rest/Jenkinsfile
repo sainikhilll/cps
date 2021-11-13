@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+         stages {
+           stage('Compile and Clean') {
+                steps {
+                        sh "docker image ls" 
+                        sh "df -h"
+                       sh "mvn -B -f ./cps-rest/pom.xml clean compile"
+                       }
+                }
+
+
+            stage('deploy') {
+                steps {
+                 sh "mvn -B -f ./cps-rest/pom.xml package"
+                 }
+                  }
+
+
+        stage('Build Docker image'){
+            steps {
+
+                sh 'docker build -t  revature-cps-rest ./cps-rest'
+
+            }
+        }
+
+
+        stage('Backend Deploy'){
+            steps {
+                sh 'docker run -d -p  2025:2025 revature-cps-rest'
+
+            }
+        }
+    }
+}
