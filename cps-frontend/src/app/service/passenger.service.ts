@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Passenger } from '../model/passenger';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { REST_URL } from './common';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class PassengerService {
     ) { }
   signup(passenger:Passenger) :  Observable <any> {
     const headers = { 'content-type': 'application/json'};
-    return this.httpClient.post<any>("http://localhost:8080/passengers", JSON.stringify(passenger), {'headers': headers});
+    return this.httpClient.post<any>(REST_URL+"passengers", JSON.stringify(passenger), {'headers': headers});
 
 
   }
