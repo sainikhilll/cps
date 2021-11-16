@@ -76,7 +76,7 @@
         </div>
         <small *ngIf="(f.mobile.touched || f.mobile.dirty) && f.mobile.invalid" class="text-danger error">
           <small *ngIf="f.mobile.errors.required" class="text-danger">Mobile number is required.</small>
-        <small *ngIf="f.mobile.errors.maxLength" class="text-danger">Only Numbers are allowed and size must be 10.
+        <small *ngIf="f.mobile.errors.pattern" class="text-danger">Only Numbers are allowed and size must be 10.
         </small>
       </small>
       </div>
