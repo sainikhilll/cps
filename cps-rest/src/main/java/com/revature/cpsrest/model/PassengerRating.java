@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -14,29 +16,27 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "cps_user")
+@Table(name = "passenger_rating")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
-public class User {
-	
+public class PassengerRating {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "email")
-	private String email;
+	@Column(name = "rating")
+	private int rating;
 	
-	@Column(name = "password")
-	private String password;
+	@ManyToOne
+	@JoinColumn(name= "trip_id")
+	private Trip trip;
 	
-	@Column(name = "role")
-	private String role;
-	
-	@Column(name = "blacklisted")
-	private Character blacklisted;
-
+	@ManyToOne
+	@JoinColumn(name= "passenger_id")
+	private Passenger passenger;
 }

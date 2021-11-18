@@ -27,15 +27,18 @@ public class TripBooking {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "seats_booked")
 	private int seatsBooked;
-	
+
 	@ManyToOne
-	@JoinColumn(name= "trip_id")
+	@JoinColumn(name = "trip_id")
 	private Trip trip;
-	
+
 	@ManyToOne
-	@JoinColumn(name= "passenger_id")
+	@JoinColumn(name = "passenger_id")
 	private Passenger passenger;
+
+	@Column(name = "status")
+	private String status;
 }

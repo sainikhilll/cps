@@ -19,6 +19,15 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule} from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { OwnerNotificationComponent } from './owner-notification/owner-notification.component';
+import { PassengerRatingComponent } from './passenger-rating/passenger-rating.component';
+import { EditCancelTripOwnerComponent } from './edit-cancel-trip-owner/edit-cancel-trip-owner.component';
+import { OwnerViewRatingsComponent } from './owner-view-ratings/owner-view-ratings.component';
+import { PassengerNotificationsComponent } from './passenger-notifications/passenger-notifications.component';
+import { PassengerCancelTripComponent } from './passenger-cancel-trip/passenger-cancel-trip.component';
+import { PassengerReviewRateComponent } from './passenger-review-rate/passenger-review-rate.component';
+import { AdminViewRidesComponent } from './admin-view-rides/admin-view-rides.component';
+import { AdminCancelRideComponent } from './admin-cancel-ride/admin-cancel-ride.component';
 
 
 
@@ -37,7 +46,16 @@ import { FormsModule } from '@angular/forms';
     ApproveRideOwnerComponent,
     ViewRideOwnersComponent,
     ViewPassengersComponent,
-    NavigationComponent
+    NavigationComponent,
+    OwnerNotificationComponent,
+    PassengerRatingComponent,
+    EditCancelTripOwnerComponent,
+    OwnerViewRatingsComponent,
+    PassengerNotificationsComponent,
+    PassengerCancelTripComponent,
+    PassengerReviewRateComponent,
+    AdminViewRidesComponent,
+    AdminCancelRideComponent
   ],
   imports: [
     BrowserModule,

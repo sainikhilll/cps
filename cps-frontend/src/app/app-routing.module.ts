@@ -1,10 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminCancelRideComponent } from './admin-cancel-ride/admin-cancel-ride.component';
+import { AdminViewRidesComponent } from './admin-view-rides/admin-view-rides.component';
 import { ApproveRideOwnerComponent } from './approve-ride-owner/approve-ride-owner.component';
 import { BookRideComponent } from './book-ride/book-ride.component';
+import { EditCancelTripOwnerComponent } from './edit-cancel-trip-owner/edit-cancel-trip-owner.component';
 import { LoginComponent } from './login/login.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { OwnerNotificationComponent } from './owner-notification/owner-notification.component';
+import { OwnerViewRatingsComponent } from './owner-view-ratings/owner-view-ratings.component';
+import { PassengerCancelTripComponent } from './passenger-cancel-trip/passenger-cancel-trip.component';
 import { PassengerChangePasswordComponent } from './passenger-change-password/passenger-change-password.component';
+import { PassengerNotificationsComponent } from './passenger-notifications/passenger-notifications.component';
+import { PassengerRatingComponent } from './passenger-rating/passenger-rating.component';
+import { PassengerReviewRateComponent } from './passenger-review-rate/passenger-review-rate.component';
 import { PassengerSignupComponent } from './passenger-signup/passenger-signup.component';
 import { PublishTripComponent } from './publish-trip/publish-trip.component';
 import { RideOwnerPreferencesComponent } from './ride-owner-preferences/ride-owner-preferences.component';
@@ -28,6 +37,15 @@ const routes: Routes = [
   {path:'approve-ride-owner', component: ApproveRideOwnerComponent, canActivate: [AuthGuardGuard]},
   {path:'view-ride-owners', component:ViewRideOwnersComponent, canActivate: [AuthGuardGuard]},
   {path:'view-passengers', component: ViewPassengersComponent, canActivate: [AuthGuardGuard]},
+  {path:'owner-notifications', component:OwnerNotificationComponent},
+  {path:'passenger-notifications', component:PassengerNotificationsComponent},
+  {path:'admin-cancel-ride', component:AdminCancelRideComponent},
+  {path:'admin-view-rides', component:AdminViewRidesComponent},
+  {path:'edit-cancel-trip-owner', component:EditCancelTripOwnerComponent},
+  {path:'owner-view-ratings',component:OwnerViewRatingsComponent},
+  {path:'passenger-cancel-trip',component:PassengerCancelTripComponent},
+  {path:'passenger-rating',component:PassengerRatingComponent},
+  {path:'passenger-review-rating',component:PassengerReviewRateComponent},
   {path:'', redirectTo: "/login", pathMatch: 'full'}
 
 ];

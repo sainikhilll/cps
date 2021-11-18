@@ -59,5 +59,8 @@ public class Trip {
    @JoinColumn(name="owner_id")
    private Owner owner;
    
+   @Column(name = "status")
+   private String status;
+   
   
 }

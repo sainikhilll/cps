@@ -56,6 +56,33 @@
           <li class="nav-item">
             <a *ngIf="loginAuthService.loggedInUser.role != ''" (click)="logout()" class="nav-link" routerLink='login'>Logout</a>
           </li>
+          <li class="nav-item">
+            <a  class="nav-link" routerLink='owner-notifications'>Owner Notifications</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link" routerLink='passenger-notifications'>Passenger Notifications</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link" routerLink='admin-cancel-ride'>Admin Cancel Rides</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link" routerLink='admin-view-rides'>Admin view rides</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link" routerLink='edit-cancel-trip-owner'>Edit/Cancel Trip</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link" routerLink='owner-view-ratings'>Owner Ratings</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link" routerLink='passenger-cancel-trip'>Cancel Trip</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link" routerLink='passenger-rating'>Passenger Rating</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link" routerLink='passenger-review-rate'>Reviews&Ratings</a>
+          </li>
           <!-- <li class="nav-item">
             <a *ngIf="loginAuthService.loggedInUser.role == 'owner'" (click)="ownerlogout()" class="nav-link" routerLink='login'>Logout</a>
           </li>

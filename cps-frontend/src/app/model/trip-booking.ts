@@ -5,5 +5,6 @@ export interface TripBooking{
     id:number,
     seatsBooked:number,
     trip:Trip,
-    passenger:Passenger
+    passenger:Passenger,
+    status:string
 }
