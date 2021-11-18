@@ -27,28 +27,19 @@ export class PassengerChangePasswordComponent implements OnInit {
     ],
   }
 
-  
-
-
-
   user : User = {
     id : 0,
     email : "",
     password : "",
-    role:""
-    
+    role:"",
+    blacklisted: ""
   }
   success: boolean = false;
   error !: HttpErrorResponse;
   fail : boolean = false;
 
-
-
-
   np:string="";
   constructor(private userService:UserService) { }
-
-
   updatepassword = new FormGroup(
     {
       password: new FormControl('', [Validators.required ]),
@@ -56,20 +47,11 @@ export class PassengerChangePasswordComponent implements OnInit {
         Validators.maxLength(30)]),
       np2: new FormControl('', [Validators.required,Validators.minLength(6),
         Validators.maxLength(30)]),
-
-
-    }
-
-
-    )
+    })
    
 get password(){return this.updatepassword.get('password')}
 get np1(){return this.updatepassword.get('np1')}
 get np2(){return this.updatepassword.get('np2')}
-
-
-
-
 
   ngOnInit(): void {
   }
@@ -93,9 +75,7 @@ get np2(){return this.updatepassword.get('np2')}
 
     ) 
   }
-   
-  
-  }
+}
 
 
   

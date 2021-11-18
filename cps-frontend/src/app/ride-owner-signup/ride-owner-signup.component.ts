@@ -28,7 +28,8 @@ export class RideOwnerSignupComponent implements OnInit {
       id: 0,
       email: "",
       password: "",
-      role: "owner"
+      role: "owner",
+      blacklisted: ""
     },
     ownerPreference: {
       id: 0,
@@ -36,7 +37,6 @@ export class RideOwnerSignupComponent implements OnInit {
       smoking: "N",
       petsAllowed: "N"
     }
-
   }
 
   ownersignup = new FormGroup(

@@ -14,7 +14,8 @@ export class LoginAuthService {
     id : 0,
     email : "",
     password : "",
-    role : ""
+    role : "",
+    blacklisted: ""
   };
 
   constructor(private authService : AuthService) { }
@@ -32,7 +33,8 @@ export class LoginAuthService {
       id : 0,
       email : "",
       password : "",
-      role : ""
+      role : "",
+      blacklisted: ""
     };
   }
 

@@ -13,44 +13,39 @@ import { PassengerService } from '../service/passenger.service';
 })
 export class PassengerSignupComponent implements OnInit {
   alert: boolean = false
-
- 
-
- passenger :Passenger={
-  id: 0,
-  name: "",
-  mobileNumber: "",
-  dateOfBirth: "" ,
-  user:{id: 0,
-    email: "",
-    password:"",
-    role:""	
-
+  passenger: Passenger = {
+    id: 0,
+    name: "",
+    mobileNumber: "",
+    dateOfBirth: "",
+    user: {
+      id: 0,
+      email: "",
+      password: "",
+      role: "",
+      blacklisted: ""
+    }
   }
-}
-
-  
 
   addRestto: any;
 
-  constructor(private passengerService: PassengerService, private _router:Router) {}
+  constructor(private passengerService: PassengerService, private _router: Router) { }
 
   ngOnInit(): void {
 
   }
-    signup():void {
-   
-    let observable : Observable<any> = this.passengerService.signup(this.passenger);
-    observable.subscribe(data => {console.log(data);
-     /*  this._router.navigate(['login']); */
-      this.alert = true
-      
+  signup(): void {
 
+    let observable: Observable<any> = this.passengerService.signup(this.passenger);
+    observable.subscribe(data => {
+      console.log(data);
+      /*  this._router.navigate(['login']); */
+      this.alert = true
     })
-    
-}
-     
-     
-        
+
   }
+
+
+
+}
 

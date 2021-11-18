@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
     id: 0,
     email: "",
     password: "",
-    role: ""
+    role: "",
+    blacklisted: ""
   }
 
   
