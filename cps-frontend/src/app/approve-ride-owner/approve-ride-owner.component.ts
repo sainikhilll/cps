@@ -23,7 +23,8 @@ export class ApproveRideOwnerComponent implements OnInit {
      "id": 0,
        "email": "",
        "password": "",
-       "role": ""
+       "role": "",
+       "blacklisted": ""
    },
    "ownerPreference": {
      "id": 1,

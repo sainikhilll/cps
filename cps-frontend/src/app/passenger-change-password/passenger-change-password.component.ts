@@ -35,8 +35,8 @@ export class PassengerChangePasswordComponent implements OnInit {
     id : 0,
     email : "",
     password : "",
-    role:""
-    
+    role:"",
+    blacklisted: ""
   }
   success: boolean = false;
   error !: HttpErrorResponse;

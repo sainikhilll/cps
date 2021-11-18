@@ -41,7 +41,9 @@ export class BookRideComponent implements OnInit {
       user:{ id: 0,
         email: "",
         password:"",
-        role:""	},
+        role:"",
+        blacklisted: ""
+      },
       ownerPreference:{
         id:1,
         music:"",
@@ -52,20 +54,24 @@ export class BookRideComponent implements OnInit {
     },
     numberOfPassengers: 0,
     numberOfSeatsAvailable: 0,
-    carType: ""},
-    passenger: {
+    carType: "",
+    status: ""
+  },
+  passenger: {
+    id: 0,
+    name: "",
+    mobileNumber: "",
+    dateOfBirth: "",
+    user: {
       id: 0,
-      name: "",
-      mobileNumber: "",
-      dateOfBirth: "",
-      user: {
-        id: 0,
-        email: "",
-        password: "",
-        role: ""
-      }
+      email: "",
+      password: "",
+      role: "",
+      blacklisted: ""
     }
-  }
+  },
+  status: ""
+}
   bookingSucess: boolean = false;
   valid: boolean = true;
   

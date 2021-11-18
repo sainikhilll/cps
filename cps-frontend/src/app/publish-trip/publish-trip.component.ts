@@ -32,7 +32,8 @@ export class PublishTripComponent implements OnInit {
         id: 0,
         email: "",
         password: "",
-        role: ""
+        role: "",
+        blacklisted: ""
       },
       ownerPreference:{
         id: 0,
@@ -44,7 +45,8 @@ export class PublishTripComponent implements OnInit {
     },
     numberOfPassengers: 0,
     numberOfSeatsAvailable: 0,
-    carType: ""
+    carType: "",
+    status: ""
   }
   
   success: boolean = false;
@@ -74,7 +76,8 @@ export class PublishTripComponent implements OnInit {
           id: 0,
           email: "",
           password: "",
-          role: ""
+          role: "",
+          blacklisted: ""
         },
         ownerPreference:{
           id: 0,
@@ -86,7 +89,8 @@ export class PublishTripComponent implements OnInit {
       },
       numberOfPassengers: 0,
       numberOfSeatsAvailable: 0,
-      carType: ""
+      carType: "",
+      status: ""
     }
     this.tripService.getApi().subscribe(
       data => {

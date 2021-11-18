@@ -28,7 +28,8 @@ export class RideOwnerSignupComponent implements OnInit {
       id: 0,
       email: "",
       password: "",
-      role: "owner"
+      role: "owner",
+      blacklisted: ""
     },
     ownerPreference: {
       id: 0,

@@ -11,13 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./search-trip.component.css']
 })
 export class SearchTripComponent implements OnInit {
-
   flash = false;
-
   trips!: Trip[];
-
-  
-
   trip = {
     "id": 1,
     "origin": "",
@@ -25,9 +20,6 @@ export class SearchTripComponent implements OnInit {
     "departureTime": "",
     "price": 0,
     "date": "",
-    "numberOfPassengers": 0,
-    "numberOfSeatsAvailable": 0,
-    "carType": "",
     "owner": {
       "id": 2,
       "name": "",
@@ -37,64 +29,50 @@ export class SearchTripComponent implements OnInit {
       "licenceUrl": "",
       "aadharNumber": "",
       "aadharUrl": "",
-      "status": "",
       "user": {
         "id": 0,
         "email": "",
         "password": "",
-        "role": ""
+        "role": "",
+        "blacklisted": ""
       },
       "ownerPreference": {
         "id": 1,
         "music": "",
         "smoking": "",
         "petsAllowed": ""
-      }
+      },
+      "status": ""
+    },
+    "numberOfPassengers": 0,
+    "numberOfSeatsAvailable": 0,
+    "carType": "",
+    "status": ""
     }
-
-  }
-
-  city: string[] = [];
-  temp_org: string[] = [];
-  temp_des:string[]=[];
-
-  display:boolean = false;
-
-  
+ 
 
   // minDate = new Date();
   // this.minDate = this.datePipe.transform(this.minDate, 'yyyy-MM-dd');
  
-  constructor(private _service: TripService, private _router:Router) {
+  constructor(private _service: TripService, private _router:Router) { }
 
-    
-
-
-  }
+  city: string[] = [];
+  temp_org: string[] = [];
+  temp_des:string[]=[];
+  display:boolean = false;
 
   ngOnInit(): void {
     this._service.getApi().subscribe(
       data => {
         this.city = data.data;
         console.log(this.city);
-        
-
-
-       
-
       });
-
-
   }
-
- 
 
   book(id:number){
       this._router.navigate(['book-ride', id]);
       console.log(id);
   }
-
-  
 
   sendOrigin(): void {
     console.log("hello");
@@ -105,15 +83,12 @@ export class SearchTripComponent implements OnInit {
           this.temp_org.push(x);
         }
       }
-      
       console.log(this.temp_org);
     }
     if(this.trip.origin.length == 0){
       this.temp_org = [];
     }
-
   }
-
 
   sendDestination(): void {
     console.log("hello");
@@ -122,7 +97,6 @@ export class SearchTripComponent implements OnInit {
       for (let x of this.city) {
         if (x.toLowerCase().indexOf(this.trip.destination.toLowerCase()) != -1) {
           this.temp_des.push(x);
-
         }
       }
       console.log(this.temp_des);
@@ -130,29 +104,17 @@ export class SearchTripComponent implements OnInit {
     if(this.trip.destination.length == 0){
       this.temp_des = [];
     }
-
   }
 
   clickOrigin(tem:string){
     this.trip.origin=tem;
     this.temp_org=[];
-
-
   }
 
   clickdestination(tem:string){
     this.trip.destination=tem;
     this.temp_des=[];
-
   }
-
-
-
-
-
-
-
-
 
   searchTrips() {
     this._service.trips(this.trip).subscribe(
@@ -166,41 +128,28 @@ export class SearchTripComponent implements OnInit {
         }
         this.flash = true;
         console.log(this.trips);
-        
-
       });
-
       
   }
 
   seats() {
     this.trips.sort((a, b) => a.numberOfSeatsAvailable - b.numberOfSeatsAvailable);
-
     console.log(this.trips);
-
   }
 
   pricelow() {
     this.trips.sort((a, b) => a.price - b.price);
-
     console.log(this.trips);
-
   }
   priceHigh() {
     this.trips.sort((a, b) => b.price - a.price);
-
     console.log(this.trips);
-
   }
 
   depature() {
     this.trips.sort((a, b) => a.departureTime.localeCompare(b.departureTime));
-
     console.log(this.trips);
   }
-
-
-
 }
 
  
