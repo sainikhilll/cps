@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.cpsrest.model.Owner;
+import com.revature.cpsrest.model.Trip;
 import com.revature.cpsrest.repository.AdminRepository;
 import com.revature.cpsrest.repository.OwnerRepository;
 
@@ -23,6 +24,9 @@ public class AdminService {
 	@Autowired
 	private OwnerRepository ownerrepository;
 	
+	@Autowired
+	
+	
 	public List<Owner> list() {
 		LOGGER.info("Start");
 		return adminrepository.getPendingOwner();
@@ -36,5 +40,9 @@ public class AdminService {
 		
 	}
 	
+	public List<Trip> trips(){
+		LOGGER.info("Start");
+		return adminrepository.getTrip();
+	}
 	
 }
