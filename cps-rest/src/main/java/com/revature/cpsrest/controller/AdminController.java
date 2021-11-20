@@ -8,12 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.cpsrest.model.Owner;
 import com.revature.cpsrest.model.Trip;
+import com.revature.cpsrest.model.TripBooking;
 import com.revature.cpsrest.service.AdminService;
 
 
@@ -52,13 +51,24 @@ public void reject(@PathVariable int id) {
 
 @GetMapping("/trips")
 public List<Trip> allTrips() {
-	LOGGER.info("View Trip Started");
-	
+	LOGGER.info("View Trip Started");	
 	return adminservice.trips();
-	
-	
-	
+}
 
+@GetMapping("/canceltrips/{id}")
+public void canceltrips(@PathVariable int id) {
+	LOGGER.info("CancelTrip Started");
+	Trip trip = adminservice.getTripId(id);
+	trip.setStatus("Called Off");
+	adminservice.tripStatus(trip);
+	
+	List<TripBooking> tripBooking = adminservice.getTripBooking(id);
+	for(TripBooking tripBook : tripBooking) {
+		tripBook.setStatus("Called Off");
+		adminservice.tripBookingStatus(tripBook);
+	}
+	
+	
 }
 
 
