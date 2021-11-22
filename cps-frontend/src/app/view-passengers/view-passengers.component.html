@@ -1,1 +1,15 @@
-<p>view-passengers works!</p>
+<h1 class="d-flex justify-content-center aline-item-center mt-2 "><b>List Of Passenger</b></h1>
+<div class= "row d-flex justify-content-center alline-item-center">
+ 
+<div class="card mt-2 ms-1 " style="width: auto;"*ngFor="let passenger of passenger">
+    <div class="card-body">
+      <h4 class="card-title primary"><b>Name : </b>{{passenger.name}}</h4>
+      <h6 class="card-subtitle mb-2 text-muted"><b>MobileNumber : </b>{{passenger.mobileNumber}}</h6>
+      <h5 class="card-title"><b>DateOfBirth : </b>{{passenger.dateOfBirth}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted"><b>Email : </b>{{passenger.user.email}}</h6>
+      <p class="card-text">He is a passenger.</p>
+
+     
+    </div>
+  </div>
+</div>

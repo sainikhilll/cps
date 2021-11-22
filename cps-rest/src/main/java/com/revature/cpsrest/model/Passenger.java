@@ -35,8 +35,8 @@ public class Passenger {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "mobile_number")
-	private String mobileNumber;
+	@Column(name = "mobile")
+	private String mobile;
 
 	@Column(name = "date_of_birth")
 	private Date dateOfBirth;
@@ -44,5 +44,52 @@ public class Passenger {
 	@ManyToOne
 	@JoinColumn(name= "user_id")
 	private User user;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@Override
+	public String toString() {
+		return "Passenger [id=" + id + ", name=" + name + ", mobile=" + mobile + ", dateOfBirth=" + dateOfBirth
+				+ ", user=" + user + "]";
+	}
+	
 
 }

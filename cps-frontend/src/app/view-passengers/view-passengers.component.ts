@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Passenger } from '../model/passenger';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-view-passengers',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-passengers.component.css']
 })
 export class ViewPassengersComponent implements OnInit {
+  passenger : Passenger[] = [];
 
-  constructor() { }
+  constructor(
+    private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.authService.getPassenger().subscribe(
+      data =>{
+        this.passenger= data;
+    
+    })
   }
 
 }
