@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OwnerRating } from '../model/owner-rating';
+import { OwnerViewRatingsService } from '../service/owner-view-ratings.service';
 
 @Component({
   selector: 'app-owner-view-ratings',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./owner-view-ratings.component.css']
 })
 export class OwnerViewRatingsComponent implements OnInit {
+  ownerRatings : OwnerRating[] = [];
 
-  constructor() { }
+  constructor(private ownerViewRatingService: OwnerViewRatingsService) { }
 
   ngOnInit(): void {
+    this.ownerViewRatingService.getOwnerViewRatings().subscribe(
+      data=>{
+        this.ownerRatings= data;
+        console.log("ownerRating");
+        console.log(this.ownerRatings);
+      }
+    )
   }
 
 }

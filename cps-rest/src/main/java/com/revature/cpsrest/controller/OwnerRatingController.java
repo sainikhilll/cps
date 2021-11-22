@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.cpsrest.model.Owner;
 import com.revature.cpsrest.model.OwnerRating;
+import com.revature.cpsrest.repository.OwnerRepository;
 import com.revature.cpsrest.service.OwnerRatingService;
 
 @RestController
@@ -21,9 +23,12 @@ public class OwnerRatingController {
 	
 	@Autowired
 	private OwnerRatingService ownerRatingService;
+	@Autowired
+	private OwnerRepository ownerRepository;
 	
 	@GetMapping("/{ownerId}")
 	public List<OwnerRating> getRatings(@PathVariable int ownerId) {
-		return ownerRatingService.getRatings(ownerId);
+		Owner owner = ownerRepository.getOwnerByUserId(ownerId);
+		return ownerRatingService.getRatings(owner.getId());
 	}
 }
