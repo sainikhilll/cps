@@ -61,6 +61,10 @@ public class AdminService {
 		LOGGER.info("Start");
 		return adminrepository.getTrip();
 	}
+	public List<Trip> completedTrips(){
+		LOGGER.info("Start");
+		return adminrepository.getCompletedTrip();
+	}
 	
 	 public void tripStatus(Trip trip) {
 		 LOGGER.info("Start");

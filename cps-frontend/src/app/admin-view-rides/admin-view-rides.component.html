@@ -1,46 +1,73 @@
+<h4>View Trips</h4>
+
+
 <div class="container ">
     <div class="row ">
-        <!-- <div *ngIf="display" class="alert alert-danger text-center" role="alert">
-            There are no rides yet for today between these cities.
-              *ngFor="let trip of trips"
-        </div> -->
+        <div class="hover mb-3">
+            <span  class="mx-2">Sort By :</span>
+            <span  class="sort mx-2"(click)="completedTrip()">Completed Trips</span>
+            <span  class="sort mx-2"(click)="PresentTrip()">Present Trips</span>
 
-        <div *ngFor="let trip of trips" class="col-md-6 ">
+        </div>
+
+        <div *ngFor="let trip of trips" class="col-md-6">
             <div class="card  mb-2 ">
-                <div class="card-body">
-                    <h5 class="d-inline-flex ">{{trip.origin}}<span class="mx-1">({{trip.departureTime.substring(0,5)}})</span></h5>
-                    <h6 class="floatRight"> <i class="bi bi-calendar-check"></i> {{trip.date|date:'shortDate'}}</h6>
+                <div class="card-body ">
+                    <div>
+                        <h5 class="d-inline-flex mx-2">{{trip.origin}}</h5>
+                        <span class="mx-1"><i class="fa fa-clock-o" aria-hidden="true"></i>
+                            {{trip.departureTime.substring(0,5)}}</span>
+                        <span *ngIf="trip.status == 'Active'&& PTrips" class=" floatRight badge bg-success">
+                            {{trip.status}}
+                        </span>
 
+
+                    </div>
 
                     <div class="mx-4">
                         <i class="bi bi-three-dots-vertical"> </i>
-                        <div class="floatRight"> <i class="fa fa-car mx-2" aria-hidden="true">
-                                {{trip.carType}}</i></div>
-
-                        <div class="mt-2">
-
-                            <i class="bi bi-geo-alt-fill"></i>
-                            <span class="floatRight"><i class="bi bi-person-circle">
-                                    {{trip.numberOfPassengers}}</i></span>
-                        </div>
 
                     </div>
-                    <h5 class="">{{trip.destination}}</h5>
-                    <div>
-                        <i class="fa fa-user mx-2" aria-hidden="true"></i>
-                        <div class="d-inline-flex mt-2">
-                            <h6>{{trip.owner.name}}</h6>
-                        </div>
-                        <div class=" floatRight d-inline-flex"><i class="fa fa-inr mx-2"> {{trip.price}}</i></div>
+                    <span class="floatRight "> <i class="bi bi-calendar-check"></i>
+                        {{trip.date|date:'mediumDate'}}</span>
+
+
+                    <div class=" mx-4">
+                        <i class="bi bi-geo-alt-fill"></i>
+                    </div>
+
+                    <div class="mx-2">
+                        <h5 class="d-inline-flex mt-2">{{trip.destination}}</h5>
+
+
                     </div>
 
                     <div>
-                        <i class="fa fa-phone mx-2"></i>
 
-                        <div class="d-inline-flex mt-2"> {{trip.owner.mobile}}</div>
+                        <div>
+                            <h6> <i class="fa fa-user mx-2" aria-hidden="true"></i> {{trip.owner.name}}</h6>
 
+                        </div>
+                        <i class="fa fa-car mx-2" aria-hidden="true"></i>
+                        <span>{{trip.carType}}</span>
 
-                        <button (click)="changeStatus(trip.id)" class="btn btn-primary floatRight">Cancel</button>
+                        <div class=" floatRight d-inline-flex mx-2"> &#8377; {{trip.price}}</div>
+
+                        <span class="mx-2"><i class="bi bi-person-circle">
+                            </i> {{trip.numberOfPassengers}}</span>
+
+                    </div>
+
+                    <div>
+
+                        <div class=" floatleft d-inline-flex mt-2"><i class=" floatleft fa fa-phone mx-2"> {{trip.owner.mobile}}</i></div>
+                        <button *ngIf="trip.status == 'Active' && PTrips" (click)="changeStatus(trip.id)"
+                            class="floatRight btn btn-primary">Cancel</button>
+
+                        <span   *ngIf="trip.status == 'Called Off' && PTrips" class="  floatRight badge bg-danger">
+                            {{trip.status}}
+                        </span>
+                      
 
                     </div>
 

@@ -48,7 +48,7 @@ export class AdminViewRidesComponent implements OnInit {
 
 currentDate = new Date();
 
-
+PTrips:boolean=false;
 
   constructor(private _service:AdminViewRidesService) { }
 
@@ -56,8 +56,34 @@ currentDate = new Date();
     this._service.restTrips().subscribe(
       data => {
         this.trips=data;
+      
+      
+        
       }
     );
+  }
+  PresentTrip(){
+    this._service.restTrips().subscribe(
+      data => {
+        this.trips=data;
+        console.log(data);
+        this.PTrips=true;
+
+        
+      }
+    );
+  }
+
+  completedTrip(){
+    this._service.restCompletedTrips().subscribe(
+      data =>{
+        this.trips=null;
+        this.trips=data;
+        console.log(data);
+        this.PTrips=false;
+
+      }
+    )
   }
 
 

@@ -54,6 +54,11 @@ public List<Trip> allTrips() {
 	LOGGER.info("View Trip Started");	
 	return adminservice.trips();
 }
+@GetMapping("/completedTrips")
+public List<Trip> allCompletedTrips() {
+	LOGGER.info("View Trip Started");	
+	return adminservice.completedTrips();
+}
 
 @GetMapping("/canceltrips/{id}")
 public void canceltrips(@PathVariable int id) {
