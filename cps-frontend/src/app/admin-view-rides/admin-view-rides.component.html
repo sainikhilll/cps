@@ -1,2 +1,52 @@
-<!-- <p>admin-view-rides works!</p> -->
+<div class="container ">
+    <div class="row ">
+        <!-- <div *ngIf="display" class="alert alert-danger text-center" role="alert">
+            There are no rides yet for today between these cities.
+              *ngFor="let trip of trips"
+        </div> -->
 
+        <div *ngFor="let trip of trips" class="col-md-6 ">
+            <div class="card  mb-2 ">
+                <div class="card-body">
+                    <h5 class="d-inline-flex ">{{trip.origin}}<span class="mx-1">({{trip.departureTime.substring(0,5)}})</span></h5>
+                    <h6 class="floatRight"> <i class="bi bi-calendar-check"></i> {{trip.date|date:'shortDate'}}</h6>
+
+
+                    <div class="mx-4">
+                        <i class="bi bi-three-dots-vertical"> </i>
+                        <div class="floatRight"> <i class="fa fa-car mx-2" aria-hidden="true">
+                                {{trip.carType}}</i></div>
+
+                        <div class="mt-2">
+
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <span class="floatRight"><i class="bi bi-person-circle">
+                                    {{trip.numberOfPassengers}}</i></span>
+                        </div>
+
+                    </div>
+                    <h5 class="">{{trip.destination}}</h5>
+                    <div>
+                        <i class="fa fa-user mx-2" aria-hidden="true"></i>
+                        <div class="d-inline-flex mt-2">
+                            <h6>{{trip.owner.name}}</h6>
+                        </div>
+                        <div class=" floatRight d-inline-flex"><i class="fa fa-inr mx-2"> {{trip.price}}</i></div>
+                    </div>
+
+                    <div>
+                        <i class="fa fa-phone mx-2"></i>
+
+                        <div class="d-inline-flex mt-2"> {{trip.owner.mobile}}</div>
+
+
+                        <button (click)="changeStatus(trip.id)" class="btn btn-primary floatRight">Cancel</button>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
