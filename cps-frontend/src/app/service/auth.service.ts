@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { User } from '../model/user';
 import { Observable } from 'rxjs';
 import { REST_URL } from './common';
@@ -12,24 +12,22 @@ import { REST_URL } from './common';
   providedIn: 'root'
 })
 export class AuthService {
-  
-  loginUrl : string = REST_URL+"/authenticate";
 
-  constructor(private httpClient : HttpClient) { }
-  login(user : User): Observable<any> {                                      
-    const headers = {'content-type':'application/json'};
+  loginUrl: string = REST_URL + "/authenticate";
+
+  constructor(private httpClient: HttpClient) { }
+  login(user: User): Observable<any> {
+    const headers = { 'content-type': 'application/json' };
     // sessionStorage.setItem(AUTH_USER_DATA, JSON.stringify(user));
 
 
     return this.httpClient.post<any>(
-     this.loginUrl,user,{'headers':headers}
-      
-     );
+      this.loginUrl, user, { 'headers': headers }
+
+    );
   }
-  // user : User = {
-  //   id: 0,
-  //   email: '',
-  //   password: '',
-  //   role: ''
-  // }
+
+  getPassenger(): Observable<any> {
+    return this.httpClient.get("http://localhost:8080/passengers");
+  }
 }
