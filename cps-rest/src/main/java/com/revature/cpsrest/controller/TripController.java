@@ -45,6 +45,15 @@ public class TripController {
 		tripService.save(trip);
 	}
 	
+
+@GetMapping("/canceltrips/{id}")
+public void canceltrips(@PathVariable int id) {
+	LOGGER.info("CancelTrip Started");
+	Trip trip = tripService.getTripId(id);
+	trip.setStatus("Cancelled");
+	tripService.tripStatus(trip);
+}
+	
 	@GetMapping("/user/{id}")
 	public Owner getOwner(@PathVariable int id) {
 		return tripService.getOwnerByUserId(id);
