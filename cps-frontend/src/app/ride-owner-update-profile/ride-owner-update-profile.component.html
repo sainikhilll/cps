@@ -13,7 +13,11 @@
                     <input type="text" name="name" id="name" formControlName="name" [(ngModel)]="register.name"
                         class="form-control">
                 </div>
-                <small *ngIf="name.invalid && name.touched" class="text-danger">Enter valid name in alphabets </small>
+                <div *ngIf="form.name.invalid && form.name.touched" class="text-danger">
+                    <small *ngIf="form.name.errors.required" class="text-danger">Enter valid name in alphabets</small>
+                    <small *ngIf="form.name.errors.maxlength" class="text-danger">Name can not exceed 45 characters.</small>
+                </div>
+
             </div>
             <div class="form-group col-lg-6 col-md-12 mb-2">
                 <label class="form-label" for="email">Email</label>
@@ -21,7 +25,7 @@
                     <input type="text" name="email" id="email" formControlName="email" [(ngModel)]="register.user.email"
                         class="form-control" readonly>
                 </div>
-                <small *ngIf="name.invalid && name.touched" class="text-danger"></small>
+                <small *ngIf="form.name.invalid && form.name.touched" class="text-danger"></small>
             </div>
             <div class="form-group col-lg-12 mb-2">
                 <label class="form-label" for="address">Address*</label>
@@ -29,7 +33,11 @@
                     <input type="text" name="address" id="address" formControlName="address"
                         [(ngModel)]="register.address" class="form-control">
                 </div>
-                <small *ngIf="address.invalid && address.touched" class="text-danger">Enter valid address</small>
+                <div *ngIf="form.address.invalid && form.address.touched" class="text-danger">
+                    <small *ngIf="form.address.errors.required" class="text-danger">Enter valid address</small>
+                    <small *ngIf="form.address.errors.maxlength" class="text-danger">Address can not exceed 1000 characters.</small>
+                </div>
+
             </div>
             <div class="form-group col-lg-4 col-md-6 mb-2">
                 <label class="form-label" for="mobile">Mobile No*</label>
@@ -37,7 +45,8 @@
                     <input type="text" name="mobile" id="mobile" formControlName="mobile" [(ngModel)]="register.mobile"
                         class="form-control">
                 </div>
-                <small *ngIf="mobile.invalid && mobile.touched" class="text-danger">Enter valid 10 digit mobile no.</small>
+                <small *ngIf="form.mobile.invalid && form.mobile.touched" class="text-danger">Enter valid 10 digit mobile no.
+                </small>
             </div>
             <div class="form-group col-lg-4 col-md-6 mb-2">
                 <label class="form-label" for="licenseNumber">License No*</label>
@@ -45,7 +54,8 @@
                     <input type="text" name="licenceNumber" id="licenceNumber" formControlName="licenceNumber"
                         [(ngModel)]="register.licenceNumber" class="form-control">
                 </div>
-                <small *ngIf="licenceNumber.invalid && licenceNumber.touched" class="text-danger">Enter valid license no.
+                <small *ngIf="form.licenceNumber.invalid && form.licenceNumber.touched" class="text-danger">Enter valid
+                    license no.
                 </small>
             </div>
             <div class="form-group col-lg-4 col-md-6 mb-2">
@@ -54,7 +64,8 @@
                     <input type="text" name="aadharNumber" id="aadharNumber" formControlName="aadharNumber"
                         [(ngModel)]="register.aadharNumber" class="form-control">
                 </div>
-                <small *ngIf="aadharNumber.invalid && aadharNumber.touched" class="text-danger">Enter valid 12 digit aadhar no.
+                <small *ngIf="form.aadharNumber.invalid && form.aadharNumber.touched" class="text-danger">Enter valid 12 digit
+                    aadhar no.
                 </small>
             </div>
             <br>
