@@ -70,7 +70,8 @@ export class BookRideComponent implements OnInit {
       blacklisted: ""
     }
   },
-  status: ""
+  status: "Active",
+  notificationStatus: "NotRead"
 }
   bookingSucess: boolean = false;
   valid: boolean = true;
@@ -99,7 +100,6 @@ export class BookRideComponent implements OnInit {
   validate(): void {
     if (this.bookingTrip.seatsBooked >0 && this.bookingTrip.seatsBooked <= this.trip.numberOfSeatsAvailable) {
       this.valid = true;
-
     } else {
       this.valid = false;
     }

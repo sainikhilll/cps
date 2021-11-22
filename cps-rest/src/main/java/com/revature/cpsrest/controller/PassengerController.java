@@ -26,15 +26,15 @@ public class PassengerController {
 
 	@PostMapping
 	public void create(@RequestBody Passenger passenger) {
-		LOGGER.debug("{}", passenger);
-		User user1 = new User();
-		user1.setEmail(passenger.getUser().getEmail());
-		user1.setPassword(passenger.getUser().getPassword());
-		user1.setRole("passenger");
-		LOGGER.debug("{}",user1);
-		User user2 = userService.saveUser(user1);
-		LOGGER.debug("id:{}",user2.getId());
-		passenger.setUser(user2);
+//		LOGGER.debug("{}", passenger);
+//		User user1 = new User();
+//		user1.setEmail(passenger.getUser().getEmail());
+//		user1.setPassword(passenger.getUser().getPassword());
+//		user1.setRole("passenger");
+//		LOGGER.debug("{}",user1);
+//		User user2 = userService.saveUser(user1);
+//		LOGGER.debug("id:{}",user2.getId());
+//		passenger.setUser(user2);
 		passengerService.save(passenger);
 	}
 
