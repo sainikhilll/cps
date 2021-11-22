@@ -38,4 +38,8 @@ public class TripService {
 	public Owner getOwnerByUserId (int userId) {
 		return tripRepository.getOwnerByUserId(userId);
 	}
+	
+	public Trip updateTrip(Trip trip) {
+		return tripRepository.save(trip);
+	}
 }

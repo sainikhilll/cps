@@ -15,7 +15,7 @@ export class RideOwnerPreferencesComponent implements OnInit {
   preferences:OwnerPreferences={
     id:0,
     music:"N",
-    smoking:"N",
+    smoking:"N", 
     petsAllowed:"N"
   }
   musicPref:boolean=false;
@@ -32,7 +32,7 @@ export class RideOwnerPreferencesComponent implements OnInit {
 
   }
   setPreference(){
-    this._service.restPreference(this.preferences).subscribe(
+    this._service.restPreference(this.preferences).subscribe( 
       data=>{
         //this.preferences=data;
         console.log("saved");

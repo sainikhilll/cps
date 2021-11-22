@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Trip } from '../model/trip';
+import { EditCancelTripOwnerService } from '../service/edit-cancel-trip-owner.service';
+import { NgForm } from '@angular/forms';
+import { FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-edit-cancel-trip-owner',
@@ -6,10 +10,62 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-cancel-trip-owner.component.css']
 })
 export class EditCancelTripOwnerComponent implements OnInit {
+  alert : boolean = false;
+  trip = {
+    "id": 0,
+    "origin": "",           
+    "destination": "",
+    "departureTime": "",
+    "price": 0.0,
+    "date": "",
+    "numberOfPassengers": 0,
+    "numberOfSeatsAvailable": 0,
+    "carType": "",
+    "owner": {
+        "id": 0,
+        "name": "",
+        "address": "",
+        "mobile": "",
+        "licenceNumber": "",
+        "licenceUrl": "",
+        "aadharNumber": "",
+        "aadharUrl": "",
+        "status": "",
+        "user": {
+            "id": 0,
+            "email": "",
+            "password": "",
+            "role": "",
+            "blacklisted": ""
+        },
+        "ownerPreference": {
+            "id": 0,
+            "music": "",
+            "smoking": "",
+            "petsAllowed": ""
+        }
+    },
+    "status": ""
+}
 
-  constructor() { }
+  constructor(private _service : EditCancelTripOwnerService) { }
 
   ngOnInit(): void {
+    this._service.getTripDetail().subscribe(
+      data => {
+        this.trip = data;
+        console.log(this.trip);
+      }
+    );
+  }
+
+  changeTrip(){
+    this._service.restTrip(this.trip).subscribe(
+      (resp) => {
+        console.log(resp);
+        this.alert = true;
+      }
+    );
   }
 
 }

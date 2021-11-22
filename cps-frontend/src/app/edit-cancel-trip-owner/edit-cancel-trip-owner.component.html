@@ -1,1 +1,56 @@
-<p>edit-cancel-trip-owner works!</p>
+<h2>Update Trip</h2>
+<div class="card card-body">
+    <div *ngIf="alert" class="alert alert-success" role="alert">
+        Trip updated successfully
+    </div>
+    <form #updateTrip="ngForm">
+        <div class="row"> 
+            <div class="col-lg-6 col-md-12 mb-2">
+                <label for="origin">Origin</label>
+                <div class="input-group">
+                    <input type="text" name="origin" id="origin" class="form-control" autocomplete="off" [(ngModel)]="trip.origin">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 mb-2">
+                <label for="destination">Destination</label>
+                <div class="input-group">
+                    <input type="text" name="destination" id="destination" class="form-control" autocomplete="off" [(ngModel)]="trip.destination">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 mb-2">
+                <label for="price">Price</label>
+                <div class="input-group">
+                    <input type="text" name="price" id="price" class="form-control" autocomplete="off" [(ngModel)]="trip.price">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 mb-2">
+                <label for="car type">Car Type</label>
+                <div class="input-group">
+                    <input type="text" name="car type" id="car type" class="form-control" autocomplete="off" [(ngModel)]="trip.carType">
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-2">
+                <label for="date">Date</label>
+                <div class="input-group">
+                    <input type="text" name="date" id="date" class="form-control" autocomplete="off" [(ngModel)]="trip.date" readonly>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-2">
+                <label for="departure time">Departure Time</label>
+                <div class="input-group">
+                    <input type="text" name="departure time" id="departure time" class="form-control" autocomplete="off" [(ngModel)]="trip.departureTime">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-2">
+                <label for="seats available">No of seats available</label>
+                <div class="input-group">
+                    <input type="text" name="seats available" id="seats available" class="form-control" autocomplete="off" [(ngModel)]="trip.numberOfSeatsAvailable">
+                </div>
+            </div>
+            <div class="">
+                <input type="button" value="Update" (click)="changeTrip()" class="btn btn-primary">
+            </div>
+        </div>
+    </form>
+</div>
