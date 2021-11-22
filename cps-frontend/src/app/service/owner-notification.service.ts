@@ -20,7 +20,7 @@ export class OwnerNotificationService {
   addNotificationStatus(tripBooking: TripBooking): Observable<any> {
     const headers = { 'content-type': 'application/json'};
     console.log(tripBooking);
-    return this.http.post<any>(
+    return this.http.put<any>(
       (REST_URL+"notifications/update"), tripBooking
     );
   }

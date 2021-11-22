@@ -1,1 +1,40 @@
-<button (click)="updateStatus()">Close</button>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table table-hover col-12">
+                <thead>
+                    <tr>
+                        <th>Notifications</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let detail of tripBookings">
+                        <td *ngIf="detail.notificationStatus=='Read'" style="background-color: lightblue;">
+                            <div>{{detail.passenger.name}} has booked <span class="material-icons-outlined">
+                                    <i class="material-icons">chair</i>
+                                </span> {{detail.seatsBooked}} of your trip from {{detail.trip.origin}} to
+                                {{detail.trip.destination}}
+                            </div>
+                            <div><span class="material-icons-outlined">
+                                    <i class="material-icons">call</i>
+                                </span>{{detail.passenger.mobileNumber}}.
+                            </div>
+                        </td>
+                        <td *ngIf="detail.notificationStatus!='Read'" style="background-color: whitesmoke;">
+                            <div>{{detail.passenger.name}} has booked <span class="material-icons-outlined">
+                                    <i class="material-icons">chair</i>
+                                </span> {{detail.seatsBooked}} of your trip from {{detail.trip.origin}} to
+                                {{detail.trip.destination}}
+                            </div>
+                            <div><span class="material-icons-outlined">
+                                    <i class="material-icons">call</i>
+                                </span>{{detail.passenger.mobileNumber}}.
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- <tr><input class="btn btn-danger" (click)="updateStatus()" value="Close"></tr> -->
+                </tbody>
+            </div>
+        </div>
+    </div>
+</div>
