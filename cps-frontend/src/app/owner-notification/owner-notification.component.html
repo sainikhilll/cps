@@ -7,58 +7,58 @@
             <button class="btn btn-primary mb-2" (click)="updateStatus()">Mark All as Read</button>
             <ul *ngFor="let detail of tripBookings" class="list-group mb-2">
                 <li *ngIf="detail.notificationStatus!='Read'" class="list-group-item notification-item unread">
-                    <div>{{detail.passenger.name}} has booked
+                    <div><strong>{{detail.passenger.name}}</strong> has booked
                         <span class="material-icons-outlined">
-                            <i class="material-icons">chair</i>
-                        </span> {{detail.seatsBooked}} of your trip from
+                            <i class="material-icons size">chair</i>
+                        </span><strong> {{detail.seatsBooked}}</strong> of your trip from
                         <span class="material-icons-outlined">
-                            <i class="material-icons">trip_origin</i>
-                        </span>{{detail.trip.origin}} to
+                            <i class="material-icons size">location_on</i>
+                        </span><strong>{{detail.trip.origin}}</strong> to
                         <span class="material-icons-outlined">
-                            <i class="material-icons">location_on</i>
-                        </span>{{detail.trip.destination}} on
+                            <i class="material-icons size">location_on</i>
+                        </span><strong>{{detail.trip.destination}}</strong> on
                         <span class="material-icons-outlined">
-                            <i class="material-icons">event</i>
-                        </span>{{detail.trip.date | date: "dd-MM-yyyy"}} at
+                            <i class="material-icons size">event</i>
+                        </span><strong>{{detail.trip.date | date: "dd-MM-yyyy"}}</strong> at
                         <span class="material-icons-outlined">
-                            <i class="material-icons">schedule</i>
-                        </span>{{detail.trip.departureTime}}.
+                            <i class="material-icons size">schedule</i>
+                        </span><strong>{{detail.trip.departureTime}}</strong>.
                     </div>
                     <div><span class="material-icons-outlined">
-                            <i class="material-icons">call</i>
-                            {{detail.passenger.mobileNumber}} |
+                            <i class="material-icons size">call</i>
+                            <strong>{{detail.passenger.mobileNumber}}</strong> |
                         </span>
                         <span class="material-icons-outlined">
-                            <i class="material-icons">mail</i>
-                            {{detail.passenger.user.email}}.
+                            <i class="material-icons size">mail</i>
+                            <strong>{{detail.passenger.user.email}}</strong>.
                         </span>
                     </div>
                 </li>
                 <li *ngIf="detail.notificationStatus=='Read'" class="list-group-item notification-item mb-2">
-                    <div>{{detail.passenger.name}} has booked
+                    <div><strong>{{detail.passenger.name}}</strong> has booked
                         <span class="material-icons-outlined">
-                            <i class="material-icons">chair</i>
-                        </span> {{detail.seatsBooked}} of your trip from
+                            <i class="material-icons size">chair</i>
+                        </span><strong> {{detail.seatsBooked}}</strong> of your trip from
                         <span class="material-icons-outlined">
-                            <i class="material-icons">trip_origin</i>
-                        </span>{{detail.trip.origin}} to
+                            <i class="material-icons size">location_on</i>
+                        </span><strong>{{detail.trip.origin}}</strong> to
                         <span class="material-icons-outlined">
-                            <i class="material-icons">location_on</i>
-                        </span>{{detail.trip.destination}} on
+                            <i class="material-icons size">location_on</i>
+                        </span><strong>{{detail.trip.destination}}</strong> on
                         <span class="material-icons-outlined">
-                            <i class="material-icons">event</i>
-                        </span>{{detail.trip.date | date: "dd-MM-yyyy"}} at
+                            <i class="material-icons size">event</i>
+                        </span><strong>{{detail.trip.date | date: "dd-MM-yyyy"}}</strong> at
                         <span class="material-icons-outlined">
-                            <i class="material-icons">schedule</i>
-                        </span>{{detail.trip.departureTime}}.
+                            <i class="material-icons size">schedule</i>
+                        </span><strong>{{detail.trip.departureTime}}</strong>.
                     </div>
                     <div><span class="material-icons-outlined">
-                            <i class="material-icons">call</i>
-                            {{detail.passenger.mobileNumber}} |
+                            <i class="material-icons size">call</i>
+                            <strong>{{detail.passenger.mobileNumber}}</strong> |
                         </span>
                         <span class="material-icons-outlined">
-                            <i class="material-icons">mail</i>
-                            {{detail.passenger.user.email}}.
+                            <i class="material-icons size">mail</i>
+                            <strong>{{detail.passenger.user.email}}</strong>.
                         </span>
                     </div>
                 </li>
