@@ -15,17 +15,16 @@ import com.revature.cpsrest.repository.OwnerRepository;
 import com.revature.cpsrest.repository.TripBookingRepository;
 import com.revature.cpsrest.repository.TripRepository;
 
-
-
 @Service
 public class AdminService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AdminService.class);
-	
+
 	@Autowired
 	private AdminRepository adminrepository;
-	
+
 	@Autowired
 	private OwnerRepository ownerrepository;
+
 	
 	@Autowired
 	private TripRepository tripRepository;
@@ -34,10 +33,14 @@ public class AdminService {
 	private TripBookingRepository tripBookingRepository;
 	
 	
+
+
+
 	public List<Owner> list() {
 		LOGGER.info("Start");
 		return adminrepository.getPendingOwner();
 	}
+
 	
 	public void update(Owner owner)
 	{
@@ -78,3 +81,4 @@ public class AdminService {
 	 }
 	
 }
+
