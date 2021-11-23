@@ -8,6 +8,48 @@ import { OwnerViewRatingsService } from '../service/owner-view-ratings.service';
   styleUrls: ['./owner-view-ratings.component.css']
 })
 export class OwnerViewRatingsComponent implements OnInit {
+  ownerRating :OwnerRating = {
+    id: 0,
+    rating: 0,
+    review: '',
+    passenger: {
+      id: 0,
+      name: "",
+      mobileNumber: "",
+      dateOfBirth: "",
+      user : {
+        id: 0,
+        email: "",
+        password: "",
+        role: "",	
+        blacklisted:""
+    }
+  },
+    owner :{
+      id: 0,
+      name:"",
+      address:"",
+      mobile:"",
+      licenceNumber:"",
+      licenceUrl:"",
+      aadharNumber:"",
+      aadharUrl:"",
+      user: {
+        id: 0,
+        email: "",
+        password: "",
+        role: "",	
+        blacklisted:""
+      },
+      ownerPreference: { 
+        id: 0,
+        music:"",
+        smoking:"",
+        petsAllowed:"",
+      },
+      status:""
+    }
+  }
   ownerRatings : OwnerRating[] = [];
 
   constructor(private ownerViewRatingService: OwnerViewRatingsService) { }
@@ -18,6 +60,7 @@ export class OwnerViewRatingsComponent implements OnInit {
         this.ownerRatings= data;
         console.log("ownerRating");
         console.log(this.ownerRatings);
+        
       }
     )
   }

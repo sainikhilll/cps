@@ -1,14 +1,41 @@
-<!-- <h2>Rating and Review</h2>
-<div class="modal-body">
-    <div *ngFor="let ratings of ownerRatings">
-        <ul class="list-group">
-            <li class="list-group-item">
-                <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i>
-                {{ratings.passenger.name}}
-            </li>
-            <li class="list-group-item">A second item</li>
+<h2>Rating and Review</h2>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
 
-        </ul>
-        
+        <div class="mb-3" *ngFor="let ratings of ownerRatings">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-8">
+                            <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i>
+                            {{ratings.passenger.name}}
+                        </div>
+                        <div class="col-4">
+
+
+                            <span *ngIf="ratings.rating>2.5 && ratings.rating<4.0" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop" class="badge bg-warning"><i class="fa fa-star fa-sm"
+                                    aria-hidden="true"></i> {{ratings.rating}}</span>
+                            <span *ngIf="ratings.rating<=2.5" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                class="badge bg-danger"><i class="fa fa-star fa-sm" aria-hidden="true"></i>
+                                {{ratings.rating}}</span>
+                            <span *ngIf="ratings.rating>=4.0" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                class="badge bg-success"><i class="fa fa-star fa-sm" aria-hidden="true"></i>
+                                {{ratings.rating}}</span>
+                            <span *ngIf="ownerRatings.length==0" class="badge bg-secondary"><i class="fa fa-star fa-sm"
+                                    aria-hidden="true"></i>
+                                No Ratings And Reviews</span>
+                        </div>
+                    </div>
+
+                </li>
+                <li class="list-group-item">
+                    <small>{{ratings.review}}</small>
+                </li>
+
+            </ul>
+        </div>
     </div>
-</div> -->
+    <div class="col-3"></div>
+</div>
