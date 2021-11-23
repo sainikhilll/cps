@@ -90,7 +90,7 @@ export class PublishTripComponent implements OnInit {
       numberOfPassengers: 0,
       numberOfSeatsAvailable: 0,
       carType: "",
-      status: ""
+      status: "Active"
     }
     this.tripService.getApi().subscribe(
       data => {

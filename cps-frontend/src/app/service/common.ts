@@ -1,3 +1,1 @@
-export const REST_URL = "http://localhost:2025/";
-
-
+export const REST_URL = "http://localhost:8080/";
