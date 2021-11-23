@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OwnerRating } from '../model/owner-rating';
 import { TripBooking } from '../model/trip-booking';
 import { LoginAuthService } from '../service/login-auth.service.ts.service';
 import { TripBookingService } from '../service/trip-booking.service';
@@ -72,16 +73,71 @@ export class BookRideComponent implements OnInit {
     },
     status: ""
   }
+  ownerratings!:OwnerRating[];
+  ownerrating: OwnerRating = {
+    id:0,
+    rating:0,
+    review:"",
+    passenger:{
+      id: 0,
+      name: "",
+      mobileNumber: "",
+      dateOfBirth: "",
+      user: {
+        id: 0,
+        email: "",
+        password: "",
+        role: "",
+        blacklisted: ""
+      }
+    },
+    owner:  {
+      id:0,
+      name:"",
+      address:"",
+      mobile:"",
+      licenceNumber:"",
+      licenceUrl:"",
+      aadharNumber:"",
+      aadharUrl:"",
+      user:{ id: 0,
+        email: "",
+        password:"",
+        role:"",
+        blacklisted: ""
+      },
+      ownerPreference:{
+        id:1,
+        music:"",
+        smoking:"",
+        petsAllowed:""
+      },
+      status:"",
+    },
+  }
   bookingSucess: boolean = false;
   valid: boolean = true;
-  
+  overallrating!:number;
+  sum=0;
   constructor(private service: TripBookingService,private route:ActivatedRoute,private loginAuthService:LoginAuthService) { }
   
   ngOnInit(): void {
     let idd : any = this.route.snapshot.paramMap.get('id');
     this.bookingTrip.trip.id=idd;
     let resp = this.service.getTrip(idd);
-    resp.subscribe((data) => this.trip = data);
+    resp.subscribe((data) => { 
+      this.trip = data;
+      this.service.getOwnerRatingsByUserId(this.trip.owner.id).subscribe((data)=>{
+        this.ownerratings=(data)
+        for (var val of this.ownerratings) {
+          this.sum += val.rating;
+        }
+        this.overallrating=this.sum/this.ownerratings.length;
+      });
+     }
+      );
+ //this.service.getOwnerRatingsByUserId(1).subscribe();
+    
   }
   booktrip(): void {
     console.log("Clicked");
