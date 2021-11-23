@@ -37,14 +37,14 @@ public class TripBookingController {
 		;
 		tripBookingService.save(booking);
 		Optional<Trip> tripUpdated = tripService.getById(booking.getTrip().getId());
-//	Trip t=null;
+
 		tripUpdated.ifPresent(t -> {
 			t.setNumberOfSeatsAvailable(t.getNumberOfSeatsAvailable() - booking.getSeatsBooked());
 		});
 		tripUpdated.ifPresent(l -> {
 			tripService.save(l);
 		});
-//	
+
 	}
 
 }
