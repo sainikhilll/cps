@@ -30,34 +30,35 @@ export class BookRideComponent implements OnInit {
       departureTime: "",
       price: 0,
       date: "",
-    owner: {
-      id:0,
-      name:"",
-      address:"",
-      mobile:"",
-      licenceNumber:"",
-      licenceUrl:"",
-      aadharNumber:"",
-      aadharUrl:"",
-      user:{ id: 0,
-        email: "",
-        password:"",
-        role:"",
-        blacklisted: ""
+      owner: {
+        id: 0,
+        name: "",
+        address: "",
+        mobile: "",
+        licenceNumber: "",
+        licenceUrl: "",
+        aadharNumber: "",
+        aadharUrl: "",
+        user: {
+          id: 0,
+          email: "",
+          password: "",
+          role: "",
+          blacklisted: ""
+        },
+        ownerPreference: {
+          id: 1,
+          music: "",
+          smoking: "",
+          petsAllowed: ""
+        },
+        status: "",
       },
-      ownerPreference:{
-        id:1,
-        music:"",
-        smoking:"",
-        petsAllowed:""
-      },
-      status:"",
+      numberOfPassengers: 0,
+      numberOfSeatsAvailable: 0,
+      carType: "",
+      status: ""
     },
-    numberOfPassengers: 0,
-    numberOfSeatsAvailable: 0,
-    carType: "",
-    status: ""
-  },
     passenger: {
       id: 0,
       name: "",
@@ -71,9 +72,13 @@ export class BookRideComponent implements OnInit {
         blacklisted: ""
       }
     },
-    status: ""
+    status: "",
+    ownerRatingPassenger: 0,
+    passengerRatingOwner: 0,
+    passengerReviewOwner: ''
   }
-  ownerratings!:OwnerRating[];
+  ratings!:TripBooking[];
+  ownerratings!:TripBooking[];
   ownerrating: OwnerRating = {
     id:0,
     rating:0,
@@ -129,8 +134,9 @@ export class BookRideComponent implements OnInit {
       this.trip = data;
       this.service.getOwnerRatingsByUserId(this.trip.owner.id).subscribe((data)=>{
         this.ownerratings=(data)
+        console.log(this.ownerratings)
         for (var val of this.ownerratings) {
-          this.sum += val.rating;
+          this.sum += val.passengerRatingOwner;
         }
         this.overallrating=this.sum/this.ownerratings.length;
       });
