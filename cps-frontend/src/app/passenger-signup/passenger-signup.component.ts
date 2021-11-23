@@ -22,8 +22,8 @@ export class PassengerSignupComponent implements OnInit {
       id: 0,
       email: "",
       password: "",
-      role: "",
-      blacklisted: ""
+      role: "passenger",
+      blacklisted: "N"
     }
   }
 
