@@ -56,6 +56,7 @@ PTrips:boolean=false;
     this._service.restTrips().subscribe(
       data => {
         this.trips=data;
+        this.PTrips=true;
       
       
         

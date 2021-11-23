@@ -16,10 +16,10 @@
    
 }
 .sort{
-    color: rgb(88, 70, 70);
+    color: rgb(0, 0, 0);
 }
 .sort:hover{
 
-    color: rgb(0, 0, 0);
+    color: rgb(255, 1, 1);
     cursor: pointer;
 }
