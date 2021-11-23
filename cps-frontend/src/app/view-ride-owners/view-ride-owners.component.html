@@ -3,7 +3,7 @@
   <div class="col-md-4 mb-3" *ngFor="let owner of owners">
     <div class="card">
       <div class="card-body ">
-        <h5 class="card-title">{{owner.name}} </h5>
+        <h5 class="card-title">{{owner.name}}  </h5>
         <div>
           <small class="text-muted">{{owner.address}}</small>
         </div>
@@ -14,6 +14,7 @@
         <div *ngIf="owner.status=='Approved'" class="badge bg-success">{{owner.status}}</div>
         <div *ngIf="owner.status=='Rejected'" class="badge bg-danger">{{owner.status}}</div>
         <div *ngIf="owner.status=='Pending'" class="badge bg-info">{{owner.status}}</div>
+        <div *ngIf="owner.user.blacklisted=='Y'" class="badge bg-dark"> Blacklisted</div>
         <div class="row mt-3">
           <div class="col-6"><i class="fa fa-id-card-o" aria-hidden="true"></i> License <small class="text-muted">{{owner.licenceNumber}}</small></div>
           <div class="col-6"><i class="fa fa-id-card" aria-hidden="true"></i> Aadhar <small class="text-muted">{{owner.aadharNumber}}</small></div>
@@ -36,6 +37,11 @@
             
           </tr>
         </table>
+         <span class="btn btn-primary mx-4" (click)="blackList(owner.id)" *ngIf="owner.status=='Approved' || owner.status=='Rejected' || owner.status=='Pending'">BlackList</span>
+         <!-- <span class="btn btn-primary mx-4" (click)="blackList(owner.id)" *ngIf="owner.status=='Approved'">BlackList</span>
+         <span class="btn btn-primary mx-4" (click)="blackList(owner.id)" *ngIf="owner.status=='Rejected'">BlackList</span>
+         <span class="btn btn-primary mx-4" (click)="blackList(owner.id)" *ngIf="owner.status=='Pending'">BlackList</span> -->
+         <span class="btn btn-success mx-4" (click)="undoBlackList(owner.id)" *ngIf="owner.status=='BlackList'">Undo BlackList</span>
       </div>
     </div>
   </div>

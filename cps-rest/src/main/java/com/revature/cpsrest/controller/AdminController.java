@@ -44,7 +44,22 @@ public void reject(@PathVariable int id) {
 	adminservice.update(owner);
 }
 
+@GetMapping("/blackList/{id}")
+public void blackList(@PathVariable int id) {
 
+	Owner owner=adminservice.getOwner(id);
+	owner.setStatus("BlackList");
+	owner.getUser().setBlacklisted('Y');
+	adminservice.update(owner);
+}
 
+@GetMapping("/undoBlackList/{id}")
+public void undoBlackList(@PathVariable int id) {
+
+	Owner owner=adminservice.getOwner(id);
+	owner.setStatus("Pending");
+	owner.getUser().setBlacklisted('N');
+	adminservice.update(owner);
+}
 
 }

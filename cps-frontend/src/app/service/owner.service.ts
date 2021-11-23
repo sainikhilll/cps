@@ -45,4 +45,12 @@ export class OwnerService {
     return this._http.get(REST_URL + "owners");
 
   }
+
+  public blackList(id: number): Observable<any> {
+    return this._http.get<any>(REST_URL + "approvals/blackList/"+ id);
+  }
+
+  public undoBlackList(id:number): Observable<any>{
+    return this._http.get<any>(REST_URL + "approvals/undoBlackList/"+ id);
+  }
 }

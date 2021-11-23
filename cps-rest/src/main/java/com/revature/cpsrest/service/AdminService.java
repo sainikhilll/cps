@@ -11,30 +11,30 @@ import com.revature.cpsrest.model.Owner;
 import com.revature.cpsrest.repository.AdminRepository;
 import com.revature.cpsrest.repository.OwnerRepository;
 
-
-
 @Service
 public class AdminService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AdminService.class);
-	
+
 	@Autowired
 	private AdminRepository adminrepository;
-	
+
 	@Autowired
 	private OwnerRepository ownerrepository;
-	
+
 	public List<Owner> list() {
 		LOGGER.info("Start");
 		return adminrepository.getPendingOwner();
 	}
-	public void update(Owner owner)
-	{
+
+	public void update(Owner owner) {
+
 		adminrepository.save(owner);
 	}
-	public Owner  getOwner(int id) {
+
+	public Owner getOwner(int id) {
+
 		return ownerrepository.getById(id);
-		
+
 	}
-	
-	
+
 }
