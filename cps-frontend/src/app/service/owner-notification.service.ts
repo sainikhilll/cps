@@ -21,7 +21,7 @@ export class OwnerNotificationService {
     const headers = { 'content-type': 'application/json'};
     console.log(tripBooking);
     return this.http.put<any>(
-      (REST_URL+"notifications/update"), tripBooking
+      (REST_URL+"notifications"), tripBooking
     );
   }
   

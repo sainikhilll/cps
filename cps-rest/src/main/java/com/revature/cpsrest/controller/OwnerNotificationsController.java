@@ -30,7 +30,7 @@ public class OwnerNotificationsController {
 		return ownerNotificationsService.getTripBookings(ownerId);
 	}
 	
-	@PutMapping("/update")
+	@PutMapping
 	public void update(@RequestBody TripBooking tripBooking) {
 		LOGGER.debug("TripBooking:{}",tripBooking);
 		ownerNotificationsService.save(tripBooking);

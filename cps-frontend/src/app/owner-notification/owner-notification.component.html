@@ -1,40 +1,68 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="table table-hover col-12">
-                <thead>
-                    <tr>
-                        <th>Notifications</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let detail of tripBookings">
-                        <td *ngIf="detail.notificationStatus=='Read'" style="background-color: lightblue;">
-                            <div>{{detail.passenger.name}} has booked <span class="material-icons-outlined">
-                                    <i class="material-icons">chair</i>
-                                </span> {{detail.seatsBooked}} of your trip from {{detail.trip.origin}} to
-                                {{detail.trip.destination}}
-                            </div>
-                            <div><span class="material-icons-outlined">
-                                    <i class="material-icons">call</i>
-                                </span>{{detail.passenger.mobileNumber}}.
-                            </div>
-                        </td>
-                        <td *ngIf="detail.notificationStatus!='Read'" style="background-color: whitesmoke;">
-                            <div>{{detail.passenger.name}} has booked <span class="material-icons-outlined">
-                                    <i class="material-icons">chair</i>
-                                </span> {{detail.seatsBooked}} of your trip from {{detail.trip.origin}} to
-                                {{detail.trip.destination}}
-                            </div>
-                            <div><span class="material-icons-outlined">
-                                    <i class="material-icons">call</i>
-                                </span>{{detail.passenger.mobileNumber}}.
-                            </div>
-                        </td>
-                    </tr>
-                    <!-- <tr><input class="btn btn-danger" (click)="updateStatus()" value="Close"></tr> -->
-                </tbody>
-            </div>
+            <h2>Notifications</h2>
+            <div class="alert alert-success" *ngIf="success">All notifications are marked as Read.</div>
+            <div class="alert alert-danger" *ngIf="error">Error in marking the notifications as Read</div>
+            <button class="btn btn-primary mb-2" (click)="updateStatus()">Mark All as Read</button>
+            <ul *ngFor="let detail of tripBookings" class="list-group mb-2">
+                <li *ngIf="detail.notificationStatus!='Read'" class="list-group-item notification-item unread">
+                    <div>{{detail.passenger.name}} has booked
+                        <span class="material-icons-outlined">
+                            <i class="material-icons">chair</i>
+                        </span> {{detail.seatsBooked}} of your trip from
+                        <span class="material-icons-outlined">
+                            <i class="material-icons">trip_origin</i>
+                        </span>{{detail.trip.origin}} to
+                        <span class="material-icons-outlined">
+                            <i class="material-icons">location_on</i>
+                        </span>{{detail.trip.destination}} on
+                        <span class="material-icons-outlined">
+                            <i class="material-icons">event</i>
+                        </span>{{detail.trip.date | date: "dd-MM-yyyy"}} at
+                        <span class="material-icons-outlined">
+                            <i class="material-icons">schedule</i>
+                        </span>{{detail.trip.departureTime}}.
+                    </div>
+                    <div><span class="material-icons-outlined">
+                            <i class="material-icons">call</i>
+                            {{detail.passenger.mobileNumber}} |
+                        </span>
+                        <span class="material-icons-outlined">
+                            <i class="material-icons">mail</i>
+                            {{detail.passenger.user.email}}.
+                        </span>
+                    </div>
+                </li>
+                <li *ngIf="detail.notificationStatus=='Read'" class="list-group-item notification-item mb-2">
+                    <div>{{detail.passenger.name}} has booked
+                        <span class="material-icons-outlined">
+                            <i class="material-icons">chair</i>
+                        </span> {{detail.seatsBooked}} of your trip from
+                        <span class="material-icons-outlined">
+                            <i class="material-icons">trip_origin</i>
+                        </span>{{detail.trip.origin}} to
+                        <span class="material-icons-outlined">
+                            <i class="material-icons">location_on</i>
+                        </span>{{detail.trip.destination}} on
+                        <span class="material-icons-outlined">
+                            <i class="material-icons">event</i>
+                        </span>{{detail.trip.date | date: "dd-MM-yyyy"}} at
+                        <span class="material-icons-outlined">
+                            <i class="material-icons">schedule</i>
+                        </span>{{detail.trip.departureTime}}.
+                    </div>
+                    <div><span class="material-icons-outlined">
+                            <i class="material-icons">call</i>
+                            {{detail.passenger.mobileNumber}} |
+                        </span>
+                        <span class="material-icons-outlined">
+                            <i class="material-icons">mail</i>
+                            {{detail.passenger.user.email}}.
+                        </span>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

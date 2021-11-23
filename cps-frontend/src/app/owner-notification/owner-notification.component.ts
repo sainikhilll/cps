@@ -65,6 +65,8 @@ export class OwnerNotificationComponent implements OnInit {
     status: "",
     notificationStatus: ""
   }
+  success: boolean = false;
+  error: boolean = false;
   constructor(private service: OwnerNotificationService) { }
 
   ngOnInit(): void {
@@ -74,77 +76,25 @@ export class OwnerNotificationComponent implements OnInit {
         console.log("Inside function");
         this.tripBookings = data;
         console.log(this.tripBookings);
-        // this.updateStatus();
-
-        // for(let x of this.tripBookings){
-          
-          // this.service.addNotificationStatus(this.tripBookings[1]);
-        // }
+        this.tripBookings.sort((a,b)=>a.notificationStatus.localeCompare(b.notificationStatus));
+        console.log(this.tripBookings);
       }
     );
-    //this.service.addNotificationStatus(this.tripBookings[1]);
     
   }
   updateStatus(): void{
-    this.tripBookings[1].notificationStatus="Read";
-    this.service.addNotificationStatus(this.tripBookings[1]);
-    console.log(this.tripBookings[1]);
+    for(let x of this.tripBookings){
+      x.notificationStatus="Read";
+      this.service.addNotificationStatus(x).subscribe(
+        response => {
+          this.success = true;
+        },
+        error => {
+          this.error = true;
+        }
+      );
+      console.log(x);
+    }
   }
-  
-  // tripBooking: TripBooking = {
-  //   id: 0,
-  //   seatsBooked: 0,
-  //   trip: {
-  //     id: 0,
-  //     origin: "",
-  //     destination: "",
-  //     departureTime: "",
-  //     price: 0,
-  //     date: "",
-  //     owner: {
-  //       id: 0,
-  //       name: "",
-  //       address: "",
-  //       mobile: "",
-  //       licenceNumber: "",
-  //       licenceUrl: "",
-  //       aadharNumber: "",
-  //       aadharUrl: "",
-  //       user: {
-  //         id: 0,
-  //         email: "",
-  //         password: "",
-  //         role: "",
-  //         blacklisted: ""
-  //       },
-  //       ownerPreference: {
-  //         id: 0,
-  //         music: "",
-  //         smoking: "",
-  //         petsAllowed: ""
-  //       },
-  //       status: ""
-  //     },
-  //     numberOfPassengers: 0,
-  //     numberOfSeatsAvailable: 0,
-  //     carType: "",
-  //     status: ""
-  //   },
-  //   passenger: {
-  //     id: 0,
-  //     name: "",
-  //     mobileNumber: "",
-  //     dateOfBirth: "",
-  //     user: {
-  //       id: 0,
-  //       email: "",
-  //       password: "",
-  //       role: "",
-  //       blacklisted: ""
-  //     }
-  //   },
-  //   status: "",
-  //   notificationStatus: ""
-  // }
   
 }
