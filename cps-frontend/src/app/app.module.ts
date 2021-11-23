@@ -28,6 +28,7 @@ import { PassengerCancelTripComponent } from './passenger-cancel-trip/passenger-
 import { PassengerReviewRateComponent } from './passenger-review-rate/passenger-review-rate.component';
 import { AdminViewRidesComponent } from './admin-view-rides/admin-view-rides.component';
 import { AdminCancelRideComponent } from './admin-cancel-ride/admin-cancel-ride.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -62,7 +63,8 @@ import { AdminCancelRideComponent } from './admin-cancel-ride/admin-cancel-ride.
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
     
   ],
   providers: [],

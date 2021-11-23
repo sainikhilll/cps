@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
+@Entity(name = "trip")
 @Table(name = "owner_rating")
 @NoArgsConstructor
 @AllArgsConstructor

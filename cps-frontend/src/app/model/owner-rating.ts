@@ -1,10 +1,11 @@
-import { Owner } from "./owner";
+
 import { Passenger } from "./passenger";
+import { Trip } from "./trip";
 
 export interface OwnerRating{
     id:number;
-    rating:string;
+    rating:number;
     review:string;
     passenger:Passenger;
-    owner:Owner
+    trip:Trip
 }
