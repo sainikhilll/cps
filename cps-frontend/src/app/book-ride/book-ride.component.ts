@@ -70,7 +70,8 @@ export class BookRideComponent implements OnInit {
         blacklisted: ""
       }
     },
-    status: ""
+    status: "",
+    rating: NaN
   }
   bookingSucess: boolean = false;
   valid: boolean = true;

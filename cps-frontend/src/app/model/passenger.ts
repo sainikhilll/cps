@@ -5,6 +5,7 @@ export interface Passenger{
     name: string,
     mobileNumber: string,
     dateOfBirth: string,
-    user:User
+    user:User,
+    rating?: number
 }
     
