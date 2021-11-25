@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
         // sessionStorage.setItem(AUTH_USER_DATA, JSON.stringify(this.currentLoggedInUser));
 
         if(this.currentLoggedInUser.role == "owner" && this.success==true) {
-          this.router.navigate(['/publish-trip']);
+          this.router.navigate(['/passenger-rating']);
           // this.loginAuthService.ownerlogin();
         }
         else if(this.currentLoggedInUser.role == "passenger"&&this.success == true) {

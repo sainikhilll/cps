@@ -72,61 +72,11 @@ export class BookRideComponent implements OnInit {
     passengerReviewOwner: ''
   };
   ownerratings!: TripBooking[];
-  // ownerrating: OwnerRating = {
-  //   id: 0,
-  //   rating: 0,
-  //   review: "",
 
-  //   },
-//     passenger: {
-//       id: 0,
-//       name: "",
-//       mobileNumber: "",
-//       dateOfBirth: "",
-//       user: {
-//         id: 0,
-//         email: "",
-//         password: "",
-//         role: "",
-//         blacklisted: ""
-//       }
-//     },
-
-//     owner: {
-//       id: 0,
-//       name: "",
-//       address: "",
-//       mobile: "",
-//       licenceNumber: "",
-//       licenceUrl: "",
-//       aadharNumber: "",
-//       aadharUrl: "",
-//       user: {
-//         id: 0,
-//         email: "",
-//         password: "",
-//         role: "",
-//         blacklisted: ""
-//       },
-//       ownerPreference: {
-//         id: 1,
-//         music: "",
-//         smoking: "",
-//         petsAllowed: ""
-//       },
-//       status: "",
-//     },
-
-//     status: "",
-//     ownerRatingPassenger: 0,
-//     passengerRatingOwner: 0,
-//     passengerReviewOwner: ''
-
-//   }
   bookingSucess: boolean = false;
   valid: boolean = true;
-  overallrating!: number;
-  sum=0;
+  overallrating = 0;
+  sum = 0;
   constructor(private service: TripBookingService, private route: ActivatedRoute, private loginAuthService: LoginAuthService) { }
 
   ngOnInit(): void {
@@ -138,32 +88,18 @@ export class BookRideComponent implements OnInit {
       this.service.getOwnerRatingsByUserId(this.trip.owner.id).subscribe((data) => {
         this.ownerratings = (data)
         console.log(this.ownerratings)
-        for (var val of this.ownerratings) {
-          this.sum += val.passengerRatingOwner;
+        if (this.ownerratings.length != 0) {
+          for (var val of this.ownerratings) {
+            this.sum += val.passengerRatingOwner;
+          }
+          this.overallrating = this.sum / this.ownerratings.length;
         }
-        this.overallrating = this.sum / this.ownerratings.length;
       });
+
     }
     );
-    //this.service.getOwnerRatingsByUserId(1).subscribe();
-
   }
-  //   booktrip(): void {
-  //     console.log("Clicked");
-  //     if(this.valid){
-  //       this.bookingTrip.passenger.user.id=this.loginAuthService.user.id;
-  //     this.service.addTripBooking(this.bookingTrip).subscribe(
-  //       (data) => {
-  //         this.ngOnInit();
-  //         this.bookingSucess = true;
-  //       }
-  //     //   this.overallrating = this.sum / this.ownerratings.length;
-  //     // });
-  //   //}
-  //   );
-  //   //this.service.getOwnerRatingsByUserId(1).subscribe();
 
-  // }
   booktrip(): void {
     console.log("Clicked");
     if (this.valid) {

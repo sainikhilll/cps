@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RideOwnerSignupComponent } from './ride-owner-signup/ride-owner-signup.component';
@@ -62,8 +62,8 @@ import { AdminCancelRideComponent } from './admin-cancel-ride/admin-cancel-ride.
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
-    
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

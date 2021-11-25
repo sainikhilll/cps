@@ -53,6 +53,5 @@ public class TripBooking {
 
 	@Column(name = "passenger_review_owner")
 	private String passengerReviewOwner;
+
 }
-
-

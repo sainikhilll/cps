@@ -1,0 +1,39 @@
+.date {
+  background-color: #edf1fc;
+  width: 60px;
+  height: 60px;
+  border-radius: 80px;
+}
+
+.price{
+    float: right;
+}
+
+.star {
+  font-size: 30px;
+  color: #c1d5f0;
+}
+.filled {
+  color: #FFD700;
+}
+
+.passengers{
+  float: right;
+  right: 20px;
+  top: 98px;
+  position: absolute;
+}
+
+.table .details{
+  width: 60%;
+  padding: 10px;
+}
+
+
+ngb-rating{
+  padding: 0;
+}
+
+.btn {
+ min-width: 80px;
+}
