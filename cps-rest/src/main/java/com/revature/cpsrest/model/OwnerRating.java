@@ -30,7 +30,7 @@ public class OwnerRating {
 	private int id;
 	
 	@Column(name = "rating")
-	private String rating;
+	private int rating;
 	
 	@Column(name = "review")
 	private String review;

@@ -1,6 +1,6 @@
 <h2>Book Ride</h2>
 <div *ngIf="bookingSucess" class="text-center alert alert-success">
-    Congratulations!Booking is  Successful.
+    Congratulations!Booking is Successful.
 </div>
 <div *ngIf="!bookingSucess" class="row">
     <div class="col-lg-6">
@@ -29,7 +29,10 @@
                 <div class="mb-5">
                     <div class="row">
                         <div class="col-4 text-center">
-                            <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i> {{trip.owner.name}}
+                            <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i> {{trip.owner.name}} <span *ngIf="overallrating>2.5 && overallrating<4.0" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="badge bg-warning"><i class="fa fa-star fa-sm" aria-hidden="true"></i> {{overallrating | number : '1.2-2' }}</span>
+                            <span *ngIf="overallrating<=2.5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="badge bg-danger"><i class="fa fa-star fa-sm" aria-hidden="true"></i> {{overallrating | number : '1.2-2' }}</span>
+                            <span *ngIf="overallrating>=4.0" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="badge bg-success"><i class="fa fa-star fa-sm" aria-hidden="true"></i> {{overallrating | number : '1.2-2' }}</span>
+                            <span *ngIf="ownerratings.length==0" class="badge bg-secondary"><i class="fa fa-star fa-sm" aria-hidden="true"></i> NA</span>
                         </div>
                         <div class="col-4 text-center">
                             <i class="fa fa-users fa-lg" aria-hidden="true"></i> {{trip.numberOfSeatsAvailable}}
@@ -39,7 +42,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-footer mb-5">
+                <div class="mb-5">
+                    <div class="row">
+                        <div class="col-4 text-center" *ngIf="trip.owner.ownerPreference.music=='N'">
+                            <i class="fa fa-music fa-lg" aria-hidden="true"></i> <span> Not Allowed</span>
+                        </div>
+                        <div class="col-4 text-center" *ngIf="trip.owner.ownerPreference.music=='Y'">
+                            <i class="fa fa-music fa-lg" aria-hidden="true"></i> <span> Allowed</span>
+                        </div>
+                        <div class="col-4 text-center" *ngIf="trip.owner.ownerPreference.smoking=='N'">
+                            <img
+                                src="https://img.icons8.com/external-flatart-icons-solid-flatarticons/25/000000/external-smoke-pipe-fathers-day-flatart-icons-solid-flatarticons.png" />
+                            <span> Not Allowed</span>
+                        </div>
+                        <div class="col-4 text-center" *ngIf="trip.owner.ownerPreference.smoking=='Y'">
+                            <img
+                                src="https://img.icons8.com/external-flatart-icons-solid-flatarticons/25/000000/external-smoke-pipe-fathers-day-flatart-icons-solid-flatarticons.png" /><span>Allowed</span>
+                        </div>
+                        <div class="col-4 text-center" *ngIf="trip.owner.ownerPreference.petsAllowed=='N'">
+                            <i class="fa fa-paw fa-lg" aria-hidden="true"></i> <span> Not Allowed</span>
+                        </div>
+                        <div class="col-4 text-center" *ngIf="trip.owner.ownerPreference.petsAllowed=='Y'">
+                            <i class="fa fa-paw fa-lg" aria-hidden="true"></i> <span> Allowed</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer mb-4">
                     <div class="row">
                         <div class="col-6">
                             <h5 class="card-text text-left text-muted">Price for 1 Passenger</h5>
@@ -50,17 +78,92 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-6">
-                        <label class="form-label"># of Passengers</label>
-                        <input type="text" class="form-control" placeholder="# of Pasengers" (keyup)="validate()" [(ngModel)]="bookingTrip.seatsBooked">
-                        <small class="text-danger " *ngIf="!valid">Seat should be above 0 not exceeding {{trip.numberOfSeatsAvailable}}.</small>
-                    </div>
-
-                    <div class="col-12 mt-2">
-                        <button type="button" class="btn btn-primary" (click)="booktrip()">Book</button>
+                <!-- <div class="card">
+                    <div *ngIf="ownerratings.length==0" class="text-center">No Reviews Available</div>
+                    <div *ngIf="ownerratings.length != 0">
+                        <div class="row">
+                            <div class="col-8">
+                                Ratings and Reviews:
+                            </div>
+                            <div class="col-4">
+                                Overall Rating: <i class="fa fa-star fa-sm" aria-hidden="true"></i>{{overallrating}}/5
+                            </div>
+                        </div>
+                        <div *ngFor="let ratings of ownerratings; let i=index">
+                            <div *ngIf="i<1">
+                                <div class="card mt-2 mb-2">
+                                    <div class="card-header ">
+                                        <div class="row">
+                                            <div class="col-9">
+                                                <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i>
+                                                {{ratings.passenger.name}}
+                                            </div>
+                                            <div class="col-3">
+                                                <i class="fa fa-star fa-lg" aria-hidden="true"></i> {{ratings.rating}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        {{ratings.review}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a style="color: blue;" >View More</a>
+                        </div>
                     </div>
                 </div>
+            </div> -->
+            <div class="row">
+                <div class="col-6">
+                    <label class="form-label"># of Passengers</label>
+                    <input type="text" class="form-control" placeholder="# of Pasengers" (keyup)="validate()"
+                        [(ngModel)]="bookingTrip.seatsBooked">
+                    <small class="text-danger " *ngIf="!valid">Seat should be above 0 not exceeding
+                        {{trip.numberOfSeatsAvailable}}.</small>
+                </div>
+
+                <div class="col-12 mt-2">
+                    <button type="button" class="btn btn-primary" (click)="booktrip()">Book</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Ratings and Reviews</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngFor="let ratings of ownerratings">
+                    <div class="card mb-3">
+                        <div class="card-header  mb-0">
+                            <div class="row">
+                                <div class="col-9">
+                                    <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i>
+                                    {{ratings.passenger.name}}
+                                </div>
+                                <div class="col-3">
+                                    <span *ngIf="ratings.passengerRatingOwner>2.5 &&ratings.passengerRatingOwner<4.0" class="badge bg-warning"><i class="fa fa-star fa-sm" aria-hidden="true"></i> {{ratings.passengerRatingOwner}}</span>
+                            <span *ngIf="ratings.passengerRatingOwner<=2.5" class="badge bg-danger"><i class="fa fa-star fa-sm" aria-hidden="true"></i> {{ratings.passengerRatingOwner}}</span>
+                            <span *ngIf="ratings.passengerRatingOwner>=4.0" class="badge bg-success" ><i class="fa fa-star fa-sm" aria-hidden="true"></i> {{ratings.passengerRatingOwner}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            {{ratings.passengerReviewOwner}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

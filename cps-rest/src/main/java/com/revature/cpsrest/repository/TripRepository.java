@@ -22,5 +22,6 @@ public interface TripRepository extends JpaRepository<Trip,Integer> {
 	List<Trip> getTrips(@Param("origin") String origin,@Param("destination") String destination,@Param("date") Date date);
 	
 	@Query("Select o from Owner o where o.user.id = :userId")
-	Owner getOwnerByUserId(@Param("userId") int userId); 
+	Owner getOwnerByUserId(@Param("userId") int userId);
+	
 }

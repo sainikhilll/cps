@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     email: "",
     password: "",
     role: "",
-    blacklisted: ""
+    blacklisted: "Y"
   }
 
   
@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
   currentLoggedInUser !: User;
   error !: HttpErrorResponse;
   fail : boolean = false;
+  status : boolean = false;
+  
 
   constructor(private authService: AuthService, private router : Router, private loginAuthService : LoginAuthService) { 
 
@@ -38,24 +40,29 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-
-
     //console.log("login starts");
     let observable: Observable<any> = this.authService.login(this.user);
     observable.subscribe(
       data => {
         console.log(data.role);
         console.log("login successful");
-        this.success = true;
         this.currentLoggedInUser = data;
         this.loginAuthService.setUser(data);
+        if(this.loginAuthService.user.blacklisted == "Y")
+        {
+          this.status = true;
+        }
+        else{
+          this.success = true;
+        }
         console.log(this.currentLoggedInUser);
         // sessionStorage.setItem(AUTH_USER_DATA, JSON.stringify(this.currentLoggedInUser));
-        if(this.currentLoggedInUser.role == "owner") {
+
+        if(this.currentLoggedInUser.role == "owner" && this.success==true) {
           this.router.navigate(['/publish-trip']);
           // this.loginAuthService.ownerlogin();
         }
-        else if(this.currentLoggedInUser.role == "passenger") {
+        else if(this.currentLoggedInUser.role == "passenger"&&this.success == true) {
           this.router.navigate(['/search-trip']);
           // this.loginAuthService.passengerlogin();
         }
@@ -69,6 +76,7 @@ export class LoginComponent implements OnInit {
       },
       
       error => {
+
         this.fail = true;
         console.log(error);
 

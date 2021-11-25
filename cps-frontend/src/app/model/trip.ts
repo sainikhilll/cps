@@ -11,13 +11,5 @@ export interface Trip {​​​​​​​
     numberOfPassengers: number,    
     numberOfSeatsAvailable: number,
     carType: string,
-    status:string
-
-   
-   
-
-   
-
-
-    
+    status:string    
 }​​​​​​​

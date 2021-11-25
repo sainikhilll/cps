@@ -1,0 +1,13 @@
+.unread{
+    background-color: lightblue;
+}
+.notification-item{
+    cursor: pointer;
+}
+.notification-item:hover{
+    cursor: pointer;
+    background-color: lightgrey;
+}
+.size{
+    font-size: medium;
+}

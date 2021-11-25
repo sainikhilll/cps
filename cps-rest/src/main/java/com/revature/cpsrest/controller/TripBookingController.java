@@ -1,10 +1,13 @@
 package com.revature.cpsrest.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,14 +40,19 @@ public class TripBookingController {
 		;
 		tripBookingService.save(booking);
 		Optional<Trip> tripUpdated = tripService.getById(booking.getTrip().getId());
-//	Trip t=null;
+
 		tripUpdated.ifPresent(t -> {
 			t.setNumberOfSeatsAvailable(t.getNumberOfSeatsAvailable() - booking.getSeatsBooked());
 		});
 		tripUpdated.ifPresent(l -> {
 			tripService.save(l);
 		});
-//	
+
+	}
+	@GetMapping("/ownerRatings/{ownerId}")
+	public List<TripBooking> getOwnerRatingsByOwnerId(@PathVariable int ownerId){
+		//Owner o = ownerService.getOwnerByUserId(userId);
+		return tripBookingService.getOwnerRatingsByOwnerID(ownerId);
 	}
 
 }

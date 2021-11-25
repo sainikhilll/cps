@@ -1,4 +1,4 @@
-.card-body .price{
+/* .card-body .price{
     float: right;
 }
 .button{
@@ -35,4 +35,7 @@ section{
 
 td{
     border-spacing: 0px;
+} */
+.badge{
+    cursor: pointer;
 }

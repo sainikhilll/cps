@@ -19,5 +19,20 @@ export class ViewRideOwnersComponent implements OnInit {
       }
     )
   }
+  blackList(id:number){
+    this.ownerService.blackList(id).subscribe(
+      data=> {
+        this.ngOnInit();
+      }
+    )
+  }
+
+  undoBlackList(id: number){
+    this.ownerService.undoBlackList(id).subscribe(
+      data=>{
+        this.ngOnInit();
+      }
+    )
+  }
 
 }

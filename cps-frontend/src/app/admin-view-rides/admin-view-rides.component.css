@@ -1,0 +1,25 @@
+.floatRight{
+    float: right;
+}
+    
+.type{
+    top: 100px;
+    position:absolute;
+}
+
+.floatleft{
+    float: left;
+}
+
+.status{
+    border: 0.1px;
+   
+}
+.sort{
+    color: rgb(0, 0, 0);
+}
+.sort:hover{
+
+    color: rgb(255, 1, 1);
+    cursor: pointer;
+}
