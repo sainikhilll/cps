@@ -25,7 +25,6 @@ public class PassengerNotificationsService {
 
 	public List<TripBooking> getTripBookings(int passengerId) {
 		LOGGER.info("Passenger Notification Service Starts");
-		// int passengerId;
 		Passenger passenger = passengerRepository.getPassengerByUserId(passengerId);
 		return passengerNotificationsRepository.getTripBookings(passenger.getId());
 	}

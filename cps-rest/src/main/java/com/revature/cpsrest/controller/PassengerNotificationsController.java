@@ -16,7 +16,7 @@ import com.revature.cpsrest.model.TripBooking;
 import com.revature.cpsrest.service.PassengerNotificationsService;
 
 @RestController
-@RequestMapping("/notifications")
+@RequestMapping("/passenger_notifications")
 public class PassengerNotificationsController {
 	private final Logger LOGGER = LoggerFactory.getLogger(PassengerNotificationsController.class);
 
@@ -27,7 +27,6 @@ public class PassengerNotificationsController {
 	public List<TripBooking> getTripBookings(@PathVariable int passengerId) {
 		LOGGER.info("Passenger Notifications Controller Starts");
 		LOGGER.debug("passenger id: {}", passengerId);
-
 		return passengerNotificationsService.getTripBookings(passengerId);
 	}
 

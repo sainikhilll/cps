@@ -41,4 +41,7 @@ public class TripBooking {
 
 	@Column(name = "status")
 	private String status;
+	
+	@Column(name = "notification_status")
+	private String notificationStatus;
 }
