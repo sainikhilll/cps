@@ -71,7 +71,7 @@ export class BookRideComponent implements OnInit {
       }
     },
     status: "",
-    rating: NaN
+    ownerRatingPassenger: NaN
   }
   bookingSucess: boolean = false;
   valid: boolean = true;

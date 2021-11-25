@@ -18,5 +18,5 @@ public class TripBookingDto {
 	private TripDto trip;
 	private PassengerDto passenger;
 	private String status;
-	private int rating;
+	private int ownerRatingPassenger;
 }

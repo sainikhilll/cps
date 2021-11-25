@@ -36,7 +36,6 @@ export class PassengerRatingComponent implements OnInit {
       if (t.id == trip.id) {
         for (let tripBooking of trip.tripBookingList!) {
           if (tripBooking.id == tb.id) {
-            console.log(tripBooking.rating);
             this.service.postRating(tripBooking).subscribe(
               data => {
                 console.log("success")

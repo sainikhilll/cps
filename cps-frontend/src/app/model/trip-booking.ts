@@ -7,5 +7,5 @@ export interface TripBooking{
     trip:Trip,
     passenger:Passenger,
     status:string,
-    rating: number
+    ownerRatingPassenger: number
 }

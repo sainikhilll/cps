@@ -15,7 +15,7 @@ export class PassengerRatingService {
   constructor(private http: HttpClient, private service: LoginAuthService) { }
 
   public getTrips(): Observable<any> {
-    return this.http.get<any>(REST_URL + "trip-bookings/" + this.service.user.id);
+    return this.http.get<any>(REST_URL + "trip-bookings/2" );
   }
 
   public postRating(rating: TripBooking): Observable<any>{

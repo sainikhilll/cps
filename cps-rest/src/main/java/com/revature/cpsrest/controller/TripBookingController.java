@@ -72,7 +72,7 @@ public class TripBookingController {
 				tripBookingDto.setPassenger(passengerDto);
 				tripBookingDto.setSeatsBooked(tripBooking.getSeatsBooked());
 				tripBookingDto.setStatus(tripBooking.getStatus());
-				tripBookingDto.setRating(tripBooking.getRating());
+				tripBookingDto.setOwnerRatingPassenger(tripBooking.getOwnerRatingPassenger());
 				
 				tripBookingList.add(tripBookingDto);
 			}
@@ -119,7 +119,7 @@ public class TripBookingController {
 	public void updateRating(@RequestBody TripBooking tripBooking) {
 		LOGGER.debug("{}", tripBooking);
 		TripBooking rating = tripBookingService.getTripBooking(tripBooking.getId());
-		rating.setRating(tripBooking.getRating());
+		rating.setOwnerRatingPassenger(tripBooking.getOwnerRatingPassenger());
 		tripBookingService.save(rating);
 	}
 }
