@@ -51,5 +51,11 @@ Ride-sharing Application System (or Carpooling Application System) is a system t
 <h2>Features</h2>
 
 <h3>RideOwner</h3>
+<ul>
+<li>As a Ride Owner, I want to register using name, address, mobile, mail, password and personal documents (like license and aadhar), so that I can share my ride</li>
+<li>As a Ride Owner, I want to login, so that I can access the system</li>
+<li>As a Ride Owner, I want to add preferences and personal behaviour (Aversion to Music, Smoking Allowed, Pets Allowed), so that passengers can select ride owner based on his preferences.</li>
+<>
+<ul>
 <h3>Passengers</h3>
 <h3>Admin</h3>
