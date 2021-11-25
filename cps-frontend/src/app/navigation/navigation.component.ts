@@ -16,7 +16,7 @@ export class NavigationComponent implements OnInit {
   constructor(public loginAuthService : LoginAuthService, private _router: Router, private service: OwnerNotificationService) { }
   destroy = new Subject();
   timer: number=0;
-  rxjsTimer = timer(1000,5000);
+  rxjsTimer = timer(1000,3000);
 
   tripBookings!: TripBooking[];
   tripBooking: TripBooking = {

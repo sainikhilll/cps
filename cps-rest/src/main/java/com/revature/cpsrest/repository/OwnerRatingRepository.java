@@ -17,3 +17,27 @@ public interface OwnerRatingRepository extends JpaRepository<OwnerRating, Intege
 	@Query("select o from OwnerRating o where owner_id = :ownerId")
 	List<OwnerRating> getRatings(@Param("ownerId") int ownerId);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

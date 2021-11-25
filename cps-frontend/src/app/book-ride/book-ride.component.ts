@@ -50,6 +50,7 @@ export class BookRideComponent implements OnInit {
       numberOfSeatsAvailable: 0,
       carType: "",
       status: ""
+
     },
     passenger: {
       id: 0,
@@ -71,48 +72,57 @@ export class BookRideComponent implements OnInit {
     passengerReviewOwner: ''
   };
   ownerratings!: TripBooking[];
-  ownerrating: OwnerRating = {
-    id: 0,
-    rating: 0,
-    review: "",
-    passenger: {
-      id: 0,
-      name: "",
-      mobileNumber: "",
-      dateOfBirth: "",
-      user: {
-        id: 0,
-        email: "",
-        password: "",
-        role: "",
-        blacklisted: ""
-      }
-    },
-    owner: {
-      id: 0,
-      name: "",
-      address: "",
-      mobile: "",
-      licenceNumber: "",
-      licenceUrl: "",
-      aadharNumber: "",
-      aadharUrl: "",
-      user: {
-        id: 0,
-        email: "",
-        password: "",
-        role: "",
-        blacklisted: ""
-      },
-      ownerPreference: {
-        id: 1,
-        music: "",
-        smoking: "",
-        petsAllowed: ""
-      },
-      status: "",
-    },
-  }
+  // ownerrating: OwnerRating = {
+  //   id: 0,
+  //   rating: 0,
+  //   review: "",
+
+  //   },
+//     passenger: {
+//       id: 0,
+//       name: "",
+//       mobileNumber: "",
+//       dateOfBirth: "",
+//       user: {
+//         id: 0,
+//         email: "",
+//         password: "",
+//         role: "",
+//         blacklisted: ""
+//       }
+//     },
+
+//     owner: {
+//       id: 0,
+//       name: "",
+//       address: "",
+//       mobile: "",
+//       licenceNumber: "",
+//       licenceUrl: "",
+//       aadharNumber: "",
+//       aadharUrl: "",
+//       user: {
+//         id: 0,
+//         email: "",
+//         password: "",
+//         role: "",
+//         blacklisted: ""
+//       },
+//       ownerPreference: {
+//         id: 1,
+//         music: "",
+//         smoking: "",
+//         petsAllowed: ""
+//       },
+//       status: "",
+//     },
+
+//     status: "",
+//     ownerRatingPassenger: 0,
+//     passengerRatingOwner: 0,
+//     passengerReviewOwner: ''
+
+//   }
   bookingSucess: boolean = false;
   valid: boolean = true;
   overallrating!: number;

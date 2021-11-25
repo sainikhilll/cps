@@ -25,6 +25,7 @@ public class TripBookingService {
 	public List<TripBooking> getOwnerRatingsByOwnerID(int ownerId){
 		return tripBookingRepository.getOwnerRatingsByOwnerId(ownerId);
 	}
+
 	
 
 }

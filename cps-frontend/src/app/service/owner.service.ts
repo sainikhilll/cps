@@ -21,11 +21,11 @@ export class OwnerService {
   }
 
   public updateOwner(id: number): Observable<any> {
-    return this._http.get<any>(REST_URL + "approvals/updates/" + id);
+    return this._http.get<any>(REST_URL + "updates/" + id);
   }
 
   public rejectOwner(id: number): Observable<any> {
-    return this._http.get<any>(REST_URL + "approvals/rejects/" + id);
+    return this._http.get<any>(REST_URL + "rejects/" + id);
   }
 
   public registerOwner(ownerData: Owner): Observable<any> {
