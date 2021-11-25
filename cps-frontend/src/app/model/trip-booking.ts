@@ -8,4 +8,7 @@ export interface TripBooking{
     passenger:Passenger,
     status:string,
     notificationStatus: string
+    ownerRatingPassenger:number,
+    passengerRatingOwner:number,
+    passengerReviewOwner:string
 }

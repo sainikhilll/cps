@@ -63,7 +63,10 @@ export class OwnerNotificationComponent implements OnInit {
       }
     },
     status: "",
-    notificationStatus: ""
+    notificationStatus: "",
+    ownerRatingPassenger: 0,
+    passengerRatingOwner: 0,
+    passengerReviewOwner: ''
   }
   success: boolean = false;
   error: boolean = false;

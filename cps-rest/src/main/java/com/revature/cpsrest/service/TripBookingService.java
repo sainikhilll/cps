@@ -1,10 +1,13 @@
 package com.revature.cpsrest.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.cpsrest.model.OwnerRating;
 import com.revature.cpsrest.model.TripBooking;
 import com.revature.cpsrest.repository.TripBookingRepository;
 
@@ -17,6 +20,10 @@ public class TripBookingService {
 
 	public void save(TripBooking booking) {
 		tripBookingRepository.save(booking);
+	}
+	
+	public List<TripBooking> getOwnerRatingsByOwnerID(int ownerId){
+		return tripBookingRepository.getOwnerRatingsByOwnerId(ownerId);
 	}
 	
 

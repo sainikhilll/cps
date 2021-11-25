@@ -65,9 +65,12 @@ export class BookRideComponent implements OnInit {
       }
     },
     status: "",
-    notificationStatus: "NotRead"
+    notificationStatus: "NotRead",
+    ownerRatingPassenger: 0,
+    passengerRatingOwner: 0,
+    passengerReviewOwner: ''
   };
-  ownerratings!: OwnerRating[];
+  ownerratings!: TripBooking[];
   ownerrating: OwnerRating = {
     id: 0,
     rating: 0,
@@ -109,50 +112,67 @@ export class BookRideComponent implements OnInit {
       },
       status: "",
     },
-  };
-bookingSucess: boolean = false;
-valid: boolean = true;
-overallrating!: number;
-sum = 0;
-constructor(private service: TripBookingService, private route: ActivatedRoute, private loginAuthService: LoginAuthService) { }
-
-ngOnInit(): void {
-  let idd: any = this.route.snapshot.paramMap.get('id');
-  this.bookingTrip.trip.id = idd;
-  let resp = this.service.getTrip(idd);
-  resp.subscribe((data) => {
-    this.trip = data;
-    this.service.getOwnerRatingsByUserId(this.trip.owner.id).subscribe((data) => {
-      this.ownerratings = (data)
-      for (var val of this.ownerratings) {
-        this.sum += val.rating;
-      }
-      this.overallrating = this.sum / this.ownerratings.length;
-    });
   }
-  );
-  //this.service.getOwnerRatingsByUserId(1).subscribe();
+  bookingSucess: boolean = false;
+  valid: boolean = true;
+  overallrating!: number;
+  sum=0;
+  constructor(private service: TripBookingService, private route: ActivatedRoute, private loginAuthService: LoginAuthService) { }
 
-}
-booktrip(): void {
-  console.log("Clicked");
-  if(this.valid){
-  this.bookingTrip.passenger.user.id = this.loginAuthService.user.id;
-  this.service.addTripBooking(this.bookingTrip).subscribe(
-    (data) => {
-      this.ngOnInit();
-      this.bookingSucess = true;
+  ngOnInit(): void {
+    let idd: any = this.route.snapshot.paramMap.get('id');
+    this.bookingTrip.trip.id = idd;
+    let resp = this.service.getTrip(idd);
+    resp.subscribe((data) => {
+      this.trip = data;
+      this.service.getOwnerRatingsByUserId(this.trip.owner.id).subscribe((data) => {
+        this.ownerratings = (data)
+        console.log(this.ownerratings)
+        for (var val of this.ownerratings) {
+          this.sum += val.passengerRatingOwner;
+        }
+        this.overallrating = this.sum / this.ownerratings.length;
+      });
     }
-  );
-}
+    );
+    //this.service.getOwnerRatingsByUserId(1).subscribe();
+
+  }
+  //   booktrip(): void {
+  //     console.log("Clicked");
+  //     if(this.valid){
+  //       this.bookingTrip.passenger.user.id=this.loginAuthService.user.id;
+  //     this.service.addTripBooking(this.bookingTrip).subscribe(
+  //       (data) => {
+  //         this.ngOnInit();
+  //         this.bookingSucess = true;
+  //       }
+  //     //   this.overallrating = this.sum / this.ownerratings.length;
+  //     // });
+  //   //}
+  //   );
+  //   //this.service.getOwnerRatingsByUserId(1).subscribe();
+
+  // }
+  booktrip(): void {
+    console.log("Clicked");
+    if (this.valid) {
+      this.bookingTrip.passenger.user.id = this.loginAuthService.user.id;
+      this.service.addTripBooking(this.bookingTrip).subscribe(
+        (data) => {
+          this.ngOnInit();
+          this.bookingSucess = true;
+        }
+      );
+    }
   }
 
-validate(): void {
-  if(this.bookingTrip.seatsBooked > 0 && this.bookingTrip.seatsBooked <= this.trip.numberOfSeatsAvailable) {
-  this.valid = true;
-} else {
-  this.valid = false;
-}
+  validate(): void {
+    if (this.bookingTrip.seatsBooked > 0 && this.bookingTrip.seatsBooked <= this.trip.numberOfSeatsAvailable) {
+      this.valid = true;
+    } else {
+      this.valid = false;
+    }
 
   }
 

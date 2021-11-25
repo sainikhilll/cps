@@ -16,6 +16,6 @@ export class TripBookingService {
     return this.http.post(REST_URL+"trip-bookings",tripBooked);
   }
   public getOwnerRatingsByUserId(id:number){
-    return this.http.get<any>(REST_URL+"ownerRatings/"+id);
+    return this.http.get<any>(REST_URL+"trip-bookings/ownerRatings/"+id);
   }
 }
