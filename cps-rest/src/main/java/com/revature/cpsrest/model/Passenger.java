@@ -36,7 +36,11 @@ public class Passenger {
 	private String name;
 
 	@Column(name = "mobile")
+
 	private String mobileNumber;
+
+
+
 
 	@Column(name = "date_of_birth")
 	private Date dateOfBirth;
@@ -45,4 +49,5 @@ public class Passenger {
 	@JoinColumn(name = "user_id")
 	private User user;
 
+	
 }

@@ -35,8 +35,11 @@ public class User {
 	
 	@Column(name = "role")
 	private String role;
+
 	
 	@Column(name = "blacklisted")
 	private Character blacklisted;
+
+
 
 }

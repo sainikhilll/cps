@@ -1,1 +1,19 @@
-<p>view-passengers works!</p>
+<h1 class="d-flex justify-content-center aline-item-center mt-2 "><b>List Of Passenger</b></h1>
+<div class= "row ">
+  <div class="col-md-4 mb-3"*ngFor="let passenger of passenger" > 
+    <div class="card" >
+    <div class="card-body">
+      <h4 class="card-title primary">{{passenger.name}}</h4>
+      <div *ngIf="passenger.user.blacklisted=='Y' " class="badge bg-danger"> Blacklisted</div>
+
+      <h6 class="card-subtitle mt-2 ">
+        <i class="fa fa-phone" aria-hidden="true"></i> {{passenger.mobileNumber}}</h6>
+      <h5 class="card-title mt-2" ><img src="https://img.icons8.com/ios/25/000000/birth-date.png"/>{{passenger.dateOfBirth}}</h5>
+      <h6 class="card-subtitle mb-2 "><i class="fa fa-envelope" aria-hidden="true"></i> {{passenger.user.email}}</h6>
+      
+
+
+      <span class="btn btn-primary mx-4" (click)="blackList(passenger.id)" *ngIf="passenger.user.blacklisted=='N' ">BlackList</span>
+    </div>
+  </div>
+</div>
