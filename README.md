@@ -61,8 +61,7 @@ Ride-sharing Application System (or Carpooling Application System) is a system t
 <li>As a Ride Owner, I want to edit or cancel the trip, so that I can handle if there is any change in my plan.</li>
 <li>As a Ride Owner, I want to rate my passengers after completion of trip so that it will be added to passenger profile.</li>
 <li>As a Ride Owner, I want to view my ratings and reviews, so that I can know where my ratings stand</li>
-<ul>
-  
+<ul> 
 <h3>Passengers</h3>
 <ul>
 <li>As a Passenger, I can register in the system by giving my name , password, email, phone number, date of birth so that I can book ride</li>
@@ -74,8 +73,7 @@ Ride-sharing Application System (or Carpooling Application System) is a system t
 <li>As a Passenger, I can get the notification on the successful booking so that I can get the booking confirmation and details about the Ride Owner</li>
 <li>As a Passenger, after I book a trip I can cancel my trip so that I can cancel when there is a change in my plan</li>
 <li>As a Passenger, I want to review and rate the Ride Owner, so that I can convey my feedback about the ride</li>
-</ul>   
-  
+</ul>    
 <h3>Admin</h3>
 <ul>
 <li>As a Admin, I want to verify the driver's details and then approve or reject, so that the Ride Owner can publish his trip and make it available for passengers</li>
