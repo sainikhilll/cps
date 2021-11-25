@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,8 +45,22 @@ public class TripController {
 		tripService.save(trip);
 	}
 	
+
+@GetMapping("/canceltrips/{id}")
+public void canceltrips(@PathVariable int id) {
+	LOGGER.info("CancelTrip Started");
+	Trip trip = tripService.getTripId(id);
+	trip.setStatus("Cancelled");
+	tripService.tripStatus(trip);
+}
+	
 	@GetMapping("/user/{id}")
 	public Owner getOwner(@PathVariable int id) {
 		return tripService.getOwnerByUserId(id);
+	}
+	
+	@PutMapping("/update")
+	public void updateTrip(@RequestBody Trip trip) {
+		tripService.updateTrip(trip);
 	}
 }
