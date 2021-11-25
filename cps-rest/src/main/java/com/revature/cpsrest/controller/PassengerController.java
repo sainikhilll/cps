@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,11 +44,19 @@ public class PassengerController {
 	}
 
 	@GetMapping
-	public List<Passenger> getDepartmentList() {
+	public List<Passenger> getPassengerList() {
 
-		LOGGER.debug("{}", passengerService.list());
+		//LOGGER.debug("{}", passengerService.list());
 
 		return passengerService.list();
+	}
+	@GetMapping("/passengerBlackList/{id}")
+	public void blackList(@PathVariable int id) {
+
+		Passenger passenger=passengerService.getPassenger(id);
+		
+		passenger.getUser().setBlacklisted('Y');
+		passengerService.update(passenger);
 	}
 
 }

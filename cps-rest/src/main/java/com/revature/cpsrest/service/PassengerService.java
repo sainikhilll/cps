@@ -28,7 +28,16 @@ public class PassengerService {
 
 	}
 
+	public void update(Passenger passenger) {
 
+		passengerRepository.save(passenger);
+		
+	}
+	public Passenger getPassenger(int id) {
+
+		return passengerRepository.getById(id);
+
+	}
 
 	public List<Passenger> list() {
 

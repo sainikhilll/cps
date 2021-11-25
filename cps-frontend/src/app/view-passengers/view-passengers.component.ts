@@ -20,5 +20,14 @@ export class ViewPassengersComponent implements OnInit {
     
     })
   }
+  blackList(id:number){
+    this.authService.blackList(id).subscribe(
+      data=>{
+        this.ngOnInit()
 
+        
+      }
+    )
+
+  }
 }

@@ -28,6 +28,9 @@ export class AuthService {
   }
 
   getPassenger(): Observable<any> {
-    return this.httpClient.get("http://localhost:8080/passengers");
+    return this.httpClient.get(REST_URL +"passengers");
+  }
+  public blackList(id: number): Observable<any> {
+    return this.httpClient.get<any>(REST_URL + "passengers/passengerBlackList/"+ id);
   }
 }
