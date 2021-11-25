@@ -57,7 +57,10 @@
             <a *ngIf="loginAuthService.loggedInUser.role != ''" (click)="logout()" class="nav-link" routerLink='login'>Logout</a>
           </li>
           <li class="nav-item">
-            <a  class="nav-link" routerLink='owner-notifications'>Owner Notifications</a>
+            <a  class="nav-link" routerLink='owner-notifications'>
+              Notifications
+              <span class="badge bg-danger rounded-circle" *ngIf="count>0">{{count}}</span>
+            </a>
           </li>
           <li class="nav-item">
             <a  class="nav-link" routerLink='passenger-notifications'>Passenger Notifications</a>
@@ -90,7 +93,7 @@
             <a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" (click)="passengerlogout()" class="nav-link" routerLink='login'>Logout</a>
           </li> -->
         </ul>
-
+        <!-- select COUNT(notification_status) from trip_bookings tb inner join trip t inner join passenger p on tb.trip_id=t.id and tb.passenger_id=p.id where t.owner_id= 2 and notification_status="NotRead"; -->
       </div>
     </div>
   </nav>

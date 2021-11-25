@@ -33,4 +33,8 @@ public class OwnerNotificationsService {
 	public void save(TripBooking tripBooking) {
 		ownerNotificationsRepository.save(tripBooking);
 	}
+//	public int getCount(int ownerId) {
+//		Owner owner = ownerRepository.getOwnerByUserId(ownerId);
+//		return ownerNotificationsRepository.getCount(owner.getId());
+//	}
 }

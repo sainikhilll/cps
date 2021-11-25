@@ -13,4 +13,7 @@ import com.revature.cpsrest.model.TripBooking;
 public interface OwnerNotificationsRepository extends JpaRepository<TripBooking,Integer>  {	
 	@Query("select tb from TripBooking tb inner join fetch tb.trip t inner join fetch tb.passenger p where t.owner.id = :ownerId")
 	List<TripBooking> getTripBookings(@Param("ownerId") int ownerId);
+	
+//	@Query("select COUNT(tb.notificationStatus) from TripBooking tb inner join fetch tb.trip t inner join fetch tb.passenger p where t.owner.id= :ownerId and notificationStatus='NotRead'")
+//	int getCount getCount(@Param("ownerId") int ownerId);
 }

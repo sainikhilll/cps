@@ -35,4 +35,11 @@ public class OwnerNotificationsController {
 		LOGGER.debug("TripBooking:{}",tripBooking);
 		ownerNotificationsService.save(tripBooking);
 	}
+	
+//	@GetMapping("/{count}")
+//	public int getCount(@PathVariable int ownerId){
+//		LOGGER.debug("owner id: {}", ownerId);
+//		return ownerNotificationsService.getCount(ownerId);
+//	}
+	
 }
