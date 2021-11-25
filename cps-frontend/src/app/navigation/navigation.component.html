@@ -65,8 +65,12 @@
             <span class="badge bg-danger rounded-circle" *ngIf="count>0">{{count}}</span>
           </a>
         </li>
-
-
+        <li class="nav-item">
+          <a class="nav-link" routerLink='passenger-notifications'>
+            Notifications
+            <span class="badge bg-danger rounded-circle" *ngIf="count1>0">{{count1}}</span>
+          </a>
+        </li>
 
         <li><a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" class="nav-link"
             routerLink='passenger-notifications'>Notifications</a>

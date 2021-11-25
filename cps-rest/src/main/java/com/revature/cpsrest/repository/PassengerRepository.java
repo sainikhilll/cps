@@ -10,7 +10,7 @@ import com.revature.cpsrest.model.Passenger;
 @Repository
 public interface PassengerRepository extends JpaRepository<Passenger, Integer> {
 	@Query("Select o from Passenger o Where o.user.id = :userId")
-	Passenger getPassengerByUserId (@Param("userId") int userId);
+	Passenger getPassengerByUserId(@Param("userId") int userId);
 
 
 }

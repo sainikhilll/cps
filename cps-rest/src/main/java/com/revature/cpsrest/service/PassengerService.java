@@ -13,10 +13,10 @@ import com.revature.cpsrest.repository.UserRepository;
 @Transactional
 public class PassengerService {
 	@Autowired
-	private PassengerRepository passengerRepository;
-	@Autowired
 	private UserRepository userRepository;
-
+	@Autowired
+	private PassengerRepository passengerRepository;
+	
 	public void save(Passenger passenger) {
 		userRepository.save(passenger.getUser());
 		passengerRepository.save(passenger);

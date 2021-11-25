@@ -1,1 +1,69 @@
-<p>passenger-notifications works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Notifications</h2>
+            <div class="alert alert-success" *ngIf="success">All notifications are marked as Read.</div>
+            <div class="alert alert-danger" *ngIf="error">Error in marking the notifications as Read</div>
+            <button class="btn btn-primary mb-2" (click)="updateStatus()">Mark All as Read</button>
+            <ul *ngFor="let detail of tripBookings" class="list-group mb-2">
+                <li *ngIf="detail.notificationStatus!='Read'" class="list-group-item notification-item unread">
+                    <div><strong>{{detail.trip.owner.name}}</strong> has a ride for
+                        <span class="material-icons-outlined">
+                            <i class="material-icons size">person</i>
+                        </span><strong> {{detail.trip.numberOfPassengers}}</strong> from
+                        <span class="material-icons-outlined">
+                            <i class="material-icons size">location_on</i>
+                        </span><strong>{{detail.trip.origin}}</strong> to
+                        <span class="material-icons-outlined">
+                            <i class="material-icons size">location_on</i>
+                        </span><strong>{{detail.trip.destination}}</strong> on
+                        <span class="material-icons-outlined">
+                            <i class="material-icons size">event</i>
+                        </span><strong>{{detail.trip.date | date: "dd-MM-yyyy"}}</strong> at
+                        <span class="material-icons-outlined">
+                            <i class="material-icons size">schedule</i>
+                        </span><strong>{{detail.trip.departureTime}}</strong>.
+                    </div>
+                    <div><span class="material-icons-outlined">
+                            <i class="material-icons size">call</i>
+                            <strong>{{detail.trip.owner.mobile}}</strong> |
+                        </span>
+                        <span class="material-icons-outlined">
+                            <i class="material-icons size">mail</i>
+                            <strong>{{detail.trip.owner.user.email}}</strong>.
+                        </span>
+                    </div>
+                </li>
+                <li *ngIf="detail.notificationStatus=='Read'" class="list-group-item notification-item mb-2">
+                    <div>Booking confirmation for
+                        <span class="material-icons-outlined align-items-center">
+                            <i class="material-icons size">airline_seat_recline_normal</i>
+                        </span>
+                        <strong> {{detail.seatsBooked}}</strong> from
+                        <span class="material-icons-outlined">
+                            <i class="material-icons size">location_on</i>
+                        </span><strong>{{detail.trip.origin}}</strong> to
+                        <span class="material-icons-outlined">
+                            <i class="material-icons size">location_on</i>
+                        </span><strong>{{detail.trip.destination}}</strong> on
+                        <span class="material-icons-outlined">
+                            <i class="material-icons size">event</i>
+                        </span><strong>{{detail.trip.date | date: "dd-MM-yyyy"}}</strong> at
+                        <span class="material-icons-outlined">
+                            <i class="material-icons size">schedule</i>
+                        </span><strong>{{detail.trip.departureTime}}</strong>.
+                    </div>
+                    <div><span class="material-icons-outlined">
+                            <i class="material-icons size">call</i>
+                            <strong>{{detail.trip.owner.mobile}}</strong> |
+                        </span>
+                        <span class="material-icons-outlined">
+                            <i class="material-icons size">mail</i>
+                            <strong>{{detail.trip.owner.user.email}}</strong>.
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

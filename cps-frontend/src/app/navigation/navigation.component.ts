@@ -5,6 +5,7 @@ import { LoginAuthService } from '../service/login-auth.service.ts.service';
 import { OwnerNotificationService } from '../service/owner-notification.service';
 import { Observable, Subject, timer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { PassengerNotificationsService } from '../service/passenger-notifications.service';
 
 @Component({
   selector: 'app-navigation',
@@ -13,7 +14,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor(public loginAuthService : LoginAuthService, private _router: Router, private service: OwnerNotificationService) { }
+  constructor(public loginAuthService : LoginAuthService, private _router: Router, private service: OwnerNotificationService, private passengerService: PassengerNotificationsService) { }
   destroy = new Subject();
   timer: number=0;
   rxjsTimer = timer(1000,3000);
@@ -79,6 +80,7 @@ export class NavigationComponent implements OnInit {
   }
 
   count: number = 0;
+  count1: number = 0;
   ngOnInit(): void {
     this.rxjsTimer.pipe(takeUntil(this.destroy))
     .subscribe(val => {
@@ -101,7 +103,23 @@ export class NavigationComponent implements OnInit {
             }
             // console.log(this.count);
           }
-          
+        );
+      }else if(this.loginAuthService.loggedInUser.role=='passenger'){
+        this.passengerService.getPassengerDetails(this.tripBooking.passenger.id).subscribe(
+          data => {
+            this.tripBookings = data;
+            // console.log(this.tripBookings);
+            // console.log(this.count);
+            for(let x of this.tripBookings){
+              if(x.notificationStatus=="NotRead"){
+                counter++;
+              }
+            }
+            if(counter != this.count1){
+              this.count1 = counter;
+            }
+            // console.log(this.count);
+          }
         );
       }
     })
