@@ -85,3 +85,12 @@ Ride-sharing Application System (or Carpooling Application System) is a system t
 <li>As an Admin, I want to blacklist a Passenger, so that I can prevent any unforseen circumstances</li>
 <li>As a system, I want to create an admin credentials by default, so that the admin can initially manage the app.</li>
 </ul>
+
+<h2>Getting Started</h2>
+<ul>
+<li> Start with this Github Repository</li>
+<li>Git clone to directory of your choice $ git clone https://github.com/sainikhilll/cps.git</li>
+<li> open front-end work in VS Code and backend work in STS</li>
+<li>Run the sts project first to start the server</li>
+<li> Then Run the front-end using (ng serve)in VS code</li>
+</ul>
