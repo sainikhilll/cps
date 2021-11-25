@@ -18,3 +18,27 @@ public interface OwnerRatingRepository extends JpaRepository<OwnerRating, Intege
 	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

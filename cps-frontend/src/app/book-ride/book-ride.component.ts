@@ -29,34 +29,35 @@ export class BookRideComponent implements OnInit {
       departureTime: "",
       price: 0,
       date: "",
-    owner: {
-      id:0,
-      name:"",
-      address:"",
-      mobile:"",
-      licenceNumber:"",
-      licenceUrl:"",
-      aadharNumber:"",
-      aadharUrl:"",
-      user:{ id: 0,
-        email: "",
-        password:"",
-        role:"",
-        blacklisted: ""
+      owner: {
+        id: 0,
+        name: "",
+        address: "",
+        mobile: "",
+        licenceNumber: "",
+        licenceUrl: "",
+        aadharNumber: "",
+        aadharUrl: "",
+        user: {
+          id: 0,
+          email: "",
+          password: "",
+          role: "",
+          blacklisted: ""
+        },
+        ownerPreference: {
+          id: 1,
+          music: "",
+          smoking: "",
+          petsAllowed: ""
+        },
+        status: "",
       },
-      ownerPreference:{
-        id:1,
-        music:"",
-        smoking:"",
-        petsAllowed:""
-      },
-      status:"",
+      numberOfPassengers: 0,
+      numberOfSeatsAvailable: 0,
+      carType: "",
+      status: ""
     },
-    numberOfPassengers: 0,
-    numberOfSeatsAvailable: 0,
-    carType: "",
-    status: ""
-  },
     passenger: {
       id: 0,
       name: "",
@@ -70,7 +71,10 @@ export class BookRideComponent implements OnInit {
         blacklisted: ""
       }
     },
-    status: ""
+    status: "",
+    ownerRatingPassenger: 0,
+    passengerRatingOwner: 0,
+    passengerReviewOwner: ''
   }
   bookingSucess: boolean = false;
   valid: boolean = true;

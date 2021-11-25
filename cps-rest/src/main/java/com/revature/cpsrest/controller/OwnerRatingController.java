@@ -26,7 +26,7 @@ public class OwnerRatingController {
 	@Autowired
 	private OwnerRepository ownerRepository;
 	
-	@GetMapping("/{ownerId}")
+	@GetMapping()
 	public List<OwnerRating> getRatings(@PathVariable int ownerId) {
 		Owner owner = ownerRepository.getOwnerByUserId(ownerId);
 		return ownerRatingService.getRatings(owner.getId());

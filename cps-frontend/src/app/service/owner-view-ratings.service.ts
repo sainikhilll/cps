@@ -12,6 +12,6 @@ export class OwnerViewRatingsService {
   constructor(private httpClient: HttpClient, private service: LoginAuthService) { }
 
   getOwnerViewRatings() : Observable<any> {
-    return this.httpClient.get(REST_URL+"viewratings/"+this.service.user.id);
+    return this.httpClient.get(REST_URL+"trip-bookings/ownerratingsuser/"+this.service.user.id);
   }
 }

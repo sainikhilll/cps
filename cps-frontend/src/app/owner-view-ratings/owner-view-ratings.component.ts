@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OwnerRating } from '../model/owner-rating';
+import { TripBooking } from '../model/trip-booking';
 import { OwnerViewRatingsService } from '../service/owner-view-ratings.service';
 
 @Component({
@@ -50,7 +51,7 @@ export class OwnerViewRatingsComponent implements OnInit {
       status:""
     }
   }
-  ownerRatings : OwnerRating[] = [];
+  ownerRatings : TripBooking[] = [];
 
   constructor(private ownerViewRatingService: OwnerViewRatingsService) { }
 

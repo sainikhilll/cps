@@ -18,16 +18,17 @@
             routerLink='ride-owner-preferences'>Preferences</a>
         </li>
         <li class="nav-item">
-          <a *ngIf="loginAuthService.loggedInUser.role == 'owner'" class="nav-link" routerLink='publish-trip'>Publish
-            Trip</a>
+          <a *ngIf="loginAuthService.loggedInUser.role == 'owner'" class="nav-link" routerLink='publish-trip'>
+            Trips</a>
+          <!-- we have to change -->
         </li>
         <li class="nav-item">
           <a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" class="nav-link" routerLink='search-trip'>Search
             Trip</a>
         </li>
         <li class="nav-item">
-          <a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" class="nav-link" routerLink='book-ride'>Book
-            Ride</a>
+          <a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" class="nav-link" routerLink='book-ride'>Booked
+            Rides</a>
         </li>
         <li class="nav-item">
           <a *ngIf="loginAuthService.loggedInUser.role == 'admin'" class="nav-link"
@@ -52,13 +53,51 @@
             <li><a class="dropdown-item" routerLink='ride-owner-signup'>Ride Owner</a></li>
           </ul>
         </li>
+
+
+        <li><a *ngIf="loginAuthService.loggedInUser.role == 'owner'" class="nav-link"
+            routerLink='owner-notifications'>Notifications</a>
+        </li>
+
+        <li><a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" class="nav-link"
+            routerLink='passenger-notifications'>Notifications</a>
+        </li>
+
+        <!-- <li class="nav-item">
+          <a *ngIf="loginAuthService.loggedInUser.role == 'admin'" class="nav-link" routerLink='admin-cancel-ride'>
+            Cancel Ride</a>
+        </li> -->
+
+        <li class="nav-item">
+          <a *ngIf="loginAuthService.loggedInUser.role == 'admin'" class="nav-link" routerLink='admin-view-rides'>
+            Rides</a>
+        </li>
+
+        <li><a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" class="nav-link"
+            routerLink='passenger-review-rate'>Review & Rating</a>
+        </li>
+
+
+        <li class="nav-item">
+          <a *ngIf="loginAuthService.loggedInUser.role != ''" (click)="logout()" class="nav-link"
+            routerLink='login'>Logout</a>
+        </li>
+
         <li class="nav-item dropdown">
           <a *ngIf="loginAuthService.loggedInUser.role == 'owner' ||loginAuthService.loggedInUser.role == 'passenger'"
             class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
-            {{loginAuthService.loggedInUser.email}}
+            <span class="material-icons-outlined">
+              <i class="material-icons person">person</i>
+            </span>
+
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a
+                *ngIf="loginAuthService.loggedInUser.role == 'passenger' || loginAuthService.loggedInUser.role == 'owner'"
+                class="dropdown-item" href="#">{{loginAuthService.loggedInUser.email}}</a>
+            </li>
+
             <li><a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" class="dropdown-item"
                 routerLink='passenger-change-password'>Update Password</a>
             </li>
@@ -75,42 +114,11 @@
             <li><a *ngIf="loginAuthService.loggedInUser.role == 'owner'" class="dropdown-item"
                 routerLink='owner-view-ratings'>My Ratings</a>
             </li>
+
+            <!-- <li><a *ngIf="loginAuthService.loggedInUser.role == 'owner'" class="dropdown-item"
+                routerLink='edit-cancel-trip-owner'>Edit/Cancel Trip</a>
+            </li> -->
           </ul>
-        </li>
-
-        <li><a *ngIf="loginAuthService.loggedInUser.role == 'owner'" class="nav-link"
-            routerLink='owner-notifications'>Notifications</a>
-        </li>
-
-        <li><a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" class="nav-link"
-            routerLink='passenger-notifications'>Notifications</a>
-        </li>
-
-        <li class="nav-item">
-          <a *ngIf="loginAuthService.loggedInUser.role == 'admin'" class="nav-link" routerLink='admin-cancel-ride'>
-            Cancel Ride</a>
-        </li>
-
-        <li class="nav-item">
-          <a *ngIf="loginAuthService.loggedInUser.role == 'admin'" class="nav-link" routerLink='admin-view-rides'>
-            View Rides</a>
-        </li>
-
-        <li><a *ngIf="loginAuthService.loggedInUser.role == 'owner'" class="nav-link"
-            routerLink='edit-cancel-trip-owner'>Edit/Cancel Trip</a>
-        </li>
-
-        <li><a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" class="nav-link"
-            routerLink='passenger-cancel-trip'>Cancel Trip</a>
-        </li>
-
-        <li><a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" class="nav-link"
-            routerLink='passenger-review-rate'>Review & Rating</a>
-        </li>
-
-        <li class="nav-item">
-          <a *ngIf="loginAuthService.loggedInUser.role != ''" (click)="logout()" class="nav-link"
-            routerLink='login'>Logout</a>
         </li>
       </ul>
 
