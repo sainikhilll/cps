@@ -55,7 +55,35 @@ Ride-sharing Application System (or Carpooling Application System) is a system t
 <li>As a Ride Owner, I want to register using name, address, mobile, mail, password and personal documents (like license and aadhar), so that I can share my ride</li>
 <li>As a Ride Owner, I want to login, so that I can access the system</li>
 <li>As a Ride Owner, I want to add preferences and personal behaviour (Aversion to Music, Smoking Allowed, Pets Allowed), so that passengers can select ride owner based on his preferences.</li>
-<>
+<li>As a Ride Owner, I want to change my profile details after admin verification, so that I can keep my profile up to date</li>
+<li>As a Ride Owner, I can publish my trip information like destination, origin, departure time, price, date and travelling preferences, so that the Passenger can find his suitable journey</li>
+<li>As a Ride Owner, I want to receive notification and passenger details after booking confirmation so that I can get in touch with passenger.</li>
+<li>As a Ride Owner, I want to edit or cancel the trip, so that I can handle if there is any change in my plan.</li>
+<li>As a Ride Owner, I want to rate my passengers after completion of trip so that it will be added to passenger profile.</li>
+<li>As a Ride Owner, I want to view my ratings and reviews, so that I can know where my ratings stand</li>
 <ul>
+  
 <h3>Passengers</h3>
+<ul>
+<li>As a Passenger, I can register in the system by giving my name , password, email, phone number, date of birth so that I can book ride</li>
+<li>As a Passenger, I want to login, so that I can access the system</li>
+<li>As a Passenger, I can change the password after successful registration, so that I can change my password whenever I want to.</li>
+<li>As a passenger, I want to search based on destination, origin, departure time, date, price budget and car type so that it can filter out the options I have.</li>
+<li>As a Passenger, I want to view the Ride Owner ratings, reviews and preferences before booking a ride, so that I can decide to take up the ride or not.</li>
+<li>As a Passenger, I want to book a ride on the searched ride options, so that I can select my ride</li>
+<li>As a Passenger, I can get the notification on the successful booking so that I can get the booking confirmation and details about the Ride Owner</li>
+<li>As a Passenger, after I book a trip I can cancel my trip so that I can cancel when there is a change in my plan</li>
+<li>As a Passenger, I want to review and rate the Ride Owner, so that I can convey my feedback about the ride</li>
+</ul>   
+  
 <h3>Admin</h3>
+<ul>
+<li>As a Admin, I want to verify the driver's details and then approve or reject, so that the Ride Owner can publish his trip and make it available for passengers</li>
+<li>As a Admin, I want to view all the Ride Owners, so that I can know about the Ride Owners in the system</li>
+<li>As a Admin, I want to view all the Passengers, so that I can know about the Passengers in the system</li>
+<li>As a Admin, I want to view all the Rides, so that I can view details about the current rides and completed rides</li>
+<li>As a Admin, I can cancel a Ride, so that I can prevent any unforeseen circumstances</li>
+<li>As an Admin, I want to blacklist a Ride Owner, so that I can prevent any unforseen circumstances</li>
+<li>As an Admin, I want to blacklist a Passenger, so that I can prevent any unforseen circumstances</li>
+<li>As a system, I want to create an admin credentials by default, so that the admin can initially manage the app.</li>
+</ul>
