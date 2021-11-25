@@ -10,6 +10,18 @@
 
 Ride-sharing Application System (or Carpooling Application System) is a system that connects drivers and passengers willing to travel together between the cities and share the journey. Ride Owner / Driver: Ride owner is a person who owns a car and wants to travel from one place to another and publishes his trip on the application in order to find the passengers to share the ride with Passenger: Passenger is a person who wants to travel or wants to join in the trip the driver has posted. Passenger can travel if he/she agrees to the condition the driver has specified (Price, time and behavior) Admin: Admin is a person who has complete control over other stake holders.
 
+<h2>Getting Started</h2>
+<ul>
+<li> Start with this Github Repository</li>
+<li>Git clone to directory of your choice $ git clone https://github.com/sainikhilll/cps.git</li>
+<li> Open cps-frontend folder in VS Code</li>
+<li>Run npm install in terminal.</li>
+<li>Run ng serve to launch frontend.</li>
+<li>Open SQL Script which is present in Database folder in MySQL workbench and run the script to create all the required tables</li>
+<li>Import the cps-rest in STS and Change Database configurations in application.properties</li>
+<li>Start the Application from CpsRestApplication.java file.</li>
+<li>Access the application from Browser</li>
+</ul>
 
 <h2>Technologies Used</h2>
 <h3>Frontend</h3>
@@ -25,8 +37,9 @@ Ride-sharing Application System (or Carpooling Application System) is a system t
 <ul>
 <li>Java</li>
 <li>Rest</li>
-<li>Spring Framwork</li>
+<li>Spring Framework</li>
 <li>Spring Boot</li>
+<li>Spring Data JPA</li>
 <li>Maven</li>
 </ul>
 
@@ -91,13 +104,4 @@ Ride-sharing Application System (or Carpooling Application System) is a system t
 <li>As an Admin, I want to blacklist a Ride Owner, so that I can prevent any unforseen circumstances</li>
 <li>As an Admin, I want to blacklist a Passenger, so that I can prevent any unforseen circumstances</li>
 <li>As a system, I want to create an admin credentials by default, so that the admin can initially manage the app.</li>
-</ul>
-
-<h2>Getting Started</h2>
-<ul>
-<li> Start with this Github Repository</li>
-<li>Git clone to directory of your choice $ git clone https://github.com/sainikhilll/cps.git</li>
-<li> open front-end work in VS Code and backend work in STS</li>
-<li>Run the sts project first to start the server</li>
-<li> Then Run the front-end using (ng serve)in VS code</li>
 </ul>
