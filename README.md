@@ -7,8 +7,7 @@
 
 
 <h1> Car Pooling System</h1>
-
-Ride-sharing Application System (or Carpooling Application System) is a system that connects drivers and passengers willing to travel together between the cities and share the journey. Ride Owner / Driver: Ride owner is a person who owns a car and wants to travel from one place to another and publishes his trip on the application in order to find the passengers to share the ride with Passenger: Passenger is a person who wants to travel or wants to join in the trip the driver has posted. Passenger can travel if he/she agrees to the condition the driver has specified (Price, time and behavior) Admin: Admin is a person who has complete control over other stake holders.
+Car Pooling System is a system that connects drivers and passengers willing to travel together between the cities and share the journey. Ride Owner / Driver: Ride owner is a person who owns a car and wants to travel from one place to another and publishes his trip on the application in order to find the passengers to share the ride with Passenger: Passenger is a person who wants to travel or wants to join in the trip the driver has posted. Passenger can travel if he/she agrees to the condition the driver has specified (Price, time and behavior) Admin: Admin is a person who has complete control over other stake holders.
 
 <h2>Getting Started</h2>
 <ul>
