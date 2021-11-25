@@ -35,4 +35,5 @@ public class OwnerNotificationsController {
 		LOGGER.debug("TripBooking:{}",tripBooking);
 		ownerNotificationsService.save(tripBooking);
 	}
+	
 }

@@ -33,4 +33,5 @@ public class OwnerNotificationsService {
 	public void save(TripBooking tripBooking) {
 		ownerNotificationsRepository.save(tripBooking);
 	}
+
 }
