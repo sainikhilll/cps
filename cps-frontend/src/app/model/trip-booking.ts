@@ -6,5 +6,9 @@ export interface TripBooking{
     seatsBooked:number,
     trip:Trip,
     passenger:Passenger,
-    status:string
+    status:string,
+    ownerRatingPassenger:number,
+    passengerRatingOwner:number,
+    passengerReviewOwner:string,
+    notificationStatus:string
 }

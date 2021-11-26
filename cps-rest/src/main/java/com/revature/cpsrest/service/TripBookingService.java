@@ -14,10 +14,20 @@ public class TripBookingService {
 
 	@Autowired
 	private TripBookingRepository tripBookingRepository;
+	
 
 	public void save(TripBooking booking) {
 		tripBookingRepository.save(booking);
 	}
+	public TripBooking update(TripBooking tripBooking) {
+	    
+		return tripBookingRepository.save(tripBooking);
+
+	}
 	
+	public TripBooking getTripBookingById(int id)
+	{
+		return tripBookingRepository.getById(id);
+	}
 
 }

@@ -41,4 +41,17 @@ public class TripBooking {
 
 	@Column(name = "status")
 	private String status;
+	
+	@Column(name = "owner_rating_passenger")
+	private int ownerRatingPassenger;
+	
+	@Column(name = "passenger_rating_owner")
+	private int passengerRatingOwner;
+	
+	@Column(name = "passenger_review_owner")
+	private String passengerReviewOwner;
+	
+	@Column(name = "notification_status")
+	private String notificationStatus;
+
 }

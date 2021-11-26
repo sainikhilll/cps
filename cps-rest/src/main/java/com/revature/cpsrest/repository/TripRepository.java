@@ -3,6 +3,7 @@ package com.revature.cpsrest.repository;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +25,11 @@ public interface TripRepository extends JpaRepository<Trip,Integer> {
 	@Query("Select o from Owner o where o.user.id = :userId")
 	Owner getOwnerByUserId(@Param("userId") int userId); 
 	
-	@Query("SELECT t from Trip t where t.date < sysdate()")
-	public List<Trip> getUserByStatus(String status);
+	//@Query("SELECT t from TripBooking tb inner join fetch tb.trip t where t.date < sysdate() and tb.passenger.id = :passengerId ")
+	@Query("SELECT t from Trip t inner join fetch t.tripBookings tb where t.date < sysdate() and tb.passenger.id = :passengerId")
+	public Set<Trip> getCompletedTrips(@Param("passengerId") int passengerId);
 }
+
+
+
+//select * from trip t inner join trip_bookings tb on t.id = tb.trip_id where date < sysdate() and passenger_id = 1;

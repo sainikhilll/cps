@@ -15,7 +15,7 @@ export class SearchTripComponent implements OnInit {
   flash = false;
   trips!: Trip[];
 
-  trip = {
+  trip:Trip = {
     "id": 1,
     "origin": "",
     "destination": "",
@@ -49,7 +49,8 @@ export class SearchTripComponent implements OnInit {
         "petsAllowed": ""
       }
     },
-    "status": ""
+    "status": "",
+    tripBookingList:[]
   }
 
   city: string[] = [];

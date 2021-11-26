@@ -1,6 +1,7 @@
 package com.revature.cpsrest.service;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -37,5 +38,10 @@ public class TripService {
 	
 	public Owner getOwnerByUserId (int userId) {
 		return tripRepository.getOwnerByUserId(userId);
+	}
+	
+	public Set<Trip> getCompletedTripsOfPassenger(int passengerId)
+	{
+		return tripRepository.getCompletedTrips(passengerId);
 	}
 }

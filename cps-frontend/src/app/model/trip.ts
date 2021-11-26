@@ -1,4 +1,5 @@
 import { Owner } from "./owner";
+import { TripBooking } from "./trip-booking";
 
 export interface Trip {​​​​​​​
     id: number;
@@ -11,7 +12,8 @@ export interface Trip {​​​​​​​
     numberOfPassengers: number,    
     numberOfSeatsAvailable: number,
     carType: string,
-    status:string
+    status:string,
+    tripBookingList:TripBooking[]
 
    
    

@@ -1,5 +1,8 @@
-<h2>Review And Rate</h2>
-<h3>Complete Ride</h3>
+<h2>Review and Rate</h2>
+<h4 class="text-muted">Completed Rides</h4>
+<div *ngIf="alert" class="alert alert-success" role="alert">
+  Thanks For the FeedBack!
+</div>
 <div class="row row-cols-1 row-cols-md-3 g-4">
   <div class="col" *ngFor="let trip of trips">
     <div class="card">
@@ -40,18 +43,17 @@
         <div class="card-footer mb-5">
           <div class="row">
             <div class="col-6">
-              <h5 class="card-text text-left text-muted">Ride Status:</h5>
+              <h5 class="card-text text-centre text-muted"><ngb-rating [max]="5" [(rate)]="trip.tripBookingList[0].passengerRatingOwner" [readonly]="false"></ngb-rating></h5>
             </div>
-            <div class="col-6" >
-              <h5 class="card-text text-end text-muted">
-                {{trip.status}} </h5>
+            <div class="col-12 mt-3" >
+              <h5 class="card-text text-centre text-muted">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" [(ngModel)]="trip.tripBookingList[0].passengerReviewOwner"></textarea>
+            </h5>
             </div>
           </div>
         </div>
         <div class="col-12 text-end">
-          <button type="button" class="btn btn-primary" (click)="saveRating(trip.owner.id)"  data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Review And Rating 
-          </button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="submitRating(trip)">Save</button>
           
         </div>
       </div>
@@ -59,7 +61,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -70,19 +72,19 @@
         <div class="card-footer">
           <h4>Rating</h4>
           <div class="mx-1">
-            <ngb-rating [max]="5" [(rate)]="ownerrating.rating" [readonly]="false"></ngb-rating>
+            <ngb-rating [max]="5" [(rate)]="trip.tripBookingList[0].passengerRatingOwner" [readonly]="false"></ngb-rating>
           </div>
         </div> 
           <div class="card-footer">
             <h4>Review</h4>
           
           <div class="form-floating mt-1">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" [(ngModel)]="ownerrating.review"></textarea>
-            <label for="floatingTextarea">Comments  </label>
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" [(ngModel)]="trip.tripBookingList[0].passengerReviewOwner"></textarea>
+            <label for="floatingTextarea">Comments</label>
           </div>
         </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="submitRating()">submit</button>
           </div>
       </div>
-    </div>
+    </div> -->

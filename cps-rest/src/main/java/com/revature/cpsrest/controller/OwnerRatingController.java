@@ -29,19 +29,19 @@ public class OwnerRatingController {
 	@Autowired
 	private PassengerService passengerService;
 	
-	@PostMapping
-	public void create(@RequestBody OwnerRating ownerRating)
-	{
-		LOGGER.debug("{}",ownerRating);
-		Passenger p = passengerService.getPassengerById(ownerRating.getPassenger().getUser().getId());
-		ownerRating.getPassenger().setId(p.getId());
-		ownerRatingService.save(ownerRating);
-	}
-	@GetMapping("{status}")
-	public List<Trip> getTripByStatus(@PathVariable String status)
-	{
-		return ownerRatingService.userGetServiceByStatus(status);
-	}
+//	@PostMapping
+//	public void create(@RequestBody OwnerRating ownerRating)
+//	{
+//		LOGGER.debug("{}",ownerRating);
+//		Passenger p = passengerService.getPassengerById(ownerRating.getPassenger().getUser().getId());
+//		ownerRating.getPassenger().setId(p.getId());
+//		ownerRatingService.save(ownerRating);
+//	}
+//	@GetMapping("{passenger}")
+//	public List<Trip> getTripByStatus(@PathVariable String status)
+//	{
+//		return ownerRatingService.userGetServiceByStatus(status);
+//	}
 	
 
 }

@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,5 +47,18 @@ public class TripBookingController {
 		});
 //	
 	}
+	
+	@PutMapping
+	public void updateRatingAndReview(@RequestBody TripBooking tripBooking)
+	{
+		LOGGER.info("{}",tripBooking);
+		TripBooking tb = tripBookingService.getTripBookingById(tripBooking.getId());
+		Passenger p = passengerService.getPassengerById(tripBooking.getPassenger().getUser().getId());
+		tb.setPassengerRatingOwner(tripBooking.getPassengerRatingOwner());
+		tb.setPassengerReviewOwner(tripBooking.getPassengerReviewOwner());
+		tripBookingService.update(tripBooking);
+		
+	}
+	
 
 }

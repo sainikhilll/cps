@@ -22,16 +22,11 @@ public class OwnerRatingService {
 	
 	@Autowired
 	private OwnerRatingRepository ownerRatingRepositorye;
-	@Autowired
-	private TripRepository tripRepository;
+//	@Autowired
+//	private TripRepository tripRepository;
 	
 	
-	public void save(OwnerRating ownerRating) {
-		ownerRatingRepositorye.save(ownerRating);
-	}
 	
-	public List<Trip> userGetServiceByStatus(String status)
-	{
-		return tripRepository.getUserByStatus(status);
-	}
+	
+	
 }
