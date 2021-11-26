@@ -49,8 +49,8 @@ export class BookRideComponent implements OnInit {
       numberOfPassengers: 0,
       numberOfSeatsAvailable: 0,
       carType: "",
-      status: ""
-
+      status: "",
+      tripBookingList:[]
     },
     passenger: {
       id: 0,
@@ -88,7 +88,7 @@ export class BookRideComponent implements OnInit {
       this.service.getOwnerRatingsByUserId(this.trip.owner.id).subscribe((data) => {
         this.ownerratings = (data)
         console.log(this.ownerratings)
-        if (this.ownerratings.length != 0) {
+        if (this.ownerratings.length > 0) {
           for (var val of this.ownerratings) {
             this.sum += val.passengerRatingOwner;
           }

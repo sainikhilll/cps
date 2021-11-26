@@ -1,7 +1,8 @@
 package com.revature.cpsrest.controller;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -16,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.cpsrest.model.Owner;
 import com.revature.cpsrest.dto.PassengerDto;
 import com.revature.cpsrest.dto.TripBookingDto;
 import com.revature.cpsrest.dto.TripDto;
+import com.revature.cpsrest.model.Owner;
 import com.revature.cpsrest.model.Passenger;
 import com.revature.cpsrest.model.Trip;
 import com.revature.cpsrest.model.TripBooking;
@@ -78,6 +79,8 @@ public class TripBookingController {
 				tripBookingDto.setSeatsBooked(tripBooking.getSeatsBooked());
 				tripBookingDto.setStatus(tripBooking.getStatus());
 				tripBookingDto.setOwnerRatingPassenger(tripBooking.getOwnerRatingPassenger());
+				tripBookingDto.setPassengerRatingOwner(tripBooking.getPassengerRatingOwner());
+				tripBookingDto.setPassengerReviewOwner(tripBooking.getPassengerReviewOwner());
 				
 				tripBookingList.add(tripBookingDto);
 			}
@@ -90,6 +93,33 @@ public class TripBookingController {
 			
 		}
 		return tripDtoList;
+	}
+	
+	public List<TripBookingDto> toTripBookingDto(List<TripBooking> tripBookingList) {
+		List<TripBookingDto> tripBookingList1 = new ArrayList<>();
+		for(TripBooking tripBooking: tripBookingList) {
+
+			TripBookingDto tripBookingDto = new TripBookingDto();
+			PassengerDto passengerDto = new PassengerDto();
+			
+			
+			passengerDto.setId(tripBooking.getPassenger().getId());
+			passengerDto.setName(tripBooking.getPassenger().getName());
+			passengerDto.setMobileNumber(tripBooking.getPassenger().getMobileNumber());
+			passengerDto.setDateOfBirth(tripBooking.getPassenger().getDateOfBirth());
+			
+			tripBookingDto.setId(tripBooking.getId());
+			tripBookingDto.setPassenger(passengerDto);
+			tripBookingDto.setSeatsBooked(tripBooking.getSeatsBooked());
+			tripBookingDto.setStatus(tripBooking.getStatus());
+			tripBookingDto.setOwnerRatingPassenger(tripBooking.getOwnerRatingPassenger());
+			tripBookingDto.setPassengerRatingOwner(tripBooking.getPassengerRatingOwner());
+			tripBookingDto.setPassengerReviewOwner(tripBooking.getPassengerReviewOwner());
+			
+			tripBookingList1.add(tripBookingDto);
+		}
+		
+		return tripBookingList1;
 	}
 
 	@PostMapping
@@ -110,16 +140,29 @@ public class TripBookingController {
 
 	}
 	@GetMapping("/ownerRatings/{ownerId}")
-	public List<TripBooking> getOwnerRatingsByOwnerId(@PathVariable int ownerId){
+	public List<TripBookingDto> getOwnerRatingsByOwnerId(@PathVariable int ownerId){
 		//Owner o = ownerService.getOwnerByUserId(userId);
-		return tripBookingService.getOwnerRatingsByOwnerID(ownerId);
+		return toTripBookingDto(tripBookingService.getOwnerRatingsByOwnerID(ownerId));
 	}
 	@GetMapping("/ownerratingsuser/{userId}")
-	public List<TripBooking> getOwnerRatings(@PathVariable int userId){
+	public List<TripBookingDto> getOwnerRatings(@PathVariable int userId){
 		Owner o = ownerRepository.getOwnerByUserId(userId);
 		LOGGER.info("In tripbooking {}",o);
-		return tripBookingService.getOwnerRatingsByOwnerID(o.getId());
+		return toTripBookingDto(tripBookingService.getOwnerRatingsByOwnerID(o.getId()));
 	}
+	
+	@PutMapping
+	public void updateRatingAndReview(@RequestBody TripBooking tripBooking)
+	{
+		LOGGER.info("{}",tripBooking);
+		TripBooking tb = tripBookingService.getTripBookingById(tripBooking.getId());
+		Passenger p = passengerService.getPassengerById(tripBooking.getPassenger().getUser().getId());
+		tb.setPassengerRatingOwner(tripBooking.getPassengerRatingOwner());
+		tb.setPassengerReviewOwner(tripBooking.getPassengerReviewOwner());
+		tripBookingService.update(tripBooking);
+		
+	}
+	
 
 
 	@GetMapping("/{userId}")

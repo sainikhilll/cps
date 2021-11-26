@@ -91,7 +91,7 @@ export class NavigationComponent implements OnInit {
         this.service.getPassengerDetails(this.tripBooking.trip.owner.id).subscribe(
           data => {
             this.tripBookings = data;
-            // console.log(this.tripBookings);
+             console.log(this.tripBookings);
             // console.log(this.count);
             for(let x of this.tripBookings){
               if(x.notificationStatus=="NotRead"){

@@ -39,4 +39,6 @@ public class PassengerRating {
 	@ManyToOne
 	@JoinColumn(name= "passenger_id")
 	private Passenger passenger;
+	
+	
 }

@@ -23,12 +23,15 @@ public class TripBookingService {
 
 	@Autowired
 	private TripBookingRepository tripBookingRepository;
+
 	@Autowired
 	private OwnerRepository ownerRepository;
+
 
 	public void save(TripBooking booking) {
 		tripBookingRepository.save(booking);
 	}
+
 
 	public List<TripBooking> getOwnerRatingsByOwnerID(int ownerId) {
 		return tripBookingRepository.getOwnerRatingsByOwnerId(ownerId);
@@ -44,6 +47,17 @@ public class TripBookingService {
 	}
 
 	public TripBooking getTripBooking(int id) {
+		return tripBookingRepository.getById(id);
+	}
+
+	public TripBooking update(TripBooking tripBooking) {
+	    
+		return tripBookingRepository.save(tripBooking);
+
+	}
+	
+	public TripBooking getTripBookingById(int id)
+	{
 		return tripBookingRepository.getById(id);
 	}
 

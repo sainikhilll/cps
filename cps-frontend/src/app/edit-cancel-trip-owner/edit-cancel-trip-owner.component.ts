@@ -63,7 +63,7 @@ export class EditCancelTripOwnerComponent implements OnInit {
       }
     );
     let idd : any = this.route.snapshot.paramMap.get('id');
-    this.trip.trip.id=idd;
+    this.trip.id=idd;
     let resp = this._service.getTripDetail(idd);
     resp.subscribe((data) => this.trip = data);
     

@@ -17,36 +17,18 @@ import com.revature.cpsrest.repository.OwnerRepository;
 import com.revature.cpsrest.repository.TripBookingRepository;
 import com.revature.cpsrest.service.OwnerRatingService;
 import com.revature.cpsrest.service.OwnerService;
+import com.revature.cpsrest.service.PassengerService;
 
 @RestController
-@RequestMapping("/ownerRatings")
+@RequestMapping("/ownerratings")
 public class OwnerRatingController {
-	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);	
-//	@GetMapping("/{ownerId}")
-//	public List<OwnerRating> getOwnerRatingsByOwnerId(@PathVariable int ownerId){
-//		//Owner o = ownerService.getOwnerByUserId(userId);
-//		return ownerRatingService.getOwnerRatingsByOwnerID(ownerId);
-
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(PassengerController.class);
+	
 	@Autowired
 	private OwnerRatingService ownerRatingService;
 	@Autowired
-	private OwnerRepository ownerRepository;
-	@Autowired
-	private OwnerService ownerService;
-	@Autowired
-	private TripBookingRepository tripBookingRepository;
+	private PassengerService passengerService;
 	
-	
-	@GetMapping("/{ownerId}")
-	public List<TripBooking> getOwnerRatingsByOwnerId(@PathVariable int ownerId){
-		//Owner o = ownerService.getOwnerByUserId(userId);
-		return tripBookingRepository.getOwnerRatingsByOwnerId(ownerId);
-	}
 
-	@GetMapping()
-	public List<OwnerRating> getRatings(@PathVariable int ownerId) {
-		Owner owner = ownerRepository.getOwnerByUserId(ownerId);
-		return ownerRatingService.getRatings(owner.getId());
-
-	}
 }

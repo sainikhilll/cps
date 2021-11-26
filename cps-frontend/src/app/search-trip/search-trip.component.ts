@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
 export class SearchTripComponent implements OnInit {
   flash = false;
   trips!: Trip[];
-  trip = {
+
+  trip:Trip = {
     "id": 1,
     "origin": "",
     "destination": "",
@@ -47,7 +48,8 @@ export class SearchTripComponent implements OnInit {
     "numberOfPassengers": 0,
     "numberOfSeatsAvailable": 0,
     "carType": "",
-    "status": ""
+    "status": "",
+    tripBookingList:[]
     }
  
 

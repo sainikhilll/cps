@@ -31,6 +31,7 @@ import { AdminCancelRideComponent } from './admin-cancel-ride/admin-cancel-ride.
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +64,7 @@ import { AdminCancelRideComponent } from './admin-cancel-ride/admin-cancel-ride.
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule  
   ],
   providers: [],
   bootstrap: [AppComponent]

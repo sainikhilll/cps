@@ -46,7 +46,8 @@ export class PublishTripComponent implements OnInit {
     numberOfPassengers: 0,
     numberOfSeatsAvailable: 0,
     carType: "",
-    status: ""
+    status: "",
+    tripBookingList:[]
   }
   
   success: boolean = false;
@@ -90,7 +91,8 @@ export class PublishTripComponent implements OnInit {
       numberOfPassengers: 0,
       numberOfSeatsAvailable: 0,
       carType: "",
-      status: "Active"
+      status: "Active",
+      tripBookingList:[]
     }
     this.tripService.getApi().subscribe(
       data => {

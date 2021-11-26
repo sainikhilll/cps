@@ -41,7 +41,7 @@ const routes: Routes = [
   {path:'passenger-notifications', component:PassengerNotificationsComponent, canActivate: [AuthGuardGuard]},
   {path:'admin-cancel-ride', component:AdminCancelRideComponent, canActivate: [AuthGuardGuard]},
   {path:'admin-view-rides', component:AdminViewRidesComponent, canActivate: [AuthGuardGuard]},
-  {path:'edit-cancel-trip-owner', component:EditCancelTripOwnerComponent, canActivate: [AuthGuardGuard]},
+  {path:'edit-cancel-trip-owner/:id', component:EditCancelTripOwnerComponent, canActivate: [AuthGuardGuard]},
   {path:'owner-view-ratings',component:OwnerViewRatingsComponent, canActivate: [AuthGuardGuard]},
   {path:'passenger-cancel-trip',component:PassengerCancelTripComponent, canActivate: [AuthGuardGuard]},
   {path:'passenger-rating',component:PassengerRatingComponent, canActivate: [AuthGuardGuard]},

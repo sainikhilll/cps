@@ -19,10 +19,12 @@ export class PassengerRatingComponent implements OnInit {
 
   currentRate = 0;
   ngOnInit(): void {
+    console.log("Called NgOnInit");
     this.service.getTrips().subscribe(
       data => {
         this.trips = data;
         console.log(this.trips);
+        console.log("Got Trips");
       }
     )
   }
@@ -48,11 +50,11 @@ export class PassengerRatingComponent implements OnInit {
   }
 
   public editTrip(id: number) {
-    this.router.navigate(['/edit-cancel-trip-owner', { id: id }]);
+    this.router.navigate(['/edit-cancel-trip-owner/'+ id]);
   }
 
   public cancelTrip(id: number) {
-    this.service.cancelTrip(id);
+    this.service.cancelTrip(id).subscribe((data)=>this.ngOnInit());
   }
 
 }

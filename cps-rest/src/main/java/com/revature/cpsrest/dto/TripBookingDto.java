@@ -18,5 +18,9 @@ public class TripBookingDto {
 	private TripDto trip;
 	private PassengerDto passenger;
 	private String status;
+
+	private String passengerReviewOwner;
+	private int passengerRatingOwner;
 	private int ownerRatingPassenger;
+	private String notificationStatus;
 }

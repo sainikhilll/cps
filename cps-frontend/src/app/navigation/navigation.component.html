@@ -67,19 +67,19 @@
         <li class="nav-item">
           <a *ngIf="loginAuthService.loggedInUser.role == 'owner'" class="nav-link" routerLink='owner-notifications'>
             Notifications
-            <span class="badge bg-danger rounded-circle" *ngIf="count>0">{{count}}</span>
+            <span class="badge bg-danger rounded-circle" *ngIf="count>1">&nbsp;</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink='passenger-notifications'>
+          <a class="nav-link" *ngIf="loginAuthService.loggedInUser.role == 'passenger'" routerLink='passenger-notifications'>
             Notifications
-            <span class="badge bg-danger rounded-circle" *ngIf="count1>0">{{count1}}</span>
+            <span class="badge bg-danger rounded-circle" *ngIf="count1>1">&nbsp;</span>
           </a>
         </li>
 
-        <li><a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" class="nav-link"
+        <!-- <li><a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" class="nav-link"
             routerLink='passenger-notifications'>Notifications</a>
-        </li>
+        </li> -->
 
         <!-- <li class="nav-item">
           <a *ngIf="loginAuthService.loggedInUser.role == 'admin'" class="nav-link" routerLink='admin-cancel-ride'>
@@ -92,7 +92,7 @@
         </li>
 
         <li><a *ngIf="loginAuthService.loggedInUser.role == 'passenger'" class="nav-link"
-            routerLink='passenger-review-rate'>Review & Rating</a>
+            routerLink='passenger-review-rating'>Review & Rating</a>
         </li>
 
 

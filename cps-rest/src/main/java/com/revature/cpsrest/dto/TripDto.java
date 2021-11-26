@@ -31,4 +31,5 @@ public class TripDto {
 	private String status;
 	private Set<TripBookingDto> tripBookingList;
 	private int rating;
+
 }
